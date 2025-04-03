@@ -12,9 +12,7 @@ redirect_from:
 Summary
 ======
 PhD Candidate with focus in bioinformatics, genomics, data analytics, machine learning, and statistical analysis. 
-Experienced in large-scale data analysis, Next Generation Sequencing (NGS) analysis, microarray analysis, and statistics-based bioinformatics software packages
-Intellectual curiosity, drive, and desire to learn with excellent communication, leadership, and project management skills
-Team oriented with strong analytical and problem-solving skills 
+Experienced in large-scale data analysis, Next Generation Sequencing (NGS) analysis, microarray analysis, and statistics-based bioinformatics software packages. Intellectual curiosity, drive, and desire to learn with excellent communication, leadership, and project management skills. Team oriented with strong analytical and problem-solving skills 
 
 Education
 ======
