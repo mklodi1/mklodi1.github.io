@@ -238,6 +238,18 @@ body { border-top: 6px solid var(--link); }
 .flag { display: inline-block; width: 20px; height: 14px; object-fit: cover; vertical-align: -2px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0,0,0,.25); }
 .travel { margin-top: 3.5rem; }
 .travel h2 { font-size: 1.5rem; margin-bottom: 1.25rem; }
+/* airline-style routes on the Travel map */
+.route-line { stroke-linecap: round; stroke-dasharray: 7 7; filter: drop-shadow(0 1px 0 rgba(0,0,0,.35)); transition: opacity .3s ease, stroke-width .3s ease; }
+.route-line.route-dim { opacity: .15; }
+.route-line.route-on { stroke-width: 4.5; opacity: 1; }
+.hub-ring { fill: var(--link); fill-opacity: .18; stroke: var(--link); stroke-width: 2; }
+@media (prefers-reduced-motion: no-preference) {
+  .route-line { animation: route-flow 1.4s linear infinite; }
+  @keyframes route-flow { to { stroke-dashoffset: -28; } }
+  .hub-ring { animation: hub-pulse 2.2s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+  @keyframes hub-pulse { 0% { transform: scale(.6); opacity: 1; } 100% { transform: scale(1.6); opacity: 0; } }
+}
+
 .places-chips { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
 .chip {
   font: inherit; font-size: .92rem; color: var(--text); cursor: pointer;

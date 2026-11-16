@@ -1,6 +1,6 @@
 # Places shown on the map at /places/. Add one per city.
 # Find coordinates by right-clicking a spot in Google Maps (the first menu item copies them).
-# country: two-letter code for the flag (a matching file must exist in assets/img/flags/, e.g. us.svg, in.svg).
+# country: two-letter country code for the flag (e.g. us, in).
 # Optional: add a short description that shows when someone clicks the pin, e.g.
 #   note: "Where I grew up"
 - city: "Philadelphia, PA"

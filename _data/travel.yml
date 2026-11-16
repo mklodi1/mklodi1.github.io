@@ -1,5 +1,6 @@
 # Places shown on the Travel map at /places/. Same format as places.yml.
-# country: two-letter code for the flag (a matching file must exist in assets/img/flags/).
+# The first entry is the home base that the flight routes start from.
+# country: two-letter country code for the flag (e.g. us, in, mx).
 # Optional: note: "A short description shown when someone clicks the pin"
 - city: "Manassas Park, VA"
   lat: 38.784
@@ -100,3 +101,23 @@
   lat: 16.3067
   lng: 80.4365
   country: "in"
+
+- city: "Key West, FL"
+  lat: 24.5551
+  lng: -81.78
+  country: "us"
+
+- city: "Cozumel, Mexico"
+  lat: 20.423
+  lng: -86.9223
+  country: "mx"
+
+- city: "Mecca, Saudi Arabia"
+  lat: 21.3891
+  lng: 39.8579
+  country: "sa"
+
+- city: "Madinah, Saudi Arabia"
+  lat: 24.4672
+  lng: 39.6111
+  country: "sa"

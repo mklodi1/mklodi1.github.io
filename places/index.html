@@ -12,7 +12,7 @@ permalink: /places/
   <div id="places-map" class="places-map" role="region" aria-label="Map of significant places: {{ site.data.places | map: 'city' | join: '; ' }}"></div>
   <div class="places-chips" id="places-chips">
     <button type="button" class="chip" data-index="all">All places</button>
-    {% for p in site.data.places %}<button type="button" class="chip" data-index="{{ forloop.index0 }}">{{ p.city }}{% if p.country %} <img class="flag" src="{{ '/assets/img/flags/' | append: p.country | append: '.svg' | relative_url }}" alt="" width="20" height="14">{% endif %}</button>{% endfor %}
+    {% for p in site.data.places %}<button type="button" class="chip" data-index="{{ forloop.index0 }}">{{ p.city }}{% if p.country %} <img class="flag" src="https://flagcdn.com/{{ p.country | downcase }}.svg" alt="" width="20" height="14" onerror="this.remove()">{% endif %}</button>{% endfor %}
   </div>
 
   {% if site.data.travel %}
@@ -21,7 +21,7 @@ permalink: /places/
     <div id="travel-map" class="places-map" role="region" aria-label="Map of places I've traveled: {{ site.data.travel | map: 'city' | join: '; ' }}"></div>
     <div class="places-chips" id="travel-chips">
       <button type="button" class="chip" data-index="all">All places</button>
-      {% for p in site.data.travel %}<button type="button" class="chip" data-index="{{ forloop.index0 }}">{{ p.city }}{% if p.country %} <img class="flag" src="{{ '/assets/img/flags/' | append: p.country | append: '.svg' | relative_url }}" alt="" width="20" height="14">{% endif %}</button>{% endfor %}
+      {% for p in site.data.travel %}<button type="button" class="chip" data-index="{{ forloop.index0 }}">{{ p.city }}{% if p.country %} <img class="flag" src="https://flagcdn.com/{{ p.country | downcase }}.svg" alt="" width="20" height="14" onerror="this.remove()">{% endif %}</button>{% endfor %}
     </div>
   </section>
   {% endif %}
@@ -30,7 +30,7 @@ permalink: /places/
 <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script>
   (function () {
-    var flagBase = {{ '/assets/img/flags/' | relative_url | jsonify }};
+    var flagBase = 'https://flagcdn.com/';
     var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var colors = ['#FF6B6B', '#FFB020', '#2EC4B6', '#5B8DEF', '#B36BFF', '#FF7EB6', '#3DDC84'];
 
@@ -52,8 +52,25 @@ permalink: /places/
       });
     }
 
+    // Points along a gentle curve between two [lat, lng] points, bowed toward the pole like a flight path.
+    function arc(a, b) {
+      var dx = b[1] - a[1], dy = b[0] - a[0];
+      var dist = Math.sqrt(dx * dx + dy * dy);
+      var nx = -dy / dist, ny = dx / dist;            // perpendicular (lng, lat)
+      if (ny < 0) { nx = -nx; ny = -ny; }              // always bow northward
+      var k = Math.min(0.25 * dist, 25);
+      var c = [(a[0] + b[0]) / 2 + ny * k, (a[1] + b[1]) / 2 + nx * k];
+      var pts = [];
+      for (var t = 0; t <= 1.0001; t += 1 / 48) {
+        var u = 1 - t;
+        pts.push([u * u * a[0] + 2 * u * t * c[0] + t * t * b[0], u * u * a[1] + 2 * u * t * c[1] + t * t * b[1]]);
+      }
+      return pts;
+    }
+
     // Builds one cartoon map with pins and clickable city buttons.
-    function buildMap(mapId, chipsId, places) {
+    function buildMap(mapId, chipsId, places, opts) {
+      opts = opts || {};
       var box = document.getElementById(mapId);
       if (!box) return;
       if (!window.L) { box.classList.add('map-failed'); box.textContent = 'The map could not load. Try refreshing the page.'; return; }
@@ -90,6 +107,7 @@ permalink: /places/
         map.flyTo([p.lat, p.lng], 10, { duration: reduceMotion ? 0 : 1.4 });
         map.once('moveend', function () { markers[i].openPopup(); });
         setActive(String(i));
+        if (routes.length) highlight(i);
       }
 
       var step = Math.min(160, Math.round(2000 / places.length));
@@ -99,12 +117,37 @@ permalink: /places/
           title: p.city,
           riseOnHover: true
         }).addTo(map);
-        var flag = p.country ? '<img class="flag flag-lg" src="' + flagBase + esc(p.country) + '.svg" alt="" width="36" height="24">' : '';
+        var flag = p.country ? '<img class="flag flag-lg" src="' + flagBase + esc(String(p.country).toLowerCase()) + '.svg" alt="" width="36" height="24" onerror="this.remove()">' : '';
         var popup = '<strong>' + esc(p.city) + '</strong>' + (p.note ? '<br><span class="pin-note">' + esc(p.note) + '</span>' : '') + flag;
         m.bindPopup(popup, { closeButton: false, className: 'pin-popup', maxWidth: 240 });
         m.on('click', function () { flyTo(i); });
         markers.push(m);
       });
+
+      // Airline-style routes: curved flight paths from the home base (first place) to every other place.
+      var routes = [];
+      if (opts.routes && places.length > 1) {
+        var hub = places[0];
+        var hubLL = L.latLng(hub.lat, hub.lng);
+        L.circleMarker([hub.lat, hub.lng], { radius: 16, className: 'hub-ring', interactive: false }).addTo(map);
+        places.forEach(function (p, i) {
+          if (i === 0 || hubLL.distanceTo([p.lat, p.lng]) < 80000) { routes.push(null); return; }
+          var line = L.polyline(arc([hub.lat, hub.lng], [p.lat, p.lng]), {
+            className: 'route-line', color: colors[i % colors.length], weight: 2.5, opacity: .9, interactive: false
+          }).addTo(map);
+          routes.push(line);
+        });
+        markers.forEach(function (m) { m.setZIndexOffset(1000); });
+      }
+      function highlight(i) {
+        routes.forEach(function (r, j) {
+          if (!r) return;
+          var el = r.getElement && r.getElement();
+          if (!el) return;
+          el.classList.toggle('route-dim', i !== null && j !== i);
+          el.classList.toggle('route-on', j === i);
+        });
+      }
 
       var allBounds = L.latLngBounds(places.map(function (p) { return [p.lat, p.lng]; }));
       function showAll(animate) {
@@ -113,6 +156,7 @@ permalink: /places/
         else if (animate && !reduceMotion) map.flyToBounds(allBounds, { padding: [50, 50], duration: 1.2 });
         else map.fitBounds(allBounds, { padding: [50, 50] });
         setActive('all');
+        if (routes.length) highlight(null);
       }
 
       for (var c = 0; c < chips.length; c++) {
@@ -126,6 +170,6 @@ permalink: /places/
     }
 
     buildMap('places-map', 'places-chips', {{ site.data.places | jsonify }});
-    buildMap('travel-map', 'travel-chips', {{ site.data.travel | jsonify }});
+    buildMap('travel-map', 'travel-chips', {{ site.data.travel | jsonify }}, { routes: true });
   })();
 </script>
