@@ -24,7 +24,7 @@ experience:
           - "Engineered a retrieval-augmented generation (RAG) system and LLM agent for automated scientific literature review, using embeddings, a vector database (ChromaDB) and semantic similarity; cut manual review time by 85%."
           - "Deployed the AI/ML pipelines with MLOps tools (Docker, CI/CD, MLflow) for reproducible deployment and experiment tracking."
 
-  - role: "Data Scientist, Ph.D. Researcher"
+  - role: "Ph.D. Researcher"
     org: "Rutgers University – New Brunswick"
     place: "New Brunswick, NJ"
     when: "Aug 2021 – Sep 2026"
