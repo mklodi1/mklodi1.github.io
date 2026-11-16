@@ -3,9 +3,33 @@ layout: default
 title: Personal
 permalink: /personal/
 ---
+{% comment %}
+  Galleries fill themselves: upload images (.jpg, .jpeg, .png, .webp) into
+  assets/img/photography/ or assets/img/drawing/ and they appear here, sorted by file name.
+{% endcomment %}
 <article class="wrap personal">
   <h1>Personal</h1>
-  <div class="prose">
-    <p>More about me outside of work is coming soon.</p>
-  </div>
+
+  {% assign sections = "photography|Photography,drawing|Drawing" | split: "," %}
+  {% for sec in sections %}
+  {% assign parts = sec | split: "|" %}
+  {% assign folder = parts[0] %}
+  {% assign heading = parts[1] %}
+  {% assign prefix = "/assets/img/" | append: folder | append: "/" %}
+  {% assign images = site.static_files | where_exp: "f", "f.path contains prefix" | where_exp: "f", "f.extname != ''" | sort: "path" %}
+  <section class="gallery-section" aria-labelledby="h-{{ folder }}">
+    <h2 id="h-{{ folder }}">{{ heading }}</h2>
+    {% assign shown = 0 %}
+    <div class="gallery">
+      {% for img in images %}
+      {% assign ext = img.extname | downcase %}
+      {% if ext == ".jpg" or ext == ".jpeg" or ext == ".png" or ext == ".webp" or ext == ".gif" %}
+      {% assign shown = shown | plus: 1 %}
+      <a href="{{ img.path | relative_url }}"><img src="{{ img.path | relative_url }}" alt="{{ heading }}: {{ img.basename | replace: '-', ' ' | replace: '_', ' ' }}" loading="lazy"></a>
+      {% endif %}
+      {% endfor %}
+    </div>
+    {% if shown == 0 %}<p class="muted">Coming soon.</p>{% endif %}
+  </section>
+  {% endfor %}
 </article>
