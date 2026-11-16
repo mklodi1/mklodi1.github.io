@@ -27,6 +27,7 @@ linkedin: mudassir-lodi
 # quote: A favorite saying or quote
 # quote_source: Who said it
 
+timezone: America/New_York   # used for the "Last updated" time in the footer
 markdown: kramdown
 permalink: /writing/:year/:title/
 plugins:

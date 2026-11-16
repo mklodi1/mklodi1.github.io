@@ -1,4 +1,4 @@
 <footer class="foot wrap">
   {% if site.quote %}<blockquote class="foot-quote"><p>{{ site.quote }}</p>{% if site.quote_source %}<cite>{{ site.quote_source }}</cite>{% endif %}</blockquote>{% endif %}
-  <p class="foot-meta">&copy; {{ 'now' | date: '%Y' }} {{ site.title }} &nbsp;/&nbsp; <a href="{{ '/feed.xml' | relative_url }}">RSS</a></p>
+  <p class="foot-meta">&copy; {{ 'now' | date: '%Y' }} {{ site.title }} &nbsp;/&nbsp; <a href="{{ '/feed.xml' | relative_url }}">RSS</a> &nbsp;/&nbsp; Last updated {{ site.time | date: "%b %-d, %Y, %-I:%M %p" }}</p>
 </footer>
