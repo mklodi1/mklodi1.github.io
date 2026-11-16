@@ -1,0 +1,100 @@
+---
+layout: default
+---
+<div class="wrap home">
+
+  <header class="intro">
+    <div class="intro-text">
+      <h1>{{ site.title }}</h1>
+      <p class="role">{{ site.role }}{% if site.affiliation %}, {{ site.affiliation }}{% endif %}</p>
+      <p class="contact"><a href="mailto:{{ site.email }}">{{ site.email }}</a>{% if site.linkedin %} &nbsp;/&nbsp; <a href="https://www.linkedin.com/in/{{ site.linkedin }}">LinkedIn</a>{% endif %}</p>
+    </div>
+    {% if site.portrait %}<img class="portrait" src="{{ site.portrait | relative_url }}" alt="Photo of {{ site.title }}" width="160" height="160">{% endif %}
+  </header>
+
+  <section class="prose bio" aria-label="About me">
+    <p>Hi, I'm Mudassir. I'm a data scientist who builds statistical and machine learning models for large, messy datasets, and puts them into production. I recently finished my Ph.D. in Quantitative Biomedicine at Rutgers University, where I used machine learning on more than 200 million biomedical records to find genes linked to neurological disorders.</p>
+    <p>Lately I've been applying the same toolkit to quantitative finance. As a machine learning intern at <strong>EIMplus</strong>, I built an options pricing and market risk engine (Black-Scholes, GARCH volatility forecasting, Monte Carlo VaR and CVaR) and an LLM agent that reviews scientific literature on its own. I work mostly in Python, SQL and R, on AWS and Linux clusters, and I care about making models reproducible with Docker, CI/CD and MLflow.</p>
+    <p>Before Rutgers, I studied bioinformatics at Virginia Commonwealth University.</p>
+  </section>
+
+  {% if site.place_photo %}
+  <figure class="place">
+    <img src="{{ site.place_photo | relative_url }}" alt="{{ site.place_caption }}">
+    {% if site.place_caption %}<figcaption>{{ site.place_caption }}</figcaption>{% endif %}
+  </figure>
+  {% endif %}
+
+  <section id="news" aria-labelledby="news-h">
+    <h2 id="news-h">News</h2>
+    <dl class="news">
+      {% for item in site.data.news %}
+      <dt>{{ item.date }}</dt>
+      <dd>{{ item.text | markdownify | remove: '<p>' | remove: '</p>' }}</dd>
+      {% endfor %}
+    </dl>
+  </section>
+
+  <section id="work" aria-labelledby="work-h">
+    <h2 id="work-h">Selected work</h2>
+    {% for w in site.data.work %}
+    <article class="work{% if w.figure %} has-figure{% endif %}">
+      {% if w.figure %}<img src="{{ w.figure | relative_url }}" alt="" loading="lazy">{% endif %}
+      <div>
+        <h3>{% if w.link %}<a href="{{ w.link }}">{{ w.title }}</a>{% else %}{{ w.title }}{% endif %}</h3>
+        {% if w.venue %}<p class="venue">{{ w.venue }}</p>{% endif %}
+        <p>{{ w.summary }}</p>
+      </div>
+    </article>
+    {% endfor %}
+  </section>
+
+  <section id="publications" aria-labelledby="pubs-h">
+    <h2 id="pubs-h">Publications</h2>
+    <ol class="pubs">
+      {% for p in site.data.publications %}
+      <li>
+        <p class="pub-title">{% if p.link %}<a href="{{ p.link }}">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</p>
+        <p class="pub-authors">{{ p.authors | replace: 'Lodi MK', '<strong>Lodi MK</strong>' }}</p>
+        <p class="venue">{{ p.venue }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  {% comment %} To show "Outside of work", fill it in, then delete the if-false line below and the endif line after the section. {% endcomment %}
+  {% if false %}
+  <section id="outside" aria-labelledby="outside-h">
+    <h2 id="outside-h">Outside of work</h2>
+    <div class="prose">
+      <p>TODO A few lines about you as a person: what you read, play, cook, follow or care about.</p>
+    </div>
+  </section>
+  {% endif %}
+
+  {% if site.posts.size > 0 %}
+  <section id="writing" aria-labelledby="writing-h">
+    <h2 id="writing-h">Recent writing</h2>
+    <ul class="post-list">
+      {% for post in site.posts limit: 3 %}
+      <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %Y" }}</time></li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% if site.formspree_id %}
+  <section id="message" aria-labelledby="message-h">
+    <h2 id="message-h">Send me an anonymous message</h2>
+    <p class="muted">Feedback, questions, or just hello. I won't know who sent it unless you say.</p>
+    <form class="message" action="https://formspree.io/f/{{ site.formspree_id }}" method="POST">
+      <label for="msg" class="sr-only">Your message</label>
+      <textarea id="msg" name="message" rows="4" required placeholder="Write your message"></textarea>
+      <input type="text" name="_gotcha" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit">Send message</button>
+    </form>
+  </section>
+  {% endif %}
+
+  {% if site.location %}<p class="location">{{ site.location }}</p>{% endif %}
+</div>
