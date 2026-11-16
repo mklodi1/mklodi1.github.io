@@ -1,4 +1,4 @@
-# Newest first. "note" is optional.
+# Newest first. "note" and "link" are optional.
 - name: "Conference Travel Award"
   from: "International Conference for Intelligent Biology & Medicine"
   date: "Oct 2024"
@@ -6,6 +6,11 @@
 - name: "Presidential Fellowship"
   from: "Rutgers University"
   date: "Aug 2021"
+
+- name: "UROP Fellowship"
+  from: "Virginia Commonwealth University"
+  date: "Apr 2019"
+  link: https://uc.vcu.edu/transformative-learning/undergraduate-research/undergraduate-research-for-students/urop-fellowship/
 
 - name: "Virginia Scholarship"
   from: "Virginia Commonwealth University"

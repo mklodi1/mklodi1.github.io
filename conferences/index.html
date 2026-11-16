@@ -17,7 +17,7 @@ permalink: /conferences/
           <h3>{% if c.link %}<a href="{{ c.link }}">{{ c.event }}</a>{% else %}{{ c.event }}{% endif %}</h3>
           <span class="cv-when">{{ c.date }}</span>
         </div>
-        <p class="honor-sub">{{ c.type }}{% if c.award %} <span class="award-tag">{{ c.award }}</span>{% endif %}</p>
+        {% if c.type != "" or c.award %}<p class="honor-sub">{{ c.type }}{% if c.award %} <span class="award-tag">{{ c.award }}</span>{% endif %}</p>{% endif %}
       </li>
       {% endfor %}
     </ul>
@@ -29,7 +29,7 @@ permalink: /conferences/
       {% for a in site.data.awards %}
       <li>
         <div class="cv-row">
-          <h3>{{ a.name }}</h3>
+          <h3>{% if a.link %}<a href="{{ a.link }}">{{ a.name }}</a>{% else %}{{ a.name }}{% endif %}</h3>
           <span class="cv-when">{{ a.date }}</span>
         </div>
         <p class="honor-sub">{{ a.from }}</p>
