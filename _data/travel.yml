@@ -131,3 +131,18 @@
   lat: 43.6532
   lng: -79.3832
   country: "ca"
+
+- city: "CocoCay, Bahamas"
+  lat: 25.818
+  lng: -77.942
+  country: "bs"
+
+- city: "St. Thomas, U.S. Virgin Islands"
+  lat: 18.3381
+  lng: -64.8941
+  country: "vi"
+
+- city: "Visakhapatnam, India"
+  lat: 17.6868
+  lng: 83.2185
+  country: "in"
