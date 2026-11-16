@@ -146,3 +146,18 @@
   lat: 17.6868
   lng: 83.2185
   country: "in"
+
+- city: "Los Angeles, CA"
+  lat: 34.0522
+  lng: -118.2437
+  country: "us"
+
+- city: "Savannah, GA"
+  lat: 32.0809
+  lng: -81.0912
+  country: "us"
+
+- city: "Charleston, SC"
+  lat: 32.7765
+  lng: -79.9311
+  country: "us"
