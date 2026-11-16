@@ -7,7 +7,7 @@ permalink: /places/
 
 <article class="wrap places">
   <h1>Significant Places</h1>
-  <p class="muted places-hint">Click a pin or a city to zoom in.</p>
+  <p class="muted places-hint">Main places in my life</p>
 
   <div id="places-map" class="places-map" role="region" aria-label="Map of significant places: {{ site.data.places | map: 'city' | join: '; ' }}"></div>
   <div class="places-chips" id="places-chips">
@@ -18,7 +18,7 @@ permalink: /places/
   {% if site.data.travel %}
   <section class="travel" aria-labelledby="h-travel">
     <h2 id="h-travel">Travel</h2>
-    <p class="muted places-hint">Routes from home to everywhere I've been. Click a pin or a city to follow its route.</p>
+    <p class="muted places-hint">Places I've been to</p>
     <div id="travel-map" class="places-map" role="region" aria-label="Map of places I've traveled: {{ site.data.travel | map: 'city' | join: '; ' }}"></div>
     <div class="places-chips" id="travel-chips">
       <button type="button" class="chip" data-index="all">All places</button>
