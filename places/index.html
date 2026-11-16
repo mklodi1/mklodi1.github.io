@@ -13,7 +13,7 @@ permalink: /places/
 
   <div class="places-chips" id="places-chips">
     <button type="button" class="chip" data-index="all">All places</button>
-    {% for p in site.data.places %}<button type="button" class="chip" data-index="{{ forloop.index0 }}">{{ p.city }}</button>{% endfor %}
+    {% for p in site.data.places %}<button type="button" class="chip" data-index="{{ forloop.index0 }}">{% if p.country %}<img class="flag" src="{{ '/assets/img/flags/' | append: p.country | append: '.svg' | relative_url }}" alt="" width="20" height="14">{% endif %}{{ p.city }}</button>{% endfor %}
   </div>
 </article>
 
@@ -21,6 +21,7 @@ permalink: /places/
 <script>
   (function () {
     var places = {{ site.data.places | jsonify }};
+    var flagBase = {{ '/assets/img/flags/' | relative_url | jsonify }};
     var box = document.getElementById('places-map');
     if (!window.L) { box.classList.add('map-failed'); box.textContent = 'The map could not load. Try refreshing the page.'; return; }
     if (!places.length) return;
@@ -85,7 +86,8 @@ permalink: /places/
         title: p.city,
         riseOnHover: true
       }).addTo(map);
-      var popup = '<strong>' + esc(p.city) + '</strong>' + (p.note ? '<br><span class="pin-note">' + esc(p.note) + '</span>' : '');
+      var flag = p.country ? '<img class="flag" src="' + flagBase + esc(p.country) + '.svg" alt="" width="20" height="14">' : '';
+      var popup = '<strong>' + flag + esc(p.city) + '</strong>' + (p.note ? '<br><span class="pin-note">' + esc(p.note) + '</span>' : '');
       m.bindPopup(popup, { closeButton: false, className: 'pin-popup', maxWidth: 240 });
       m.on('click', function () { flyTo(i); });
       markers.push(m);

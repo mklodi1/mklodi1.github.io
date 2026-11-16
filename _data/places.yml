@@ -1,38 +1,46 @@
 # Places shown on the map at /places/. Add one per city.
 # Find coordinates by right-clicking a spot in Google Maps (the first menu item copies them).
+# country: two-letter code for the flag (a matching file must exist in assets/img/flags/, e.g. us.svg, in.svg).
 # Optional: add a short description that shows when someone clicks the pin, e.g.
 #   note: "Where I grew up"
 - city: "Philadelphia, PA"
   lat: 39.9526
   lng: -75.1652
   note: "Birthplace"
+  country: "us"
 
 - city: "Manassas Park, VA"
   lat: 38.7840
   lng: -77.4697
   note: "Where I grew up"
+  country: "us"
 
 - city: "Richmond, VA"
   lat: 37.5407
   lng: -77.4360
   note: "Hometown"
+  country: "us"
 
 - city: "New Brunswick, NJ"
   lat: 40.4862
   lng: -74.4518
   note: "Doctoral studies"
+  country: "us"
 
 - city: "Bangalore, India"
   lat: 12.9716
   lng: 77.5946
   note: "Roots"
+  country: "in"
 
 - city: "Guntur, India"
   lat: 16.3067
   lng: 80.4365
   note: "Roots"
+  country: "in"
 
 - city: "Markapur, India"
   lat: 15.7353
   lng: 79.2697
   note: "Roots"
+  country: "in"
