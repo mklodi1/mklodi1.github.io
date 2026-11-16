@@ -28,9 +28,11 @@ experience:
     place: "New Brunswick, NJ"
     when: "Aug 2021 – Sep 2026"
     points:
-      - "Developed predictive machine learning and statistical models in Python on large-scale biomedical data, identifying 300+ high-confidence disease genes linked to neurological disorders."
-      - "Prepared, transformed and integrated large structured and unstructured datasets (200M+ records) using SQL, pandas and R for model development."
-      - "Worked with cross-functional teams to turn computational findings into actionable insights that directly informed downstream experimental decisions."
+      - "Built multi-omics analysis pipelines using Python and SQL, integrating data preprocessing, QC, functional annotation, and rare variant analysis for genomics (WGS/WES), transcriptomics (RNA-seq), and clinical data in large-scale patient cohorts (SFARI & NJLAGS)."
+      - "Developed customizable framework to predict candidate genes in complex genetic diseases; discovered 300+ high-confidence novel candidate genes linked to neurodevelopmental phenotypes, including Autism Spectrum Disorder, language impairment, and abnormal cranial growth."
+      - "Optimized large-scale data processing and analysis workflows on Unix/Linux HPC environment, reducing total runtime by 75%."
+      - "Collaborated with experimental teams to translate computational findings into actionable biological hypotheses, directly informing downstream molecular experiment design."
+      - "First-author on 3 manuscripts; 1 manuscript published in Genes (2026), 2 manuscripts completed and being finalized for submission (pending molecular experimentation results)."
 
 education:
   - degree: "Ph.D. in Quantitative Biomedicine"
