@@ -3,37 +3,97 @@ layout: default
 title: Places
 permalink: /places/
 ---
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+
 <article class="wrap places">
   <h1>Places</h1>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
-  <div id="places-map" class="places-map" role="img" aria-label="Map of places I've lived: {{ site.data.places | map: 'city' | join: '; ' }}"></div>
-  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <script>
-    (function () {
-      var places = {{ site.data.places | jsonify }};
-      var box = document.getElementById('places-map');
-      if (!window.L) { box.classList.add('map-failed'); box.textContent = 'The map could not load. Try refreshing the page.'; return; }
-      if (!places.length) return;
+  <p class="muted places-hint">Click a pin or a city to zoom in.</p>
 
-      var map = L.map('places-map', { scrollWheelZoom: false });
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-        maxZoom: 19,
-        subdomains: 'abcd',
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-      }).addTo(map);
+  <div id="places-map" class="places-map" role="region" aria-label="Map of places I've lived: {{ site.data.places | map: 'city' | join: '; ' }}"></div>
 
-      var points = places.map(function (p) {
-        L.circleMarker([p.lat, p.lng], {
-          radius: 7, color: '#ffffff', weight: 2, fillColor: '#1F4E8C', fillOpacity: 1
-        }).addTo(map).bindTooltip(p.city, { direction: 'top', offset: [0, -6] });
-        return [p.lat, p.lng];
-      });
-
-      if (points.length === 1) map.setView(points[0], 8);
-      else map.fitBounds(points, { padding: [40, 40] });
-    })();
-  </script>
-  <ul class="places-list">
-    {% for p in site.data.places %}<li>{{ p.city }}</li>{% endfor %}
-  </ul>
+  <div class="places-chips" id="places-chips">
+    <button type="button" class="chip" data-index="all">All places</button>
+    {% for p in site.data.places %}<button type="button" class="chip" data-index="{{ forloop.index0 }}">{{ p.city }}</button>{% endfor %}
+  </div>
 </article>
+
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+  (function () {
+    var places = {{ site.data.places | jsonify }};
+    var box = document.getElementById('places-map');
+    if (!window.L) { box.classList.add('map-failed'); box.textContent = 'The map could not load. Try refreshing the page.'; return; }
+    if (!places.length) return;
+
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var colors = ['#FF6B6B', '#FFB020', '#2EC4B6', '#5B8DEF', '#B36BFF', '#FF7EB6', '#3DDC84'];
+
+    var map = L.map('places-map', { scrollWheelZoom: false, zoomSnap: 0.5 });
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      maxZoom: 19,
+      subdomains: 'abcd',
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+    }).addTo(map);
+
+    function pinIcon(color, delay) {
+      var svg =
+        '<svg viewBox="0 0 40 52" width="40" height="52" aria-hidden="true">' +
+          '<ellipse class="pin-shadow" cx="20" cy="49" rx="9" ry="3"></ellipse>' +
+          '<path class="pin-body" d="M20 2C10.6 2 3 9.4 3 18.6 3 31 20 47 20 47s17-16 17-28.4C37 9.4 29.4 2 20 2z" fill="' + color + '"></path>' +
+          '<circle class="pin-dot" cx="20" cy="18.5" r="6.5"></circle>' +
+        '</svg>';
+      return L.divIcon({
+        className: 'pin-icon',
+        html: '<div class="pin" style="animation-delay:' + delay + 'ms">' + svg + '</div>',
+        iconSize: [40, 52],
+        iconAnchor: [20, 48],
+        popupAnchor: [0, -44]
+      });
+    }
+
+    var chips = document.querySelectorAll('#places-chips .chip');
+    function setActive(key) {
+      for (var c = 0; c < chips.length; c++) {
+        chips[c].setAttribute('aria-pressed', chips[c].getAttribute('data-index') === key ? 'true' : 'false');
+      }
+    }
+
+    var markers = [];
+    function flyTo(i) {
+      var p = places[i];
+      map.closePopup();
+      map.flyTo([p.lat, p.lng], 10, { duration: reduceMotion ? 0 : 1.4 });
+      map.once('moveend', function () { markers[i].openPopup(); });
+      setActive(String(i));
+    }
+
+    places.forEach(function (p, i) {
+      var m = L.marker([p.lat, p.lng], {
+        icon: pinIcon(colors[i % colors.length], reduceMotion ? 0 : 250 + i * 160),
+        title: p.city,
+        riseOnHover: true
+      }).addTo(map);
+      m.bindPopup('<strong>' + p.city + '</strong>', { closeButton: false, className: 'pin-popup' });
+      m.on('click', function () { flyTo(i); });
+      markers.push(m);
+    });
+
+    var allBounds = L.latLngBounds(places.map(function (p) { return [p.lat, p.lng]; }));
+    function showAll(animate) {
+      map.closePopup();
+      if (places.length === 1) map.setView([places[0].lat, places[0].lng], 8);
+      else if (animate && !reduceMotion) map.flyToBounds(allBounds, { padding: [50, 50], duration: 1.2 });
+      else map.fitBounds(allBounds, { padding: [50, 50] });
+      setActive('all');
+    }
+
+    for (var c = 0; c < chips.length; c++) {
+      chips[c].addEventListener('click', function () {
+        var key = this.getAttribute('data-index');
+        if (key === 'all') showAll(true); else flyTo(Number(key));
+      });
+    }
+
+    showAll(false);
+  })();
+</script>
