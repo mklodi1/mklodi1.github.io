@@ -305,3 +305,25 @@ body { border-top: 6px solid var(--link); }
   .work, .pubs li, .honor-list li, .cv-entry, .news dd { transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease; }
   .work:hover, .pubs li:hover, .honor-list li:hover, .cv-entry:hover, .news dd:hover { transform: translateX(4px); }
 }
+
+/* more items that lift: skills and coursework rows, writing list */
+.cv-skills dd, .post-list li {
+  padding: .2rem .75rem; margin-left: -.75rem; margin-right: -.75rem; border-radius: 6px;
+}
+.cv-skills dd:hover, .post-list li:hover {
+  background: #F5F8FC; box-shadow: inset 3px 0 0 var(--link);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cv-skills dd, .post-list li { transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease; }
+  .cv-skills dd:hover, .post-list li:hover { transform: translateX(4px); }
+}
+
+/* page titles get the same blue accent, which stretches when hovered */
+.cv-head h1, .places h1, .personal h1, .visitors h1, .writing-index h1, .post h1 { position: relative; padding-bottom: .4rem; }
+.cv-head h1::after, .places h1::after, .personal h1::after, .visitors h1::after, .writing-index h1::after, .post h1::after {
+  content: ""; position: absolute; left: 0; bottom: 0; width: 2.75rem; height: 4px; border-radius: 2px; background: var(--link);
+}
+.cv-head h1:hover::after, .places h1:hover::after, .personal h1:hover::after, .visitors h1:hover::after, .writing-index h1:hover::after, .post h1:hover::after { width: 100%; }
+@media (prefers-reduced-motion: no-preference) {
+  .cv-head h1::after, .places h1::after, .personal h1::after, .visitors h1::after, .writing-index h1::after, .post h1::after { transition: width .45s cubic-bezier(.2, .8, .2, 1); }
+}
