@@ -181,3 +181,13 @@
   lat: 29.9511
   lng: -90.0715
   country: "us"
+
+- city: "Raleigh, NC"
+  lat: 35.7796
+  lng: -78.6382
+  country: "us"
+
+- city: "Buffalo, NY"
+  lat: 42.8864
+  lng: -78.8784
+  country: "us"
