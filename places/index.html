@@ -29,11 +29,21 @@ permalink: /places/
     var colors = ['#FF6B6B', '#FFB020', '#2EC4B6', '#5B8DEF', '#B36BFF', '#FF7EB6', '#3DDC84'];
 
     var map = L.map('places-map', { scrollWheelZoom: false, zoomSnap: 0.5 });
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    // Bright, keyless OpenStreetMap "Humanitarian" tiles; falls back to standard OSM tiles if they fail.
+    var osmCredit = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+    var tiles = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
       maxZoom: 19,
-      subdomains: 'abcd',
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+      subdomains: 'abc',
+      attribution: osmCredit + ', tiles by <a href="https://www.hotosm.org/">Humanitarian OpenStreetMap Team</a>'
     }).addTo(map);
+    var tileErrors = 0;
+    tiles.on('tileerror', function () {
+      tileErrors++;
+      if (tileErrors === 4) {
+        map.removeLayer(tiles);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: osmCredit }).addTo(map);
+      }
+    });
 
     function pinIcon(color, delay) {
       var svg =

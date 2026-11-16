@@ -179,7 +179,7 @@ code { font-size: .88em; background: var(--wash); padding: .1em .35em; border-ra
 }
 @media (max-width: 600px) { .places-map { height: 22rem; box-shadow: 4px 4px 0 var(--text); } }
 .places-map.map-failed { display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: .95rem; }
-.places-map .leaflet-tile-pane { filter: saturate(1.6) contrast(1.06) brightness(1.03); }
+.places-map .leaflet-tile-pane { filter: saturate(1.35) contrast(1.04); }
 
 .pin-icon { background: none; border: 0; }
 .pin { width: 40px; height: 52px; transform-origin: 50% 92%; cursor: pointer; }
