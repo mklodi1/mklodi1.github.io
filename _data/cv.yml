@@ -44,9 +44,11 @@ education:
 
 coursework:
   - area: "Mathematics"
-    tools: "Calculus I & II, Multivariable Calculus, Linear Algebra, Statistics"
+    tools: "Calculus I & II, Multivariable Calculus, Linear Algebra, Discrete Mathematics, Statistics"
   - area: "Computing"
     tools: "Cloud & Big Data Systems"
+  - area: "Science"
+    tools: "Calculus Physics I & II, Organic Chemistry I & II, Chemical Thermodynamics, Biochemistry, Human Genetics"
   - area: "Science"
     tools: "Organic Chemistry I & II, Biochemistry, Chemical Thermodynamics, Human Genetics"
 
