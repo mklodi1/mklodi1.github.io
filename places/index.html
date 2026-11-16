@@ -86,8 +86,8 @@ permalink: /places/
         title: p.city,
         riseOnHover: true
       }).addTo(map);
-      var flag = p.country ? '<img class="flag" src="' + flagBase + esc(p.country) + '.svg" alt="" width="20" height="14">' : '';
-      var popup = '<strong>' + esc(p.city) + '</strong>' + (p.note ? '<br><span class="pin-note">' + esc(p.note) + '</span>' : '') + (flag ? '<br>' + flag : '');
+      var flag = p.country ? '<img class="flag flag-lg" src="' + flagBase + esc(p.country) + '.svg" alt="" width="36" height="24">' : '';
+      var popup = '<strong>' + esc(p.city) + '</strong>' + (p.note ? '<br><span class="pin-note">' + esc(p.note) + '</span>' : '') + flag;
       m.bindPopup(popup, { closeButton: false, className: 'pin-popup', maxWidth: 240 });
       m.on('click', function () { flyTo(i); });
       markers.push(m);
