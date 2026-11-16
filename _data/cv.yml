@@ -18,7 +18,7 @@ experience:
           - "Built and deployed an end-to-end derivatives pricing and market risk tool in Python, with a Streamlit dashboard that publishes volatility forecasts to support daily trading decisions."
           - "Engineered a pricing module combining Black-Scholes and the Greeks with time series analysis (GARCH) to identify underpriced options."
           - "Implemented Monte Carlo simulations from empirical historical return distributions to measure market risk, estimating expected PnL and tail risk (VaR, CVaR) per trade."
-          - "Developed classification models (XGBoost, logistic regression) to filter options trading signals, reaching a ROC-AUC of 0.73."
+          - "Developed classification models (XGBoost, logistic regression) to filter options trading signals."
       - name: "AI for Scientific Literature Review"
         points:
           - "Engineered a retrieval-augmented generation (RAG) system and LLM agent for automated scientific literature review, using embeddings, a vector database (ChromaDB) and semantic similarity; cut manual review time by 85%."
