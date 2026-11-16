@@ -3,15 +3,15 @@
 # Tip: wrap text in "double quotes" if it contains a colon.
 - title: "Derivatives pricing and market risk engine"
   venue: "EIMplus, 2025–2026"
-  summary: "An end-to-end Python tool that prices options with Black-Scholes and the Greeks, forecasts volatility with GARCH to flag underpriced contracts, and runs Monte Carlo simulations on historical returns to estimate expected PnL and tail risk (VaR, CVaR) for each trade. XGBoost and logistic regression models filter trading signals (ROC-AUC 0.73), and a Streamlit dashboard publishes the forecasts for daily trading decisions."
+  summary: "An end-to-end tool to assist options trading decision-making, integrating Black-Scholes model to identify underpriced options, GARCH to forecast volatility, and Monte Carlo simulations to estimate expected PnL and tail risk for each trade."
   # link: https://github.com/mklodi1/REPO-NAME
   # figure: /assets/img/risk-engine.png
 
-- title: "AI agent for scientific literature review"
+- title: "RAG and LLM agent for scientific literature review"
   venue: "EIMplus, 2025–2026"
-  summary: "A retrieval-augmented generation (RAG) system and LLM agent that reviews scientific papers automatically, using embeddings, a ChromaDB vector database and semantic search. It cut manual review time by 85%, and runs on a Docker, CI/CD and MLflow pipeline so every experiment is reproducible."
+  summary: "A retrieval-augmented generation (RAG) system and LLM agent that reviews scientific papers and performs semantic search."
   # link: https://github.com/mklodi1/REPO-NAME
 
-- title: "Finding disease genes in large-scale biomedical data"
+- title: "Predicting canidate risk genes for neurological disorders"
   venue: "Ph.D. research, Rutgers University, 2021–2026"
-  summary: "Predictive machine learning and statistical models built on more than 200 million records of structured and unstructured biomedical data, identifying 300+ high-confidence genes linked to neurological disorders. The findings went straight into the lab's decisions about which experiments to run next."
+  summary: "Developed end-to-end pipeline for candidate gene identification, integrating multiple statistical tools together for family-based rare variant analysis. Identified 300+ high-confidence candidate genes for neurodevelopmental phenotypes such as Autism Spectrum Disorder, language impairment, and abnormal cranial growth."
