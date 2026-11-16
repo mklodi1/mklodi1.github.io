@@ -1,0 +1,17 @@
+# Your best 2–4 pieces of work. "figure", "link" and "venue" are optional.
+# Put images in assets/img/ and reference them like /assets/img/project-one.png
+# Tip: wrap text in "double quotes" if it contains a colon.
+- title: "Derivatives pricing and market risk engine"
+  venue: "EIMplus, 2025–2026"
+  summary: "An end-to-end Python tool that prices options with Black-Scholes and the Greeks, forecasts volatility with GARCH to flag underpriced contracts, and runs Monte Carlo simulations on historical returns to estimate expected PnL and tail risk (VaR, CVaR) for each trade. XGBoost and logistic regression models filter trading signals (ROC-AUC 0.73), and a Streamlit dashboard publishes the forecasts for daily trading decisions."
+  # link: https://github.com/mklodi1/REPO-NAME
+  # figure: /assets/img/risk-engine.png
+
+- title: "AI agent for scientific literature review"
+  venue: "EIMplus, 2025–2026"
+  summary: "A retrieval-augmented generation (RAG) system and LLM agent that reviews scientific papers automatically, using embeddings, a ChromaDB vector database and semantic search. It cut manual review time by 85%, and runs on a Docker, CI/CD and MLflow pipeline so every experiment is reproducible."
+  # link: https://github.com/mklodi1/REPO-NAME
+
+- title: "Finding disease genes in large-scale biomedical data"
+  venue: "Ph.D. research, Rutgers University, 2021–2026"
+  summary: "Predictive machine learning and statistical models built on more than 200 million records of structured and unstructured biomedical data, identifying 300+ high-confidence genes linked to neurological disorders. The findings went straight into the lab's decisions about which experiments to run next."

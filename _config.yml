@@ -1,0 +1,42 @@
+# ---------------------------------------------------------------
+# Site settings. Edit the values marked TODO, then commit.
+# ---------------------------------------------------------------
+title: Mudassir Lodi
+role: Data scientist and machine learning engineer
+affiliation: Ph.D., Rutgers University
+# location: City, State     # uncomment to show where you are
+description: Personal site of Mudassir Lodi.
+
+# Your address. Change this when you connect your own domain.
+url: "https://mklodi1.github.io"
+baseurl: ""
+
+email: mudassir.k.lodi@gmail.com
+github: mklodi1
+linkedin: mudassir-lodi
+# scholar: https://scholar.google.com/citations?user=TODO
+resume: /assets/resume.pdf        # add your PDF at assets/resume.pdf, or delete this line
+
+# Photos (put the files in assets/img/, or delete a line to hide that photo)
+# portrait: /assets/img/portrait.jpg
+# place_photo: /assets/img/hometown.jpg
+# place_caption: TODO Where this is, and why it matters to you.
+
+# Anonymous message box. Make a free form at formspree.io and paste its ID here,
+# e.g. "xyzabcd". Leave it commented out to hide the box.
+# formspree_id: TODO
+
+# A line you like, shown at the bottom of every page (delete to hide)
+# quote: A favorite saying or quote
+# quote_source: Who said it
+
+markdown: kramdown
+permalink: /writing/:year/:title/
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
