@@ -335,16 +335,6 @@ body { border-top: 6px solid var(--link); }
   .cv-skills dd:hover, .post-list li:hover { transform: translateX(4px); }
 }
 
-/* page titles get the same blue accent, which stretches when hovered */
-.cv-head h1, .places h1, .personal h1, .visitors h1, .writing-index h1, .post h1 { position: relative; padding-bottom: .4rem; }
-.cv-head h1::after, .places h1::after, .personal h1::after, .visitors h1::after, .writing-index h1::after, .post h1::after {
-  content: ""; position: absolute; left: 0; bottom: 0; width: 2.75rem; height: 4px; border-radius: 2px; background: var(--link);
-}
-.cv-head h1:hover::after, .places h1:hover::after, .personal h1:hover::after, .visitors h1:hover::after, .writing-index h1:hover::after, .post h1:hover::after { width: 100%; }
-@media (prefers-reduced-motion: no-preference) {
-  .cv-head h1::after, .places h1::after, .personal h1::after, .visitors h1::after, .writing-index h1::after, .post h1::after { transition: width .45s cubic-bezier(.2, .8, .2, 1); }
-}
-
 /* keep divider lines aligned with the text column even though hover rows extend into the margin */
 .work, .pubs li, .honor-list li { position: relative; border-bottom: 0 !important; }
 .work::after, .pubs li::after, .honor-list li::after {
