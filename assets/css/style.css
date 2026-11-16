@@ -138,6 +138,16 @@ code { font-size: .88em; background: var(--wash); padding: .1em .35em; border-ra
 .cv-skills dt { font-weight: 600; }
 .cv-skills dd { margin: 0; }
 
+.honor-list { list-style: none; margin: 0; padding: 0; }
+.honor-list li { padding: .75rem 0; border-bottom: 1px solid var(--rule); }
+.honor-list li:last-child { border-bottom: 0; }
+.honor-list h3 { font-size: 1rem; line-height: 1.4; }
+.honor-sub { margin: .15rem 0 0; color: var(--muted); font-style: italic; font-size: .95rem; }
+.award-tag {
+  display: inline-block; margin-left: .4rem; font-style: normal; font-size: .8rem; font-weight: 600;
+  color: var(--link); background: #EAF0F8; padding: .05rem .5rem; border-radius: 3px;
+}
+
 @media print {
   .nav, .foot, .print-btn, .skip { display: none !important; }
   body { font-size: 10.5pt; line-height: 1.45; }

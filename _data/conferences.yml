@@ -1,0 +1,30 @@
+# Newest first. "award" and "link" are optional.
+# Tip: wrap text in "double quotes" if it contains a colon.
+- event: "Molecular Biosciences Graduate Student Organization Symposium 2026"
+  type: "Poster Presentation"
+  date: "Mar 2026"
+
+- event: "Mid-Atlantic Bioinformatics Conference 2025"
+  type: "Poster Presentation"
+  date: "Oct 2025"
+
+- event: "Molecular Biosciences Graduate Student Organization Symposium 2025"
+  type: "Poster Presentation"
+  date: "Mar 2025"
+
+- event: "International Conference for Intelligent Biology & Medicine 2024"
+  type: "Poster Presentation"
+  date: "Oct 2024"
+  award: "Conference Travel Award"
+
+- event: "Mid-Atlantic Bioinformatics Conference 2024"
+  type: "Poster Presentation"
+  date: "Oct 2024"
+
+- event: "Rutgers Department of Genetics Research in Progress Seminar 2024"
+  type: "Seminar Talk"
+  date: "Mar 2024"
+
+- event: "Mid-Atlantic Bioinformatics Conference 2023"
+  type: "Poster Presentation"
+  date: "Oct 2023"

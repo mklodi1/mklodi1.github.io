@@ -1,0 +1,42 @@
+---
+layout: default
+title: Conferences & Awards
+permalink: /conferences/
+---
+<article class="wrap cv honors">
+  <header class="cv-head">
+    <h1>Conferences &amp; Awards</h1>
+    <p class="muted">Where I've presented my research, and the recognition it has received.</p>
+  </header>
+
+  <section aria-labelledby="h-conf">
+    <h2 id="h-conf">Conferences &amp; Seminars</h2>
+    <ul class="honor-list">
+      {% for c in site.data.conferences %}
+      <li>
+        <div class="cv-row">
+          <h3>{% if c.link %}<a href="{{ c.link }}">{{ c.event }}</a>{% else %}{{ c.event }}{% endif %}</h3>
+          <span class="cv-when">{{ c.date }}</span>
+        </div>
+        <p class="honor-sub">{{ c.type }}{% if c.award %} <span class="award-tag">{{ c.award }}</span>{% endif %}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section aria-labelledby="h-awards">
+    <h2 id="h-awards">Awards &amp; Recognition</h2>
+    <ul class="honor-list">
+      {% for a in site.data.awards %}
+      <li>
+        <div class="cv-row">
+          <h3>{{ a.name }}</h3>
+          <span class="cv-when">{{ a.date }}</span>
+        </div>
+        <p class="honor-sub">{{ a.from }}</p>
+        {% if a.note %}<p>{{ a.note }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+</article>
