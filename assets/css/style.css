@@ -158,9 +158,12 @@ code { font-size: .88em; background: var(--wash); padding: .1em .35em; border-ra
   a { color: inherit; background: none; }
 }
 
-/* ---------- places map (home page) ---------- */
-.places-map { height: 20rem; margin-top: 1.5rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--wash); z-index: 0; }
-@media (max-width: 600px) { .places-map { height: 16rem; } }
+/* ---------- places & personal pages ---------- */
+.places, .personal { padding-block: 3.5rem 2rem; }
+.places h1, .personal h1 { font-size: 2rem; margin-bottom: 1.5rem; }
+.places-list { list-style: none; display: flex; flex-wrap: wrap; gap: .4rem 1.5rem; margin: 1rem 0 0; padding: 0; color: var(--muted); font-size: .95rem; }
+.places-map { height: 26rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--wash); z-index: 0; }
+@media (max-width: 600px) { .places-map { height: 20rem; } }
 .places-map.map-failed { display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: .95rem; }
 
 /* ---------- writing ---------- */
