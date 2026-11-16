@@ -246,12 +246,6 @@ body { border-top: 6px solid var(--link); }
 .chip:active { transform: translate(2px, 2px); box-shadow: none; }
 .chip[aria-pressed="true"] { background: var(--text); color: #fff; }
 
-/* ---------- visitors ---------- */
-.visitors { padding-block: 3.5rem 2rem; }
-.visitors h1 { font-size: 2rem; margin-bottom: .75rem; }
-.visitor-globe { display: flex; justify-content: center; margin-top: 2rem; min-height: 300px; }
-.visitor-globe > * { max-width: 100%; }
-
 /* ---------- writing ---------- */
 .writing-index, .post, .notfound { padding-block: 3.5rem 2rem; }
 .writing-index h1, .notfound h1 { font-size: 2rem; margin-bottom: .75rem; }
