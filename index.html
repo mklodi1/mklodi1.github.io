@@ -19,6 +19,34 @@ layout: default
     <p>Prior to Rutgers, I earned my B.S. in Bioinformatics at Virginia Commonwealth University.</p>
   </section>
 
+  {% if site.data.places %}
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <div id="places-map" class="places-map" role="img" aria-label="Map of places I've lived: {{ site.data.places | map: 'city' | join: '; ' }}"></div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script>
+    (function () {
+      var places = {{ site.data.places | jsonify }};
+      if (!window.L || !places.length) return;
+
+      var map = L.map('places-map', { scrollWheelZoom: false });
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      var points = places.map(function (p) {
+        L.circleMarker([p.lat, p.lng], {
+          radius: 7, color: '#ffffff', weight: 2, fillColor: '#1F4E8C', fillOpacity: 1
+        }).addTo(map).bindTooltip(p.city, { direction: 'top', offset: [0, -6] });
+        return [p.lat, p.lng];
+      });
+
+      if (points.length === 1) map.setView(points[0], 8);
+      else map.fitBounds(points, { padding: [40, 40] });
+    })();
+  </script>
+  {% endif %}
+
   {% if site.place_photo %}
   <figure class="place">
     <img src="{{ site.place_photo | relative_url }}" alt="{{ site.place_caption }}">
