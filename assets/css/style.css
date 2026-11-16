@@ -43,6 +43,14 @@ code { font-size: .88em; background: var(--wash); padding: .1em .35em; border-ra
 .skip:focus { left: 1rem; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
+/* ---------- accent bar + heading accents ---------- */
+body { border-top: 6px solid var(--link); }
+.home h2, .cv h2, .gallery-section h2, .writing-index h2 { position: relative; }
+.home h2::after, .cv h2::after, .gallery-section h2::after, .writing-index h2::after {
+  content: ""; position: absolute; left: 0; bottom: -1px;
+  width: 2.75rem; height: 3px; border-radius: 2px; background: var(--link);
+}
+
 /* ---------- nav ---------- */
 .nav {
   display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline;
