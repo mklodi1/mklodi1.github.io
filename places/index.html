@@ -85,7 +85,7 @@ permalink: /places/
         title: p.city,
         riseOnHover: true
       }).addTo(map);
-      var popup = '<strong>' + esc(p.city) + '</strong>' + (p.note ? '<span class="pin-note">' + esc(p.note) + '</span>' : '');
+      var popup = '<strong>' + esc(p.city) + '</strong>' + (p.note ? '<br><span class="pin-note">' + esc(p.note) + '</span>' : '');
       m.bindPopup(popup, { closeButton: false, className: 'pin-popup', maxWidth: 240 });
       m.on('click', function () { flyTo(i); });
       markers.push(m);
