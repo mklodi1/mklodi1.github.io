@@ -9,6 +9,7 @@
   --rule: #E4E7EB;
   --link: #1F4E8C;
   --wash: #F4F6F8;
+  --desk: #E9EDF2;
 
   --serif: "Literata", Georgia, "Times New Roman", serif;
   --wrap: 42rem;
@@ -42,6 +43,22 @@ code { font-size: .88em; background: var(--wash); padding: .1em .35em; border-ra
 .skip { position: absolute; left: -999px; top: .75rem; background: var(--link); color: #fff; padding: .5rem .9rem; z-index: 10; }
 .skip:focus { left: 1rem; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- paper card: grey sides, content on a white card ---------- */
+body { background: var(--desk); }
+.page-card {
+  width: min(100% - 2rem, 50rem); margin: 2rem auto 2.5rem;
+  background: var(--paper); border: 1px solid #D9DFE6; border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(20, 30, 45, .06), 0 10px 30px rgba(20, 30, 45, .08);
+}
+.page-card .foot { margin-top: 1rem; }
+@media (max-width: 600px) {
+  .page-card { width: 100%; margin: 0; border: 0; border-radius: 0; box-shadow: none; }
+}
+@media print {
+  body { background: #fff; }
+  .page-card { width: auto; margin: 0; border: 0; box-shadow: none; }
+}
 
 /* ---------- accent bar + heading accents ---------- */
 body { border-top: 6px solid var(--link); }
