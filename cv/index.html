@@ -1,0 +1,90 @@
+---
+layout: default
+title: CV
+permalink: /cv/
+---
+{% assign cv = site.data.cv %}
+<article class="wrap cv">
+  <header class="cv-head">
+    <h1>{{ site.title }}</h1>
+    <p class="cv-links">
+      <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+      {% if site.linkedin %}&nbsp;/&nbsp; <a href="https://www.linkedin.com/in/{{ site.linkedin }}">linkedin.com/in/{{ site.linkedin }}</a>{% endif %}
+      {% if site.github %}&nbsp;/&nbsp; <a href="https://github.com/{{ site.github }}">github.com/{{ site.github }}</a>{% endif %}
+    </p>
+    <button class="print-btn" type="button" onclick="window.print()">Print or save as PDF</button>
+  </header>
+
+  <section aria-labelledby="cv-summary">
+    <h2 id="cv-summary">Summary</h2>
+    <ul class="cv-points">
+      {% for line in cv.summary %}<li>{{ line }}</li>{% endfor %}
+    </ul>
+  </section>
+
+  <section aria-labelledby="cv-exp">
+    <h2 id="cv-exp">Experience</h2>
+    {% for job in cv.experience %}
+    <div class="cv-entry">
+      <div class="cv-row">
+        <h3>{{ job.role }}</h3>
+        <span class="cv-when">{{ job.when }}</span>
+      </div>
+      <div class="cv-row cv-sub">
+        <span>{{ job.org }}</span>
+        <span>{{ job.place }}</span>
+      </div>
+      {% for proj in job.projects %}
+      <p class="cv-project">{{ proj.name }}</p>
+      <ul class="cv-points">
+        {% for pt in proj.points %}<li>{{ pt }}</li>{% endfor %}
+      </ul>
+      {% endfor %}
+      {% if job.points %}
+      <ul class="cv-points">
+        {% for pt in job.points %}<li>{{ pt }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </section>
+
+  <section aria-labelledby="cv-edu">
+    <h2 id="cv-edu">Education</h2>
+    {% for e in cv.education %}
+    <div class="cv-entry">
+      <div class="cv-row">
+        <h3>{{ e.degree }}</h3>
+        <span class="cv-when">{{ e.when }}</span>
+      </div>
+      <div class="cv-row cv-sub">
+        <span>{{ e.school }}</span>
+        <span>{{ e.place }}</span>
+      </div>
+    </div>
+    {% endfor %}
+  </section>
+
+  <section aria-labelledby="cv-skills">
+    <h2 id="cv-skills">Technical skills</h2>
+    <dl class="cv-skills">
+      {% for s in cv.skills %}
+      <dt>{{ s.area }}</dt>
+      <dd>{{ s.tools }}</dd>
+      {% endfor %}
+    </dl>
+  </section>
+
+  <section aria-labelledby="cv-pubs">
+    <h2 id="cv-pubs">Selected publications</h2>
+    <ol class="pubs">
+      {% for p in site.data.publications %}
+      <li>
+        <p class="pub-title">{% if p.link %}<a href="{{ p.link }}">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</p>
+        <p class="pub-authors">{{ p.authors | replace: 'Lodi MK', '<strong>Lodi MK</strong>' }}</p>
+        <p class="venue">{{ p.venue }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+</article>

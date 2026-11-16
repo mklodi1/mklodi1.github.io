@@ -1,0 +1,58 @@
+# Content for the CV page (/cv/). Publications come from publications.yml.
+# Tip: wrap text in "double quotes" if it contains a colon.
+
+summary:
+  - "Ph.D. with 5+ years of experience in quantitative analysis, statistical modeling and machine learning on complex, large-scale datasets."
+  - "Quantitative modeling in time series analysis, forecasting (GARCH), Monte Carlo simulation, derivatives pricing, VaR and CVaR, predictive analytics, and linear and logistic regression."
+  - "Deployed LLM pipelines with MLOps (Docker, CI/CD, MLflow) to automate analytical workflows and make models reproducible."
+  - "Proficient in Python, SQL, Java, R, AWS and Linux/HPC."
+
+experience:
+  - role: "Machine Learning Intern"
+    org: "EIMplus"
+    place: "Remote"
+    when: "Aug 2025 – May 2026"
+    projects:
+      - name: "Derivatives pricing and market risk simulation engine"
+        points:
+          - "Built and deployed an end-to-end derivatives pricing and market risk tool in Python, with a Streamlit dashboard that publishes volatility forecasts to support daily trading decisions."
+          - "Engineered a pricing module combining Black-Scholes and the Greeks with time series analysis (GARCH) to identify underpriced options."
+          - "Implemented Monte Carlo simulations from empirical historical return distributions to measure market risk, estimating expected PnL and tail risk (VaR, CVaR) per trade."
+          - "Developed classification models (XGBoost, logistic regression) to filter options trading signals, reaching a ROC-AUC of 0.73."
+      - name: "AI for scientific literature review"
+        points:
+          - "Engineered a retrieval-augmented generation (RAG) system and LLM agent for automated scientific literature review, using embeddings, a vector database (ChromaDB) and semantic similarity; cut manual review time by 85%."
+          - "Deployed the AI/ML pipelines with MLOps tools (Docker, CI/CD, MLflow) for reproducible deployment and experiment tracking."
+
+  - role: "Data Scientist, Ph.D. Researcher"
+    org: "Rutgers University – New Brunswick"
+    place: "New Brunswick, NJ"
+    when: "Aug 2021 – Sep 2026"
+    points:
+      - "Developed predictive machine learning and statistical models in Python on large-scale biomedical data, identifying 300+ high-confidence disease genes linked to neurological disorders."
+      - "Prepared, transformed and integrated large structured and unstructured datasets (200M+ records) using SQL, pandas and R for model development."
+      - "Worked with cross-functional teams to turn computational findings into actionable insights that directly informed downstream experimental decisions."
+
+education:
+  - degree: "Ph.D. in Quantitative Biomedicine"
+    school: "Rutgers University – New Brunswick"
+    place: "New Brunswick, NJ"
+    when: "Aug 2021 – Sep 2026"
+  - degree: "B.S. in Bioinformatics"
+    school: "Virginia Commonwealth University"
+    place: "Richmond, VA"
+    when: "Aug 2017 – May 2021"
+
+skills:
+  - area: "Languages"
+    tools: "Python, SQL, R, Java"
+  - area: "Data and infrastructure"
+    tools: "Linux/Unix, Bash, AWS, Nextflow, pandas, NumPy, Matplotlib, Git, Docker, SLURM, CI/CD, MLflow"
+  - area: "Machine learning"
+    tools: "scikit-learn, PyTorch, large language models (LLMs), NLP, retrieval-augmented generation (RAG), SHAP, prompt engineering"
+  - area: "Statistical modeling"
+    tools: "Time series analysis, Monte Carlo, hypothesis testing, regression, forecasting"
+  - area: "Quantitative finance"
+    tools: "Options pricing (Black-Scholes), Greeks, implied volatility, volatility forecasting (GARCH), Value-at-Risk (VaR), CVaR/expected shortfall, market risk"
+  - area: "Data visualization"
+    tools: "Tableau, Power BI"

@@ -2,7 +2,7 @@
 <header class="nav wrap">
   <a class="nav-home" href="{{ '/' | relative_url }}">{{ site.title }}</a>
   <nav aria-label="Main">
-    {% if site.resume %}<a href="{{ site.resume | relative_url }}">CV</a>{% endif %}
+    <a href="{{ '/cv/' | relative_url }}"{% if page.url contains '/cv' %} aria-current="page"{% endif %}>CV</a>
     {% if site.scholar %}<a href="{{ site.scholar }}">Scholar</a>{% endif %}
     {% if site.github %}<a href="https://github.com/{{ site.github }}">GitHub</a>{% endif %}
     <a href="{{ '/writing/' | relative_url }}"{% if page.url contains '/writing' %} aria-current="page"{% endif %}>Writing</a>
