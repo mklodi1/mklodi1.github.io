@@ -5,14 +5,17 @@
 - city: "Philadelphia, PA"
   lat: 39.9526
   lng: -75.1652
+  note: "Birthplace"
 
 - city: "Manassas Park, VA"
   lat: 38.7840
   lng: -77.4697
+  note: "Where I grew up"
 
 - city: "Richmond, VA"
   lat: 37.5407
   lng: -77.4360
+  note: "Hometown"
 
 - city: "New Brunswick, NJ"
   lat: 40.4862
@@ -21,7 +24,9 @@
 - city: "Bangalore, India"
   lat: 12.9716
   lng: 77.5946
+  note: "Roots"
 
 - city: "Guntur, India"
   lat: 16.3067
   lng: 80.4365
+  note: "Roots"
