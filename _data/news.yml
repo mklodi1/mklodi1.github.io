@@ -1,12 +1,16 @@
 # Newest first. One short line each; links are written as [text](url).
 # Tip: wrap text in "double quotes" if it contains a colon.
-- date: Nov 2026
+- date: November 2026
   text: "Launched this website."
-- date: Sep 2026
+- date: September 2026
   text: "Completed my Ph.D. in Quantitative Biomedicine at Rutgers University."
 - date: May 2026
-  text: "Wrapped up my machine learning internship at EIMplus, where I built a derivatives pricing and market risk engine and a RAG-based literature review agent."
-- date: 2026
+  text: "Completed machine learning internship at EIMplus."
+- date: January 2026
   text: "Published [Narrow Versus Broad Phenotype Definitions Affect Genetic Analysis of Language](https://doi.org/10.3390/genes17020125) in *Genes*."
-- date: Aug 2025
-  text: "Started as a machine learning intern at EIMplus."
+- date: August 2025
+  text: "Started machine learning internship at EIMplus."
+- date: August 2021
+  text: "Started Ph.D. at Rutgers University"
+- date: May 2021
+  text: "Graduated with B.S. in Bioinformatics from Virginia Commonwealth University"
