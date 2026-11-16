@@ -47,6 +47,8 @@ coursework:
     tools: "Calculus I & II, Multivariable Calculus, Linear Algebra, Statistics"
   - area: "Computing"
     tools: "Cloud & Big Data Systems"
+  - area: "Science"
+    tools: "Organic Chemistry I & II, Biochemistry, Chemical Thermodynamics, Human Genetics"
 
 skills:
   - area: "Languages"
