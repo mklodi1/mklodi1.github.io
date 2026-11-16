@@ -344,3 +344,11 @@ body { border-top: 6px solid var(--link); }
 @media (prefers-reduced-motion: no-preference) {
   .cv-head h1::after, .places h1::after, .personal h1::after, .visitors h1::after, .writing-index h1::after, .post h1::after { transition: width .45s cubic-bezier(.2, .8, .2, 1); }
 }
+
+/* keep divider lines aligned with the text column even though hover rows extend into the margin */
+.work, .pubs li, .honor-list li { position: relative; border-bottom: 0 !important; }
+.work::after, .pubs li::after, .honor-list li::after {
+  content: ""; position: absolute; left: .75rem; right: .75rem; bottom: 0; border-bottom: 1px solid var(--rule);
+}
+.work:last-child::after, .pubs li:last-child::after, .honor-list li:last-child::after { display: none; }
+.work:hover::after, .pubs li:hover::after, .honor-list li:hover::after { opacity: 0; }
