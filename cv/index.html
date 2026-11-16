@@ -65,6 +65,17 @@ permalink: /cv/
     {% endfor %}
   </section>
 
+  {% if cv.coursework %}
+  <section aria-labelledby="cv-course">
+    <h2 id="cv-course">Relevant Coursework</h2>
+    <dl class="cv-skills">
+      {% for c in cv.coursework %}
+      <dt>{{ c.area }}</dt>
+      <dd>{{ c.tools }}</dd>
+      {% endfor %}
+    </dl>
+  </section>
+
   <section aria-labelledby="cv-skills">
     <h2 id="cv-skills">Technical Skills</h2>
     <dl class="cv-skills">
