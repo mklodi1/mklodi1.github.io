@@ -161,6 +161,7 @@ code { font-size: .88em; background: var(--wash); padding: .1em .35em; border-ra
 /* ---------- places map (home page) ---------- */
 .places-map { height: 20rem; margin-top: 1.5rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--wash); z-index: 0; }
 @media (max-width: 600px) { .places-map { height: 16rem; } }
+.places-map.map-failed { display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: .95rem; }
 
 /* ---------- writing ---------- */
 .writing-index, .post, .notfound { padding-block: 3.5rem 2rem; }

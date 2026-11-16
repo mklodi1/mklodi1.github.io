@@ -20,18 +20,21 @@ layout: default
   </section>
 
   {% if site.data.places %}
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
   <div id="places-map" class="places-map" role="img" aria-label="Map of places I've lived: {{ site.data.places | map: 'city' | join: '; ' }}"></div>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script>
     (function () {
       var places = {{ site.data.places | jsonify }};
-      if (!window.L || !places.length) return;
+      var box = document.getElementById('places-map');
+      if (!window.L) { box.classList.add('map-failed'); box.textContent = 'The map could not load. Try refreshing the page.'; return; }
+      if (!places.length) return;
 
       var map = L.map('places-map', { scrollWheelZoom: false });
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 18,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        maxZoom: 19,
+        subdomains: 'abcd',
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
       }).addTo(map);
 
       var points = places.map(function (p) {
