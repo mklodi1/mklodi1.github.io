@@ -121,3 +121,13 @@
   lat: 24.4672
   lng: 39.6111
   country: "sa"
+
+- city: "Montreal, Canada"
+  lat: 45.5019
+  lng: -73.5674
+  country: "ca"
+
+- city: "Toronto, Canada"
+  lat: 43.6532
+  lng: -79.3832
+  country: "ca"
