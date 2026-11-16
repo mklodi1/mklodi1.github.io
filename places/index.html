@@ -25,6 +25,7 @@ permalink: /places/
     if (!window.L) { box.classList.add('map-failed'); box.textContent = 'The map could not load. Try refreshing the page.'; return; }
     if (!places.length) return;
 
+    function esc(t) { return String(t).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
     var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var colors = ['#FF6B6B', '#FFB020', '#2EC4B6', '#5B8DEF', '#B36BFF', '#FF7EB6', '#3DDC84'];
 
@@ -84,7 +85,8 @@ permalink: /places/
         title: p.city,
         riseOnHover: true
       }).addTo(map);
-      m.bindPopup('<strong>' + p.city + '</strong>', { closeButton: false, className: 'pin-popup' });
+      var popup = '<strong>' + esc(p.city) + '</strong>' + (p.note ? '<span class="pin-note">' + esc(p.note) + '</span>' : '');
+      m.bindPopup(popup, { closeButton: false, className: 'pin-popup', maxWidth: 240 });
       m.on('click', function () { flyTo(i); });
       markers.push(m);
     });

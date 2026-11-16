@@ -1,5 +1,7 @@
 # Places shown on the map at /places/. Add one per city.
 # Find coordinates by right-clicking a spot in Google Maps (the first menu item copies them).
+# Optional: add a short description that shows when someone clicks the pin, e.g.
+#   note: "Where I grew up"
 - city: "Philadelphia, PA"
   lat: 39.9526
   lng: -75.1652
