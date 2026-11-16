@@ -1,0 +1,17 @@
+# Places shown on the map at /places/. Add one per city.
+# Find coordinates by right-clicking a spot in Google Maps (the first menu item copies them).
+- city: "Philadelphia, PA"
+  lat: 39.9526
+  lng: -75.1652
+
+- city: "Manassas Park, VA"
+  lat: 38.7840
+  lng: -77.4697
+
+- city: "Richmond, VA"
+  lat: 37.5407
+  lng: -77.4360
+
+- city: "New Brunswick, NJ"
+  lat: 40.4862
+  lng: -74.4518
