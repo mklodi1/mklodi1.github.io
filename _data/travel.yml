@@ -1,0 +1,102 @@
+# Places shown on the Travel map at /places/. Same format as places.yml.
+# country: two-letter code for the flag (a matching file must exist in assets/img/flags/).
+# Optional: note: "A short description shown when someone clicks the pin"
+- city: "Manassas Park, VA"
+  lat: 38.784
+  lng: -77.4697
+  country: "us"
+
+- city: "Washington, D.C."
+  lat: 38.9072
+  lng: -77.0369
+  country: "us"
+
+- city: "New York City, NY"
+  lat: 40.7128
+  lng: -74.006
+  country: "us"
+
+- city: "Philadelphia, PA"
+  lat: 39.9526
+  lng: -75.1652
+  country: "us"
+
+- city: "Richmond, VA"
+  lat: 37.5407
+  lng: -77.436
+  country: "us"
+
+- city: "Houston, TX"
+  lat: 29.7604
+  lng: -95.3698
+  country: "us"
+
+- city: "Chicago, IL"
+  lat: 41.8781
+  lng: -87.6298
+  country: "us"
+
+- city: "Miami, FL"
+  lat: 25.7617
+  lng: -80.1918
+  country: "us"
+
+- city: "Fort Lauderdale, FL"
+  lat: 26.1224
+  lng: -80.1373
+  country: "us"
+
+- city: "San Francisco, CA"
+  lat: 37.7749
+  lng: -122.4194
+  country: "us"
+
+- city: "Grand Canyon, AZ"
+  lat: 36.0544
+  lng: -112.1401
+  country: "us"
+
+- city: "Zion National Park, UT"
+  lat: 37.2982
+  lng: -113.0263
+  country: "us"
+
+- city: "Valley of Fire State Park, NV"
+  lat: 36.4306
+  lng: -114.5133
+  country: "us"
+
+- city: "Ocho Rios, Jamaica"
+  lat: 18.4074
+  lng: -77.1031
+  country: "jm"
+
+- city: "Nassau, Bahamas"
+  lat: 25.0443
+  lng: -77.3504
+  country: "bs"
+
+- city: "Hyderabad, India"
+  lat: 17.385
+  lng: 78.4867
+  country: "in"
+
+- city: "New Delhi, India"
+  lat: 28.6139
+  lng: 77.209
+  country: "in"
+
+- city: "Agra, India"
+  lat: 27.1767
+  lng: 78.0081
+  country: "in"
+
+- city: "Bangalore, India"
+  lat: 12.9716
+  lng: 77.5946
+  country: "in"
+
+- city: "Guntur, India"
+  lat: 16.3067
+  lng: 80.4365
+  country: "in"

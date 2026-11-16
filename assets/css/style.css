@@ -236,6 +236,8 @@ body { border-top: 6px solid var(--link); }
 .places-map .leaflet-control-zoom a { color: var(--text); font-weight: 700; background-image: none; }
 
 .flag { display: inline-block; width: 20px; height: 14px; object-fit: cover; vertical-align: -2px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0,0,0,.25); }
+.travel { margin-top: 3.5rem; }
+.travel h2 { font-size: 1.5rem; margin-bottom: 1.25rem; }
 .places-chips { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
 .chip {
   font: inherit; font-size: .92rem; color: var(--text); cursor: pointer;
