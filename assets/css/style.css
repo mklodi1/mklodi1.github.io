@@ -285,3 +285,23 @@ body { border-top: 6px solid var(--link); }
   .cv-skills { grid-template-columns: 1fr; gap: 0; }
   .cv-skills dd { margin-bottom: .7rem; }
 }
+
+/* ---------- hover effects (kept last so they win over earlier rules) ---------- */
+/* heading accent stretches across while hovering a section */
+@media (prefers-reduced-motion: no-preference) {
+  .home h2::after, .cv h2::after, .gallery-section h2::after, .writing-index h2::after { transition: width .45s cubic-bezier(.2, .8, .2, 1); }
+}
+.home section:hover > h2::after, .cv section:hover > h2::after, .gallery-section:hover > h2::after { width: 100%; }
+
+/* list items lift on hover: soft tint, blue edge, slight nudge */
+.work, .pubs li, .honor-list li, .cv-entry, .news dd {
+  padding-left: .75rem; padding-right: .75rem; margin-left: -.75rem; margin-right: -.75rem;
+  border-radius: 6px;
+}
+.work:hover, .pubs li:hover, .honor-list li:hover, .cv-entry:hover, .news dd:hover {
+  background: #F5F8FC; box-shadow: inset 3px 0 0 var(--link);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .work, .pubs li, .honor-list li, .cv-entry, .news dd { transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease; }
+  .work:hover, .pubs li:hover, .honor-list li:hover, .cv-entry:hover, .news dd:hover { transform: translateX(4px); }
+}
