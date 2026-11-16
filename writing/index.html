@@ -5,7 +5,7 @@ permalink: /writing/
 ---
 <section class="wrap writing-index">
   <h1>Writing</h1>
-  <p class="muted">Notes on what I'm working on and learning. Follow along with the <a href="{{ '/feed.xml' | relative_url }}">RSS feed</a>.</p>
+  <p class="muted">Notes. Follow along with the <a href="{{ '/feed.xml' | relative_url }}">RSS feed</a>.</p>
 
   {% assign by_year = site.posts | group_by_exp: "p", "p.date | date: '%Y'" %}
   {% for year in by_year %}
