@@ -135,7 +135,7 @@ permalink: /life-map/
       var trip = { token: 0, cancel: null, marker: null };
       function zoomTo(i) {
         var p = places[i];
-        map.flyTo([p.lat, p.lng], 10, { duration: reduceMotion ? 0 : 1.4 });
+        map.flyTo([p.lat, p.lng], 10, { duration: reduceMotion ? 0 : 1 });
         map.once('moveend', function () { markers[i].openPopup(); });
       }
       function flyTo(i) {
@@ -149,13 +149,16 @@ permalink: /life-map/
         var route = routes[i];
         if (!route || reduceMotion) { zoomTo(i); return; }
         var my = trip.token, pts = route._pts;
-        map.flyToBounds(L.latLngBounds(pts), { padding: [60, 60], duration: 1 });
+        map.flyToBounds(L.latLngBounds(pts), { padding: [60, 60], duration: .7 });
         map.once('moveend', function () {
           if (my !== trip.token) return;
           trip.marker = L.marker(pts[0], { icon: planeIcon(34, 'plane-trip'), interactive: false, keyboard: false, zIndexOffset: 2000 }).addTo(map);
-          trip.cancel = flyPlane(trip.marker, pts, 3200, function () {
+          trip.cancel = flyPlane(trip.marker, pts, 1700, function () {
             if (my !== trip.token) return;
-            map.removeLayer(trip.marker); trip.marker = null;
+            var landed = trip.marker; trip.marker = null;
+            var el = landed.getElement && landed.getElement();
+            if (el) el.classList.add('plane-landed');
+            setTimeout(function () { map.removeLayer(landed); }, 350);
             zoomTo(i);
           });
         });
@@ -220,14 +223,12 @@ permalink: /life-map/
           if (cancelled) return;
           if (start === null) start = ts;
           var t = Math.min(1, (ts - start) / dur);
-          var e = -(Math.cos(Math.PI * t) - 1) / 2;            // gentle sine ease in-out
+          var e = t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;   // smooth cubic ease in-out
           var here = at(e);
           marker.setLatLng(here);
           var p1 = map.latLngToLayerPoint(at(Math.max(0, e - 0.01))), p2 = map.latLngToLayerPoint(at(Math.min(1, e + 0.01)));
           var target = Math.atan2(p2.x - p1.x, -(p2.y - p1.y)) * 180 / Math.PI;
-          if (heading === null) heading = target;
-          var diff = ((target - heading + 540) % 360) - 180;   // shortest way round
-          heading += diff * 0.35;                              // ease the nose into each turn
+          heading = target;
           var n = node(); if (n) n.style.transform = 'rotate(' + heading.toFixed(2) + 'deg)';
           if (t < 1) requestAnimationFrame(step); else if (done) done();
         }
