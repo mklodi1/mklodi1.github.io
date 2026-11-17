@@ -571,3 +571,30 @@ body { border-top: 6px solid var(--link); }
 .journey-place { margin: .15rem 0 0 !important; font-size: .92rem; color: #4A545E; }
 .journey-meta { margin-top: .45rem !important; padding-top: .45rem; border-top: 1px solid #EEF2F6; font-size: .84rem; }
 .journey-card { display: block; }
+
+/* one straight line on every screen size: the track on the left, cards to its right */
+.journey::before { left: 8px; margin-left: 0; }
+.journey-item, .journey-item:nth-child(odd), .journey-item:nth-child(even) {
+  width: auto; margin-left: 0; margin-top: 0; padding: 0 0 1rem 2.1rem; text-align: left;
+}
+.journey-dot, .journey-item:nth-child(odd) .journey-dot, .journey-item:nth-child(even) .journey-dot { left: 1px; right: auto; }
+.journey-animate .journey-plane { left: 9px; }
+@media (min-width: 601px) { .journey-item + .journey-item { margin-top: 0; } }
+
+/* dots fill and school logos appear as the plane reaches each card */
+.journey-item.in .journey-dot { background: #fff; }
+.journey-item.reached .journey-dot, .journey:not(.journey-animate) .journey-dot { background: var(--tl); }
+.journey-card { position: relative; }
+.journey-card:has(.journey-logo) { padding-right: 5rem; }
+.journey-logo {
+  position: absolute; right: 1rem; top: 50%; width: 52px; height: 52px; object-fit: contain;
+  transform: translateY(-50%); opacity: 1;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .journey-animate .journey-logo { opacity: 0; transform: translateY(-50%) scale(.6); transition: opacity .45s ease, transform .5s cubic-bezier(.3, 1.5, .5, 1); }
+  .journey-animate .reached .journey-logo { opacity: 1; transform: translateY(-50%) scale(1); }
+}
+@media (max-width: 600px) {
+  .journey-card:has(.journey-logo) { padding-right: 4rem; }
+  .journey-logo { width: 40px; height: 40px; right: .75rem; }
+}

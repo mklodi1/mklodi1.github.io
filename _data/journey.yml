@@ -1,25 +1,29 @@
-# "Timeline" section on the home page, oldest first.
-# Fields: when, title, place (optional), detail (optional).
-- when: "Jun 2017"
-  title: "Advanced Diploma"
-  place: "Manassas Park High School"
-  detail: "Salutatorian"
+# "Timeline" section on the home page, most recent first.
+# Fields: when, title, place (optional), detail (optional),
+# logo (optional): an image in assets/img/logos/, shown when the plane reaches the card.
+- when: "Jan 2026"
+  title: "First-author paper published in Genes"
 
-- when: "Aug 2017 – May 2021"
-  title: "B.S. in Bioinformatics"
-  place: "Virginia Commonwealth University, Richmond, VA"
-  detail: "Virginia Scholarship, UROP Fellowship"
-
-- when: "Apr 2021"
-  title: "Co-author paper published in Proteomes"
+- when: "Jul 2022"
+  title: "Co-author paper published in Frontiers in Genetics"
 
 - when: "Aug 2021 – Sep 2026"
   title: "Ph.D. in Quantitative Biomedicine"
   place: "Rutgers University, New Brunswick, NJ"
   detail: "Presidential Fellowship"
+  logo: /assets/img/logos/rutgers.png
 
-- when: "Jul 2022"
-  title: "Co-author paper published in Frontiers in Genetics"
+- when: "Apr 2021"
+  title: "Co-author paper published in Proteomes"
 
-- when: "Jan 2026"
-  title: "First-author paper published in Genes"
+- when: "Aug 2017 – May 2021"
+  title: "B.S. in Bioinformatics"
+  place: "Virginia Commonwealth University, Richmond, VA"
+  detail: "Virginia Scholarship, UROP Fellowship"
+  logo: /assets/img/logos/vcu.png
+
+- when: "Jun 2017"
+  title: "Advanced Studies Diploma"
+  place: "Manassas Park High School"
+  detail: "Salutatorian"
+  logo: /assets/img/logos/manassas-park-hs.png

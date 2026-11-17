@@ -28,6 +28,7 @@ layout: default
       <li class="journey-item journey-{{ j.kind | default: 'life' }}">
         <span class="journey-dot" aria-hidden="true"></span>
         <div class="journey-card">
+          {% if j.logo %}{% assign logo_file = site.static_files | where: "path", j.logo | first %}{% if logo_file %}<img class="journey-logo" src="{{ j.logo | relative_url }}" alt="" loading="lazy">{% endif %}{% endif %}
           <p class="journey-when">{{ j.when }}</p>
           <p class="journey-title">{{ j.title }}</p>
           {% if j.place %}<p class="journey-place">{{ j.place }}</p>{% endif %}
@@ -54,6 +55,10 @@ layout: default
         var p = Math.max(0, Math.min(1, (vh * 0.7 - r.top) / r.height));
         list.style.setProperty('--fill', (p * 100).toFixed(1) + '%');
         if (plane) { plane.classList.toggle('up', p < lastP - 0.0005); lastP = p; }
+        var y = p * r.height;
+        Array.prototype.forEach.call(list.querySelectorAll('.journey-item'), function (li) {
+          li.classList.toggle('reached', y >= li.offsetTop + 8);
+        });
       }
       window.addEventListener('scroll', fill, { passive: true }); window.addEventListener('resize', fill); fill();
     })();
