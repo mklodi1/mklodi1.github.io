@@ -3,6 +3,7 @@
 # ---------------------------------------------------------------
 title: Mudassir K. Lodi, Ph.D.
 role: Data Scientist & Computational Biologist
+description: "Data scientist and computational biologist. Ph.D. in Quantitative Biomedicine, Rutgers University. Machine learning, statistical genetics and quantitative finance."
 # affiliation: Ph.D. in Quantitative Biomedicine, Rutgers University
 
 # Your address. Change this when you connect your own domain.
@@ -37,3 +38,12 @@ exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
+
+# Link previews (LinkedIn, iMessage, Slack, X): the image shown when someone shares a link to this site.
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/img/social-card.png
+twitter:
+  card: summary_large_image

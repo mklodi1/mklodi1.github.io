@@ -19,6 +19,46 @@ layout: default
   </section>
 
 
+  {% if site.data.journey %}
+  <section id="journey" aria-labelledby="journey-h">
+    <h2 id="journey-h">My Journey</h2>
+    <ol class="journey">
+      {% for j in site.data.journey %}
+      <li class="journey-item journey-{{ j.kind | default: 'life' }}">
+        <span class="journey-dot" aria-hidden="true"></span>
+        <div class="journey-card">
+          <p class="journey-when">{{ j.when }}</p>
+          <p class="journey-title">{{ j.title }}</p>
+          {% if j.place or j.detail %}<p class="journey-meta">{% if j.place %}{{ j.place }}{% endif %}{% if j.place and j.detail %}<br>{% endif %}{% if j.detail %}{{ j.detail }}{% endif %}</p>{% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+    <ul class="journey-key" aria-label="Key">
+      <li class="journey-education">Education</li><li class="journey-research">Research</li><li class="journey-work">Work</li><li class="journey-award">Awards</li><li class="journey-life">Life</li>
+    </ul>
+  </section>
+  <script>
+    // Timeline: each milestone fades in as it scrolls into view, and the line fills as you go.
+    (function () {
+      var list = document.querySelector('.journey');
+      if (!list || !('IntersectionObserver' in window)) return;
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      list.classList.add('journey-animate');
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.35 });
+      Array.prototype.forEach.call(list.querySelectorAll('.journey-item'), function (li) { io.observe(li); });
+      function fill() {
+        var r = list.getBoundingClientRect(), vh = window.innerHeight;
+        var p = Math.max(0, Math.min(1, (vh * 0.7 - r.top) / r.height));
+        list.style.setProperty('--fill', (p * 100).toFixed(1) + '%');
+      }
+      window.addEventListener('scroll', fill, { passive: true }); window.addEventListener('resize', fill); fill();
+    })();
+  </script>
+  {% endif %}
+
   {% if site.place_photo %}
   <figure class="place">
     <img src="{{ site.place_photo | relative_url }}" alt="{{ site.place_caption }}">
