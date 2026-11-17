@@ -598,3 +598,19 @@ body { border-top: 6px solid var(--link); }
   .journey-card:has(.journey-logo) { padding-right: 4rem; }
   .journey-logo { width: 40px; height: 40px; right: .75rem; }
 }
+
+/* schools stand out; papers sit quietly between them */
+.journey-education .journey-card {
+  background: linear-gradient(180deg, #F4FAFF, #fff 70%); border-color: #D6EAF8;
+  box-shadow: inset 3px 0 0 var(--tl); padding: 1rem 1.15rem 1rem 1.3rem;
+}
+.journey-education .journey-title { font-size: 1.15rem; font-weight: 600; color: #1F2A35; }
+.journey-education .journey-dot { width: 18px; height: 18px; left: -1px !important; top: 1.05rem; border-width: 3px; }
+.journey-paper { padding-bottom: .55rem !important; }
+.journey-paper .journey-card { background: none; border: 0; box-shadow: none; padding: .2rem .25rem; }
+.journey-paper .journey-when { font-size: .7rem; color: #8A97A5; }
+.journey-paper .journey-title { font-size: .95rem; font-weight: 400; color: #4A545E; display: flex; align-items: center; gap: .45rem; }
+.journey-paper .journey-dot { width: 10px; height: 10px; left: 3px !important; top: .55rem; border-width: 2px; }
+.journey-doc { flex: none; color: #7CC4F0; }
+.journey-paper:hover .journey-card { border: 0; box-shadow: none; }
+.journey-paper:hover .journey-title { color: var(--link); }

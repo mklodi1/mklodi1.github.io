@@ -1,29 +1,35 @@
 # "Timeline" section on the home page, most recent first.
-# Fields: when, title, place (optional), detail (optional),
+# Fields: when, title, type (education or paper), place (optional), detail (optional),
 # logo (optional): an image in assets/img/logos/, shown when the plane reaches the card.
 - when: "Jan 2026"
   title: "First-author paper published in Genes"
+  type: paper
 
 - when: "Jul 2022"
   title: "Co-author paper published in Frontiers in Genetics"
+  type: paper
 
 - when: "Aug 2021 – Sep 2026"
   title: "Ph.D. in Quantitative Biomedicine"
+  type: education
   place: "Rutgers University, New Brunswick, NJ"
   detail: "Presidential Fellowship"
   logo: /assets/img/logos/rutgers.png
 
 - when: "Apr 2021"
   title: "Co-author paper published in Proteomes"
+  type: paper
 
 - when: "Aug 2017 – May 2021"
   title: "B.S. in Bioinformatics"
+  type: education
   place: "Virginia Commonwealth University, Richmond, VA"
   detail: "Virginia Scholarship, UROP Fellowship"
   logo: /assets/img/logos/vcu.png
 
 - when: "Jun 2017"
   title: "Advanced Studies Diploma"
+  type: education
   place: "Manassas Park High School"
   detail: "Salutatorian"
   logo: /assets/img/logos/manassas-park-hs.png
