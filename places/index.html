@@ -29,7 +29,7 @@ permalink: /places/
             {% assign n = forloop.index %}
             <tr data-index="{{ n }}" tabindex="0">
               <td class="dest"><span class="flap">{{ p.city | split: ',' | first | upcase }}</span>{% if p.country %} <img class="flag" src="https://flagcdn.com/{{ p.country | downcase }}.svg" alt="" width="20" height="14" onerror="this.remove()">{% endif %}</td>
-              <td class="status"><span class="flap">LANDED</span></td>
+              <td class="status{% if p.key %} status-hub{% endif %}"><span class="flap">{% if p.key %}HUB{% else %}LANDED{% endif %}</span></td>
             </tr>
             {% endfor %}
           </tbody>
