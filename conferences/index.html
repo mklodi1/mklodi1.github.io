@@ -12,18 +12,12 @@ permalink: /conferences/
     <h2 id="h-conf">Conferences &amp; Seminars</h2>
     <ul class="honor-list">
       {% for c in site.data.conferences %}
-      <li{% if c.abstract %} class="has-abstract"{% endif %}>
+      <li>
         <div class="cv-row">
-          <h3>{% if c.abstract %}<button type="button" class="abstract-toggle" aria-expanded="false" aria-controls="abs-{{ forloop.index }}">{{ c.event }}</button>{% elsif c.link %}<a href="{{ c.link }}">{{ c.event }}</a>{% else %}{{ c.event }}{% endif %}</h3>
+          <h3>{% if c.link %}<a href="{{ c.link }}">{{ c.event }}</a>{% else %}{{ c.event }}{% endif %}</h3>
           <span class="cv-when">{{ c.date }}</span>
         </div>
         {% if c.type or c.award %}<p class="honor-sub">{{ c.type }}{% if c.award %} <span class="award-tag">{{ c.award }}</span>{% endif %}</p>{% endif %}
-        {% if c.abstract %}
-        <div class="abstract-card" id="abs-{{ forloop.index }}" role="region" aria-label="Abstract">
-          {% if c.abstract_title %}<p class="abstract-title">{{ c.abstract_title }}</p>{% endif %}
-          <p>{{ c.abstract }}</p>
-        </div>
-        {% endif %}
       </li>
       {% endfor %}
     </ul>
@@ -45,17 +39,3 @@ permalink: /conferences/
     </ul>
   </section>
 </article>
-
-<script>
-  // Abstracts: shown on hover with a mouse; tap (or press Enter) on the conference name to open or close.
-  (function () {
-    Array.prototype.forEach.call(document.querySelectorAll('.abstract-toggle'), function (btn) {
-      var li = btn.closest('li');
-      btn.addEventListener('click', function () {
-        var open = !li.classList.contains('abstract-open');
-        li.classList.toggle('abstract-open', open);
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-    });
-  })();
-</script>

@@ -486,33 +486,3 @@ body { border-top: 6px solid var(--link); }
 .plane-trip { animation: plane-in .25s ease-out both; }
 @keyframes plane-in { from { opacity: 0; } to { opacity: 1; } }
 .plane-trip.plane-landed { opacity: 0; transition: opacity .3s ease; }
-
-/* ---------- conference abstracts ---------- */
-.abstract-toggle {
-  font: inherit; color: inherit; text-align: left; background: none; border: 0; padding: 0; cursor: pointer;
-  text-decoration: underline dotted rgba(31, 78, 140, .45); text-underline-offset: .25em; text-decoration-thickness: 1.5px;
-}
-.abstract-toggle:hover, .abstract-toggle:focus-visible { color: var(--link); }
-.abstract-card { display: none; }
-.abstract-card p { margin: 0; font-size: .9rem; line-height: 1.6; }
-.abstract-card .abstract-title { font-weight: 600; font-size: .95rem; margin-bottom: .5rem; color: var(--text); }
-.has-abstract.abstract-open .abstract-card {
-  display: block; margin-top: .75rem; padding: .9rem 1rem; background: #F7F9FC;
-  border-left: 3px solid var(--link); border-radius: 6px; color: #3A434D;
-}
-/* with a mouse, hovering the entry shows the abstract as a floating card */
-@media (hover: hover) and (pointer: fine) {
-  .has-abstract { z-index: 1; }
-  .has-abstract:hover, .has-abstract:focus-within { z-index: 5; }
-  .has-abstract:hover .abstract-card, .has-abstract:focus-within .abstract-card {
-    display: block; position: absolute; left: .75rem; right: .75rem; top: calc(100% - .35rem);
-    max-height: 22rem; overflow: auto; padding: 1rem 1.1rem; background: #fff; color: #3A434D;
-    border: 1px solid var(--rule); border-radius: 10px; box-shadow: 0 14px 34px rgba(20, 30, 45, .18);
-  }
-  .has-abstract.abstract-open:hover .abstract-card { position: static; box-shadow: none; max-height: none; border: 0; border-left: 3px solid var(--link); background: #F7F9FC; }
-}
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .has-abstract:hover .abstract-card { animation: abs-in .18s ease-out; }
-  @keyframes abs-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
-}
-@media print { .abstract-card { display: none !important; } }
