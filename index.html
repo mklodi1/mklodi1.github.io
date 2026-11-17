@@ -23,6 +23,7 @@ layout: default
   <section id="journey" aria-labelledby="journey-h">
     <h2 id="journey-h">My Journey</h2>
     <ol class="journey">
+      <li class="journey-plane" aria-hidden="true"><svg viewBox="0 0 100 100" width="30" height="30"><path d="M50 4 C54.5 4 57 10 57 17 L57 38 L94 58 L94 67 L57 56 L57 77 L69 86 L69 93 L50 88.5 L31 93 L31 86 L43 77 L43 56 L6 67 L6 58 L43 38 L43 17 C43 10 45.5 4 50 4 Z"/></svg></li>
       {% for j in site.data.journey %}
       <li class="journey-item journey-{{ j.kind | default: 'life' }}">
         <span class="journey-dot" aria-hidden="true"></span>
@@ -34,8 +35,9 @@ layout: default
       </li>
       {% endfor %}
     </ol>
+    {% assign kinds = site.data.journey | map: 'kind' %}
     <ul class="journey-key" aria-label="Key">
-      <li class="journey-education">Education</li><li class="journey-research">Research</li><li class="journey-work">Work</li><li class="journey-award">Awards</li><li class="journey-life">Life</li>
+      {% if kinds contains 'education' %}<li class="journey-education">Education</li>{% endif %}{% if kinds contains 'research' %}<li class="journey-research">Research</li>{% endif %}{% if kinds contains 'work' %}<li class="journey-work">Work</li>{% endif %}{% if kinds contains 'award' %}<li class="journey-award">Awards</li>{% endif %}{% if kinds contains 'life' %}<li class="journey-life">Life</li>{% endif %}
     </ul>
   </section>
   <script>
@@ -49,10 +51,12 @@ layout: default
         entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
       }, { threshold: 0.35 });
       Array.prototype.forEach.call(list.querySelectorAll('.journey-item'), function (li) { io.observe(li); });
+      var plane = list.querySelector('.journey-plane'), lastP = 0;
       function fill() {
         var r = list.getBoundingClientRect(), vh = window.innerHeight;
         var p = Math.max(0, Math.min(1, (vh * 0.7 - r.top) / r.height));
         list.style.setProperty('--fill', (p * 100).toFixed(1) + '%');
+        if (plane) { plane.classList.toggle('up', p < lastP - 0.0005); lastP = p; }
       }
       window.addEventListener('scroll', fill, { passive: true }); window.addEventListener('resize', fill); fill();
     })();
