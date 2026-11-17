@@ -216,3 +216,23 @@
   country: "in"
   note: "Roots"
   key: true
+
+- city: "Myrtle Beach, SC"
+  lat: 33.6891
+  lng: -78.8867
+  country: "us"
+
+- city: "Virginia Beach, VA"
+  lat: 36.8529
+  lng: -75.978
+  country: "us"
+
+- city: "Ocean City, MD"
+  lat: 38.3365
+  lng: -75.0849
+  country: "us"
+
+- city: "Baltimore, MD"
+  lat: 39.2904
+  lng: -76.6122
+  country: "us"
