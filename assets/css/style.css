@@ -435,6 +435,9 @@ body { border-top: 6px solid var(--link); }
 @media (prefers-reduced-motion: no-preference) {
   .deck-ready .deck-card { transition: transform .45s cubic-bezier(.2, .8, .2, 1), opacity .3s ease; }
 }
+/* drawings are landscape sketchbook pages */
+.deck-ready.deck-drawing .deck-stack { width: min(100%, 30rem); aspect-ratio: 4 / 3; }
+.deck-ready.deck-drawing .deck-card img { object-fit: contain; background: #F3EDE2; }
 .deck-controls { display: none; }
 .deck-hint { display: none; }
 .deck-ready .deck-controls { display: flex; align-items: center; gap: 1.25rem; margin-top: 1.75rem; }

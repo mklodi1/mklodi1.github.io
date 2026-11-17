@@ -27,7 +27,7 @@ permalink: /personal/
   <section class="gallery-section" aria-labelledby="h-{{ folder }}">
     <h2 id="h-{{ folder }}">{{ heading }}</h2>
     {% assign shown = 0 %}
-    <div class="deck" data-deck aria-roledescription="photo stack" aria-label="{{ heading }}">
+    <div class="deck deck-{{ folder }}" data-deck aria-roledescription="photo stack" aria-label="{{ heading }}">
       <div class="deck-stack">
         {% for img in images %}
         {% assign ext = img.extname | downcase %}
@@ -43,11 +43,11 @@ permalink: /personal/
       </div>
       {% if shown > 1 %}
       <div class="deck-controls">
-        <button type="button" class="deck-btn" data-deck-prev aria-label="Previous photo">&#8592;</button>
+        <button type="button" class="deck-btn" data-deck-prev aria-label="Previous">&#8592;</button>
         <span class="deck-count" aria-live="polite"><span data-deck-pos>1</span> / {{ shown }}</span>
-        <button type="button" class="deck-btn" data-deck-next aria-label="Next photo">&#8594;</button>
+        <button type="button" class="deck-btn" data-deck-next aria-label="Next">&#8594;</button>
       </div>
-      <p class="deck-hint muted">Swipe, click the photo, or use the arrow keys to flip through.</p>
+      <p class="deck-hint muted">Swipe, click, or use the arrow keys to flip through.</p>
       {% endif %}
     </div>
     {% if shown == 0 %}<p class="muted">Coming soon.</p>{% endif %}
