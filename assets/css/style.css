@@ -187,8 +187,9 @@ body { border-top: 6px solid var(--link); }
 .places, .personal { padding-block: 3.5rem 2rem; }
 .places h1, .personal h1 { font-size: 2rem; margin-bottom: 1.5rem; }
 .gallery-section { margin-top: 2.5rem; }
-.section-note { margin: -.25rem 0 0; font-weight: 600; }
-.section-note-sub { margin-top: .2rem; font-weight: 400; color: var(--muted); }
+.section-list { max-width: 30rem; margin: 1.5rem auto 0; padding-left: 1.2rem; }
+.section-list li { margin-bottom: .35rem; }
+.section-list li::marker { color: var(--link); }
 .gallery-section h2 { font-size: 1.2rem; margin-bottom: 1rem; padding-bottom: .5rem; border-bottom: 1px solid var(--rule); }
 .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); gap: .75rem; }
 .gallery:empty { display: none; }
