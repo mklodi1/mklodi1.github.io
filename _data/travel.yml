@@ -236,3 +236,13 @@
   lat: 39.2904
   lng: -76.6122
   country: "us"
+
+- city: "Harvest Caye, Belize"
+  lat: 16.47
+  lng: -88.35
+  country: "bz"
+
+- city: "Great Stirrup Cay, Bahamas"
+  lat: 25.827
+  lng: -77.905
+  country: "bs"
