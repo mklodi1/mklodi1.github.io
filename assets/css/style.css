@@ -558,3 +558,8 @@ body { border-top: 6px solid var(--link); }
 @media (max-width: 600px) {
   .journey-dot, .journey-item:nth-child(odd) .journey-dot { left: 1px; right: auto; }
 }
+
+/* no trail behind the plane: the track stays one light color, and the plane has no shadow */
+.journey::after, .journey.journey-animate::after { display: none; }
+.journey::before { background: #DCEBF7; }
+.journey-animate .journey-plane { filter: none; }
