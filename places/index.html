@@ -35,17 +35,13 @@ permalink: /places/
       <div class="board-scroll">
         <table class="board-table">
           <thead>
-            <tr><th scope="col">Flight</th><th scope="col">Destination</th><th scope="col">Gate</th><th scope="col">Status</th></tr>
+            <tr><th scope="col">Destination</th><th scope="col">Status</th></tr>
           </thead>
           <tbody>
             {% for p in site.data.travel offset: 1 %}
             {% assign n = forloop.index %}
-            {% assign gates = "A,B,C,D,E" | split: "," %}
-            {% assign g = n | modulo: 5 %}
             <tr data-index="{{ n }}" tabindex="0">
-              <td class="flap">ML{{ n | times: 37 | modulo: 900 | plus: 100 }}</td>
               <td class="dest"><span class="flap">{{ p.city | split: ',' | first | upcase }}</span>{% if p.country %} <img class="flag" src="https://flagcdn.com/{{ p.country | downcase }}.svg" alt="" width="20" height="14" onerror="this.remove()">{% endif %}</td>
-              <td class="flap">{{ gates[g] }}{{ n | times: 3 | modulo: 29 | plus: 1 }}</td>
               <td class="status"><span class="flap">LANDED</span></td>
             </tr>
             {% endfor %}
@@ -250,7 +246,7 @@ permalink: /places/
         if (!entries[0].isIntersecting) return;
         io.disconnect();
         for (var i = 0; i < cells.length; i++) {
-          var rowIdx = Math.floor(i / 4);
+          var rowIdx = Math.floor(i / Math.max(1, Math.round(cells.length / rows.length)));
           flip(cells[i], rowIdx * 70);
         }
       }, { threshold: 0.15 });
