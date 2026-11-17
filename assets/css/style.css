@@ -486,3 +486,38 @@ body { border-top: 6px solid var(--link); }
 .plane-trip { animation: plane-in .25s ease-out both; }
 @keyframes plane-in { from { opacity: 0; } to { opacity: 1; } }
 .plane-trip.plane-landed { opacity: 0; transition: opacity .3s ease; }
+
+/* ---------- conference posters ---------- */
+.honor-list li.has-poster { display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: start; }
+.poster-links { margin: .45rem 0 0; font-size: .9rem; display: flex; gap: 1rem; align-items: center; }
+.poster-links button {
+  font: inherit; font-size: .88rem; font-weight: 600; color: var(--link); background: none;
+  border: 1px solid var(--rule); border-radius: 999px; padding: .2rem .75rem; cursor: pointer;
+}
+.poster-links button:hover { border-color: var(--link); }
+.poster-thumb {
+  padding: 0; border: 1px solid var(--rule); border-radius: 4px; background: #fff; cursor: zoom-in;
+  box-shadow: 0 2px 6px rgba(20,30,45,.10); line-height: 0;
+}
+.poster-thumb img { width: 90px; height: auto; border-radius: 3px; }
+.poster-thumb:hover { box-shadow: 0 4px 14px rgba(20,30,45,.18); transform: translateY(-2px); }
+@media (prefers-reduced-motion: no-preference) { .poster-thumb { transition: transform .2s ease, box-shadow .2s ease; } }
+
+.poster-viewer {
+  width: min(96vw, 1100px); height: min(94vh, 1400px); max-width: none; max-height: none;
+  padding: 0; border: 0; border-radius: 12px; background: #1B1F24; color: #fff; overflow: hidden;
+}
+.poster-viewer::backdrop { background: rgba(10, 14, 20, .75); }
+.poster-viewer[open] { display: flex; flex-direction: column; }
+.pv-bar { display: flex; align-items: center; gap: 1rem; padding: .7rem 1rem; background: #111418; }
+.pv-title { flex: 1; font-weight: 600; font-size: .95rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pv-pdf { color: #9CC9FF; font-size: .9rem; white-space: nowrap; }
+.pv-close { font: inherit; font-size: 1.1rem; color: #fff; background: none; border: 0; cursor: pointer; padding: .2rem .4rem; }
+.pv-body { flex: 1; overflow: auto; display: flex; align-items: flex-start; justify-content: center; padding: 1rem; }
+.pv-body img { max-width: 100%; max-height: 100%; height: auto; object-fit: contain; cursor: zoom-in; background: #fff; border-radius: 4px; }
+.pv-body.zoomed { display: block; padding: 0; }
+.pv-body.zoomed img { max-width: none; max-height: none; width: 1800px; cursor: zoom-out; border-radius: 0; }
+@media (max-width: 600px) {
+  .poster-thumb img { width: 64px; }
+  .pv-body.zoomed img { width: 1400px; }
+}

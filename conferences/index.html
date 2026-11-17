@@ -12,12 +12,20 @@ permalink: /conferences/
     <h2 id="h-conf">Conferences &amp; Seminars</h2>
     <ul class="honor-list">
       {% for c in site.data.conferences %}
-      <li>
-        <div class="cv-row">
-          <h3>{% if c.link %}<a href="{{ c.link }}">{{ c.event }}</a>{% else %}{{ c.event }}{% endif %}</h3>
-          <span class="cv-when">{{ c.date }}</span>
+      <li{% if c.poster %} class="has-poster"{% endif %}>
+        <div class="honor-main">
+          <div class="cv-row">
+            <h3>{% if c.link %}<a href="{{ c.link }}">{{ c.event }}</a>{% else %}{{ c.event }}{% endif %}</h3>
+            <span class="cv-when">{{ c.date }}</span>
+          </div>
+          {% if c.type or c.award %}<p class="honor-sub">{{ c.type }}{% if c.award %} <span class="award-tag">{{ c.award }}</span>{% endif %}</p>{% endif %}
+          {% if c.poster %}<p class="poster-links"><button type="button" class="poster-open" data-poster="{{ c.poster }}" data-title="{{ c.event | escape }}">View poster</button> <a href="{{ '/assets/posters/' | append: c.poster | append: '.pdf' | relative_url }}" download>Download PDF</a></p>{% endif %}
         </div>
-        {% if c.type or c.award %}<p class="honor-sub">{{ c.type }}{% if c.award %} <span class="award-tag">{{ c.award }}</span>{% endif %}</p>{% endif %}
+        {% if c.poster %}
+        <button type="button" class="poster-thumb poster-open" data-poster="{{ c.poster }}" data-title="{{ c.event | escape }}" aria-label="View poster from {{ c.event | escape }}">
+          <img src="{{ '/assets/posters/' | append: c.poster | append: '-thumb.jpg' | relative_url }}" alt="" loading="lazy" width="90" height="120">
+        </button>
+        {% endif %}
       </li>
       {% endfor %}
     </ul>
@@ -39,3 +47,47 @@ permalink: /conferences/
     </ul>
   </section>
 </article>
+
+<dialog class="poster-viewer" id="poster-viewer" aria-label="Poster">
+  <div class="pv-bar">
+    <span class="pv-title" id="pv-title"></span>
+    <a class="pv-pdf" id="pv-pdf" href="#" download>Download PDF</a>
+    <button type="button" class="pv-close" id="pv-close" aria-label="Close">&#10005;</button>
+  </div>
+  <div class="pv-body" id="pv-body">
+    <img id="pv-img" alt="">
+  </div>
+</dialog>
+
+<script>
+  // Poster viewer: opens a poster large on the page; click the poster to zoom in and out.
+  (function () {
+    var dlg = document.getElementById('poster-viewer');
+    if (!dlg || !dlg.showModal) return;   // very old browsers just use the PDF links
+    var base = {{ '/assets/posters/' | relative_url | jsonify }};
+    var img = document.getElementById('pv-img'), body = document.getElementById('pv-body');
+    function open(key, title) {
+      img.src = base + key + '-large.jpg';
+      img.alt = 'Poster: ' + title;
+      document.getElementById('pv-title').textContent = title;
+      document.getElementById('pv-pdf').href = base + key + '.pdf';
+      body.classList.remove('zoomed');
+      dlg.showModal();
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('.poster-open'), function (b) {
+      b.addEventListener('click', function () { open(b.getAttribute('data-poster'), b.getAttribute('data-title')); });
+    });
+    document.getElementById('pv-close').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });   // click outside closes
+    img.addEventListener('click', function (e) {
+      var r = img.getBoundingClientRect(), fx = (e.clientX - r.left) / r.width, fy = (e.clientY - r.top) / r.height;
+      body.classList.toggle('zoomed');
+      if (body.classList.contains('zoomed')) {
+        requestAnimationFrame(function () {
+          body.scrollLeft = fx * img.offsetWidth - body.clientWidth / 2;
+          body.scrollTop = fy * img.offsetHeight - body.clientHeight / 2;
+        });
+      }
+    });
+  })();
+</script>
