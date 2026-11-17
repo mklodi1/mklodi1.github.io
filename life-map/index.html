@@ -184,31 +184,12 @@ permalink: /life-map/
         places.forEach(function (p, i) {
           if (i === 0 || hubLL.distanceTo([p.lat, p.lng]) < 80000) { routes.push(null); return; }
           var pts = arc([hub.lat, hub.lng], [p.lat, p.lng]);
-          var line = L.polyline(reduceMotion ? pts : [pts[0], pts[0]], {
+          var line = L.polyline(pts, {
             className: 'route-line', color: colors[i % colors.length], weight: 2.5, opacity: .9, interactive: false
           }).addTo(map);
           line._pts = pts;
           routes.push(line);
         });
-
-        // Takeoff: routes draw themselves outward from home, one after another.
-        if (!reduceMotion) {
-          var order = routes.filter(Boolean);
-          order.forEach(function (line, k) {
-            setTimeout(function () {
-              var pts = line._pts, start = null, dur = 700;
-              function grow(ts) {
-                if (start === null) start = ts;
-                var t = Math.min(1, (ts - start) / dur);
-                line.setLatLngs(pts.slice(0, Math.max(2, Math.ceil(t * pts.length))));
-                if (t < 1) requestAnimationFrame(grow);
-              }
-              requestAnimationFrame(grow);
-            }, 400 + k * 70);
-          });
-          // Planes in the air: a few small planes keep flying random routes once takeoff is done.
-          setTimeout(function () { for (var n = 0; n < 3; n++) ambient(n * 1800); }, 400 + order.length * 70 + 800);
-        }
       }
 
       // ---- airplanes ----
@@ -243,21 +224,6 @@ permalink: /life-map/
         }
         requestAnimationFrame(step);
         return function () { cancelled = true; };
-      }
-      function ambient(delay) {
-        setTimeout(function launch() {
-          var choices = routes.map(function (r, i) { return r ? i : -1; }).filter(function (i) { return i > 0; });
-          if (!choices.length) return;
-          var i = choices[Math.floor(Math.random() * choices.length)];
-          var pts = routes[i]._pts.slice();
-          if (Math.random() < .5) pts.reverse();
-          var m = L.marker(pts[0], { icon: planeIcon(16, 'plane-ambient'), interactive: false, keyboard: false, zIndexOffset: 800 }).addTo(map);
-          var px = map.latLngToLayerPoint(pts[0]).distanceTo(map.latLngToLayerPoint(pts[pts.length - 1]));
-          flyPlane(m, pts, Math.max(4000, Math.min(14000, px * 18)), function () {
-            map.removeLayer(m);
-            setTimeout(launch, 800 + Math.random() * 2500);
-          });
-        }, delay);
       }
       function highlight(i) {
         routes.forEach(function (r, j) {

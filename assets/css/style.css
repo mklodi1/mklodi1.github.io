@@ -483,4 +483,4 @@ body { border-top: 6px solid var(--link); }
 .plane path { fill: #1D2228; stroke: #fff; stroke-width: 1.2; stroke-linejoin: round; }
 .plane-trip .plane { filter: drop-shadow(0 6px 4px rgba(0,0,0,.35)); }
 .plane-trip .plane path { fill: var(--link); stroke-width: 1.4; }
-.plane-ambient .plane { opacity: .8; filter: drop-shadow(0 2px 1px rgba(0,0,0,.3)); }
+
