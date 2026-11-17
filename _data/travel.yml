@@ -1,11 +1,14 @@
-# Places shown on the Travel map at /places/. Same format as places.yml.
+# Places shown on the Travel map and departure board at /places/.
 # The first entry is the home base that the flight routes start from.
 # country: two-letter country code for the flag (e.g. us, in, mx).
 # Optional: note: "A short description shown when someone clicks the pin"
+# Optional: key: true  -> shows the place as a gold star pin (a key place in my life)
 - city: "Manassas Park, VA"
   lat: 38.784
   lng: -77.4697
   country: "us"
+  note: "Where I grew up"
+  key: true
 
 - city: "Washington, D.C."
   lat: 38.9072
@@ -21,11 +24,15 @@
   lat: 39.9526
   lng: -75.1652
   country: "us"
+  note: "Birthplace"
+  key: true
 
 - city: "Richmond, VA"
   lat: 37.5407
   lng: -77.436
   country: "us"
+  note: "Hometown"
+  key: true
 
 - city: "Houston, TX"
   lat: 29.7604
@@ -96,11 +103,15 @@
   lat: 12.9716
   lng: 77.5946
   country: "in"
+  note: "Roots"
+  key: true
 
 - city: "Guntur, India"
   lat: 16.3067
   lng: 80.4365
   country: "in"
+  note: "Roots"
+  key: true
 
 - city: "Key West, FL"
   lat: 24.5551
@@ -191,3 +202,17 @@
   lat: 42.8864
   lng: -78.8784
   country: "us"
+
+- city: "New Brunswick, NJ"
+  lat: 40.4862
+  lng: -74.4518
+  country: "us"
+  note: "Doctoral studies"
+  key: true
+
+- city: "Markapur, India"
+  lat: 15.7353
+  lng: 79.2697
+  country: "in"
+  note: "Roots"
+  key: true

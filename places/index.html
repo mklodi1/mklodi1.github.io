@@ -7,19 +7,9 @@ permalink: /places/
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 
 <article class="wrap places">
-  <h1>Significant Places</h1>
-  <p class="muted places-hint"></p>
-
-  <div id="places-map" class="places-map" role="region" aria-label="Map of significant places: {{ site.data.places | map: 'city' | join: '; ' }}"></div>
-  <div class="places-chips" id="places-chips">
-    <button type="button" class="chip" data-index="all">All places</button>
-    {% for p in site.data.places %}<button type="button" class="chip" data-index="{{ forloop.index0 }}">{{ p.city }}{% if p.country %} <img class="flag" src="https://flagcdn.com/{{ p.country | downcase }}.svg" alt="" width="20" height="14" onerror="this.remove()">{% endif %}</button>{% endfor %}
-  </div>
-
   {% if site.data.travel %}
-  <section class="travel" aria-labelledby="h-travel">
-    <h2 id="h-travel">Travel</h2>
-    <p class="muted places-hint"></p>
+  <section class="travel travel-main" aria-labelledby="h-travel">
+    <h1 id="h-travel">Travel</h1>
     <div id="travel-map" class="places-map" role="region" aria-label="Map of places I've traveled: {{ site.data.travel | map: 'city' | join: '; ' }}"></div>
 
     <div class="board" id="departure-board" aria-label="Departure board of places I've traveled">
@@ -55,7 +45,7 @@ permalink: /places/
   (function () {
     var flagBase = 'https://flagcdn.com/';
     var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var colors = ['#FF6B6B', '#FFB020', '#2EC4B6', '#5B8DEF', '#B36BFF', '#FF7EB6', '#3DDC84'];
+    var colors = ['#FF6B6B', '#2EC4B6', '#5B8DEF', '#B36BFF', '#FF7EB6', '#3DDC84'];
 
     function esc(t) { return String(t).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
 
@@ -89,6 +79,23 @@ permalink: /places/
         pts.push([u * u * a[0] + 2 * u * t * c[0] + t * t * b[0], u * u * a[1] + 2 * u * t * c[1] + t * t * b[1]]);
       }
       return pts;
+    }
+
+    // Larger gold pin with a star, for key places in my life.
+    function starPinIcon(delay) {
+      var svg =
+        '<svg viewBox="0 0 40 52" width="50" height="65" aria-hidden="true">' +
+          '<ellipse class="pin-shadow" cx="20" cy="49" rx="9" ry="3"></ellipse>' +
+          '<path class="pin-body" d="M20 2C10.6 2 3 9.4 3 18.6 3 31 20 47 20 47s17-16 17-28.4C37 9.4 29.4 2 20 2z" fill="#F5B700"></path>' +
+          '<path class="pin-star" d="M20 9.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.2-4.1 5.8-.8z"></path>' +
+        '</svg>';
+      return L.divIcon({
+        className: 'pin-icon pin-key',
+        html: '<div class="pin pin-lg" style="animation-delay:' + delay + 'ms">' + svg + '</div>',
+        iconSize: [50, 65],
+        iconAnchor: [25, 60],
+        popupAnchor: [0, -54]
+      });
     }
 
     // Builds one cartoon map with pins and clickable city buttons.
@@ -136,12 +143,13 @@ permalink: /places/
       var step = Math.min(160, Math.round(2000 / places.length));
       places.forEach(function (p, i) {
         var m = L.marker([p.lat, p.lng], {
-          icon: pinIcon(colors[i % colors.length], reduceMotion ? 0 : 250 + i * step),
+          icon: p.key ? starPinIcon(reduceMotion ? 0 : 250 + i * step) : pinIcon(colors[i % colors.length], reduceMotion ? 0 : 250 + i * step),
+          zIndexOffset: p.key ? 500 : 0,
           title: p.city,
           riseOnHover: true
         }).addTo(map);
         var flag = p.country ? '<img class="flag flag-lg" src="' + flagBase + esc(String(p.country).toLowerCase()) + '.svg" alt="" width="36" height="24" onerror="this.remove()">' : '';
-        var popup = '<strong>' + esc(p.city) + '</strong>' + (p.note ? '<br><span class="pin-note">' + esc(p.note) + '</span>' : '') + flag;
+        var popup = '<strong>' + esc(p.city) + '</strong>' + (p.note ? '<br><span class="pin-note' + (p.key ? ' pin-note-key' : '') + '">' + (p.key ? '&#9733; ' : '') + esc(p.note) + '</span>' : '') + flag;
         m.bindPopup(popup, { closeButton: false, className: 'pin-popup', maxWidth: 240 });
         m.on('click', function () { flyTo(i); });
         markers.push(m);
@@ -160,7 +168,6 @@ permalink: /places/
           }).addTo(map);
           routes.push(line);
         });
-        markers.forEach(function (m) { m.setZIndexOffset(1000); });
       }
       function highlight(i) {
         routes.forEach(function (r, j) {
@@ -193,7 +200,6 @@ permalink: /places/
       return { flyTo: flyTo, showAll: showAll };
     }
 
-    buildMap('places-map', 'places-chips', {{ site.data.places | jsonify }});
     var travelMap = buildMap('travel-map', 'travel-chips', {{ site.data.travel | jsonify }}, { routes: true });
 
     // Departure board: split-flap effect, live clock, and rows that fly the map to that city.

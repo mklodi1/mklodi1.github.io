@@ -212,6 +212,11 @@ body { border-top: 6px solid var(--link); }
 .pin-body { stroke: var(--text); stroke-width: 2.5; stroke-linejoin: round; }
 .pin-dot { fill: #fff; stroke: var(--text); stroke-width: 2; }
 .pin-shadow { fill: rgba(0, 0, 0, .25); }
+.pin-lg { width: 50px; height: 65px; }
+.pin-star { fill: #fff; stroke: var(--text); stroke-width: 1.6; stroke-linejoin: round; }
+.pin-note-key { color: #A87400 !important; font-weight: 600; }
+.travel.travel-main { margin-top: 0; padding-top: 0; border-top: 0; }
+.travel-main h1 { font-size: 2rem; margin-bottom: 1.5rem; }
 .leaflet-marker-icon:hover .pin, .leaflet-marker-icon:focus .pin { transform: translateY(-5px) scale(1.12); }
 @media (prefers-reduced-motion: no-preference) {
   .pin { animation: pin-drop .7s cubic-bezier(.3, 1.6, .5, 1) both; transition: transform .18s ease; }
