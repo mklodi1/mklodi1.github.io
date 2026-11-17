@@ -1,8 +1,9 @@
 # "Timeline" section on the home page, oldest first.
 # Fields: when, title, place (optional), detail (optional).
 - when: "Jun 2017"
-  title: "Salutatorian"
+  title: "Advanced Diploma"
   place: "Manassas Park High School"
+  detail: "Salutatorian"
 
 - when: "Aug 2017 – May 2021"
   title: "B.S. in Bioinformatics"
