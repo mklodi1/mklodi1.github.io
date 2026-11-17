@@ -449,3 +449,26 @@ body { border-top: 6px solid var(--link); }
 .deck-btn:hover { background: #FFF3C4; }
 .deck-btn:active { transform: translate(2px, 2px); box-shadow: none; }
 .deck-count { font-variant-numeric: tabular-nums; color: var(--muted); min-width: 3.5rem; text-align: center; }
+
+/* sketchbook mode (Drawing): pages turn over from the spiral edge */
+.deck-ready.deck-book .deck-stack { perspective: 2200px; }
+.deck-ready.deck-book .deck-stack::before {           /* dark sketchbook cover behind the pages */
+  content: ""; position: absolute; inset: -10px -14px -16px -10px; z-index: 0;
+  background: #2E2A26; border-radius: 10px;
+  box-shadow: 0 14px 30px rgba(20, 15, 10, .28), inset 0 0 0 2px rgba(255,255,255,.04);
+}
+.deck-ready.deck-book .deck-stack::after {            /* edges of the pages underneath */
+  content: ""; position: absolute; inset: 4px -6px -7px 4px; z-index: 0; border-radius: 6px;
+  background: repeating-linear-gradient(90deg, #EFE7D8 0 2px, #DCD2C0 2px 3px);
+}
+.deck-ready.deck-book .deck-card {
+  padding: 0; border: 0; border-radius: 4px; background: #F3EDE2; cursor: pointer;
+  transform-origin: 0% 50%; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+.deck-ready.deck-book .deck-card img { border-radius: 4px; }
+.deck-ready.deck-book .deck-card.turning { box-shadow: 18px 10px 30px rgba(0,0,0,.25); }
+@media (prefers-reduced-motion: no-preference) {
+  .deck-ready.deck-book .deck-card { transition: transform .35s ease, opacity .2s ease; }
+  .deck-ready.deck-book .deck-card[aria-hidden="false"]:hover { transform: rotateY(-6deg) !important; box-shadow: 8px 4px 14px rgba(0,0,0,.18); }
+}

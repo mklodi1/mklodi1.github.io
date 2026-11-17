@@ -65,12 +65,26 @@ permalink: /personal/
       var cards = Array.prototype.slice.call(deck.querySelectorAll('.deck-card'));
       if (cards.length < 2) { if (cards.length) deck.classList.add('deck-ready', 'deck-single'); return; }
       deck.classList.add('deck-ready');
+      var book = deck.classList.contains('deck-drawing');   // sketchbook page-turn instead of tossing cards
+      if (book) deck.classList.add('deck-book');
       var order = cards.slice();          // order[0] is the top card
       var pos = 0;                        // index of the top card in the original list
       var posEl = deck.querySelector('[data-deck-pos]');
       var tilts = cards.map(function (_, i) { return [-4, 3, -2, 4, -3, 2][i % 6]; });
 
       function layout() {
+        if (book) {
+          order.forEach(function (card, k) {
+            card.style.zIndex = String(order.length - k);
+            card.style.opacity = k > 1 ? '0' : '1';
+            card.style.transform = 'rotateY(0deg)';
+            card.setAttribute('aria-hidden', k === 0 ? 'false' : 'true');
+            card.tabIndex = k === 0 ? 0 : -1;
+          });
+          pos = cards.indexOf(order[0]);
+          if (posEl) posEl.textContent = String(pos + 1);
+          return;
+        }
         order.forEach(function (card, k) {
           var i = cards.indexOf(card);
           var hidden = k > 3;
@@ -86,7 +100,39 @@ permalink: /personal/
         if (posEl) posEl.textContent = String(pos + 1);
       }
 
+      function turnForward() {
+        var top = order[0];
+        if (reduce) { order.push(order.shift()); layout(); return; }
+        order[1].style.opacity = '1';
+        top.style.transition = 'transform .75s cubic-bezier(.45, .05, .25, 1)';
+        top.style.transform = 'rotateY(-178deg)';
+        top.classList.add('turning');
+        setTimeout(function () {
+          top.classList.remove('turning');
+          top.style.transition = 'none';
+          order.push(order.shift());
+          layout();
+          void top.offsetWidth;
+          top.style.transition = '';
+        }, 760);
+      }
+      function turnBack() {
+        order.unshift(order.pop());
+        var top = order[0];
+        if (reduce) { layout(); return; }
+        top.style.transition = 'none';
+        top.style.zIndex = String(order.length + 1);
+        top.style.opacity = '1';
+        top.style.transform = 'rotateY(-178deg)';
+        top.classList.add('turning');
+        void top.offsetWidth;
+        top.style.transition = 'transform .75s cubic-bezier(.45, .05, .25, 1)';
+        top.style.transform = 'rotateY(0deg)';
+        setTimeout(function () { top.classList.remove('turning'); top.style.transition = ''; layout(); }, 760);
+      }
+
       function next(dir) {
+        if (book) { if (dir === -1) turnBack(); else turnForward(); return; }
         var top = order[0];
         var dx = (dir || 1) * 140;
         if (!reduce) {
@@ -97,6 +143,7 @@ permalink: /personal/
         } else { order.push(order.shift()); layout(); }
       }
       function prev() {
+        if (book) { turnBack(); return; }
         order.unshift(order.pop());
         var top = order[0];
         if (!reduce) {
@@ -122,7 +169,9 @@ permalink: /personal/
         if (startX === null) return;
         dx = e.clientX - startX;
         if (Math.abs(dx) > 6) dragging = true;
-        if (dragging) order[0].style.transform = 'translate(' + dx + 'px,0) rotate(' + dx / 18 + 'deg)';
+        if (dragging) order[0].style.transform = book
+          ? 'rotateY(' + Math.max(-60, Math.min(0, dx / 4)) + 'deg)'
+          : 'translate(' + dx + 'px,0) rotate(' + dx / 18 + 'deg)';
       });
       function end() {
         if (startX === null) return;
@@ -130,6 +179,7 @@ permalink: /personal/
         top.style.transition = '';
         startX = null;
         if (!dragging) { next(1); return; }
+        if (book) { if (dx < -60) turnForward(); else if (dx > 60) turnBack(); else layout(); return; }
         if (Math.abs(dx) > 80) next(dx > 0 ? 1 : -1); else layout();
       }
       stack.addEventListener('pointerup', end);
