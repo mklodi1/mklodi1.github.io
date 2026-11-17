@@ -37,7 +37,6 @@ permalink: /personal/
         {% assign caption = site.data.captions[img.basename] | default: label %}
         <figure class="deck-card">
           <img src="{{ img.path | relative_url }}" alt="{{ caption }}" loading="lazy" draggable="false">
-          <figcaption>{{ caption }}</figcaption>
         </figure>
         {% endif %}
         {% endfor %}

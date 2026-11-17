@@ -1,4 +1,5 @@
-# Captions shown under each photo on the Interests page.
+# Short descriptions of each photo on the Interests page. They are not shown on the page;
+# screen readers read them aloud, and they appear if a photo fails to load.
 # The key is the image file name without the extension. Photos not listed here
 # get a caption made from their file name.
 01-zion-canyon-switchbacks: "Zion National Park"
