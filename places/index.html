@@ -21,15 +21,12 @@ permalink: /places/
     <h2 id="h-travel">Travel</h2>
     <p class="muted places-hint"></p>
     <div id="travel-map" class="places-map" role="region" aria-label="Map of places I've traveled: {{ site.data.travel | map: 'city' | join: '; ' }}"></div>
-    <div class="places-chips" id="travel-chips">
-      <button type="button" class="chip" data-index="all">All places</button>
-      {% for p in site.data.travel %}<button type="button" class="chip" data-index="{{ forloop.index0 }}">{{ p.city }}{% if p.country %} <img class="flag" src="https://flagcdn.com/{{ p.country | downcase }}.svg" alt="" width="20" height="14" onerror="this.remove()">{% endif %}</button>{% endfor %}
-    </div>
 
     <div class="board" id="departure-board" aria-label="Departure board of places I've traveled">
       <div class="board-head">
         <span class="board-title"><span class="board-plane" aria-hidden="true">&#9992;</span> Departures</span>
         <span class="board-from">From {{ site.data.travel[0].city | split: ',' | first }}</span>
+        <button type="button" class="board-all" id="travel-all">Show all</button>
         <span class="board-clock" id="board-clock" aria-hidden="true"></span>
       </div>
       <div class="board-scroll">
@@ -193,7 +190,7 @@ permalink: /places/
       }
 
       showAll(false);
-      return { flyTo: flyTo };
+      return { flyTo: flyTo, showAll: showAll };
     }
 
     buildMap('places-map', 'places-chips', {{ site.data.places | jsonify }});
@@ -209,6 +206,13 @@ permalink: /places/
         clock.textContent = String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
       }
       if (clock) { tick(); setInterval(tick, 15000); }
+
+      var allBtn = document.getElementById('travel-all');
+      if (allBtn) allBtn.addEventListener('click', function () {
+        if (!travelMap) return;
+        document.getElementById('travel-map').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+        travelMap.showAll(true);
+      });
 
       var rows = board.querySelectorAll('tbody tr');
       for (var r = 0; r < rows.length; r++) {

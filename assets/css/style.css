@@ -365,6 +365,12 @@ body { border-top: 6px solid var(--link); }
 .board-title { font-size: 1.15rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #fff; }
 .board-plane { display: inline-block; color: #F5C518; transform: rotate(-30deg); margin-right: .25rem; }
 .board-from { color: #9AA4AF; font-size: .85rem; letter-spacing: .06em; }
+.board-all {
+  margin-left: auto; font: inherit; font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+  color: #F5C518; background: transparent; border: 1.5px solid #F5C518; border-radius: 999px; padding: .2rem .7rem; cursor: pointer;
+}
+.board-all:hover { background: #F5C518; color: #15181C; }
+.board-all + .board-clock { margin-left: .75rem; }
 .board-clock { margin-left: auto; color: #F5C518; font-size: 1.1rem; font-weight: 700; letter-spacing: .1em; }
 .board-scroll { max-height: 26rem; overflow: auto; }
 .board-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: .9rem; color: inherit; font-family: inherit; }
