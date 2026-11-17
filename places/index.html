@@ -4,6 +4,7 @@ title: Places
 permalink: /places/
 ---
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 
 <article class="wrap places">
   <h1>Significant Places</h1>
@@ -23,6 +24,34 @@ permalink: /places/
     <div class="places-chips" id="travel-chips">
       <button type="button" class="chip" data-index="all">All places</button>
       {% for p in site.data.travel %}<button type="button" class="chip" data-index="{{ forloop.index0 }}">{{ p.city }}{% if p.country %} <img class="flag" src="https://flagcdn.com/{{ p.country | downcase }}.svg" alt="" width="20" height="14" onerror="this.remove()">{% endif %}</button>{% endfor %}
+    </div>
+
+    <div class="board" id="departure-board" aria-label="Departure board of places I've traveled">
+      <div class="board-head">
+        <span class="board-title"><span class="board-plane" aria-hidden="true">&#9992;</span> Departures</span>
+        <span class="board-from">From {{ site.data.travel[0].city | split: ',' | first }}</span>
+        <span class="board-clock" id="board-clock" aria-hidden="true"></span>
+      </div>
+      <div class="board-scroll">
+        <table class="board-table">
+          <thead>
+            <tr><th scope="col">Flight</th><th scope="col">Destination</th><th scope="col">Gate</th><th scope="col">Status</th></tr>
+          </thead>
+          <tbody>
+            {% for p in site.data.travel offset: 1 %}
+            {% assign n = forloop.index %}
+            {% assign gates = "A,B,C,D,E" | split: "," %}
+            {% assign g = n | modulo: 5 %}
+            <tr data-index="{{ n }}" tabindex="0">
+              <td class="flap">ML{{ n | times: 37 | modulo: 900 | plus: 100 }}</td>
+              <td class="dest"><span class="flap">{{ p.city | split: ',' | first | upcase }}</span>{% if p.country %} <img class="flag" src="https://flagcdn.com/{{ p.country | downcase }}.svg" alt="" width="20" height="14" onerror="this.remove()">{% endif %}</td>
+              <td class="flap">{{ gates[g] }}{{ n | times: 3 | modulo: 29 | plus: 1 }}</td>
+              <td class="status"><span class="flap">LANDED</span></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
   {% endif %}
@@ -168,9 +197,64 @@ permalink: /places/
       }
 
       showAll(false);
+      return { flyTo: flyTo };
     }
 
     buildMap('places-map', 'places-chips', {{ site.data.places | jsonify }});
-    buildMap('travel-map', 'travel-chips', {{ site.data.travel | jsonify }}, { routes: true });
+    var travelMap = buildMap('travel-map', 'travel-chips', {{ site.data.travel | jsonify }}, { routes: true });
+
+    // Departure board: split-flap effect, live clock, and rows that fly the map to that city.
+    (function () {
+      var board = document.getElementById('departure-board');
+      if (!board) return;
+      var clock = document.getElementById('board-clock');
+      function tick() {
+        var d = new Date();
+        clock.textContent = String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
+      }
+      if (clock) { tick(); setInterval(tick, 15000); }
+
+      var rows = board.querySelectorAll('tbody tr');
+      for (var r = 0; r < rows.length; r++) {
+        (function (row) {
+          function go() {
+            if (!travelMap) return;
+            document.getElementById('travel-map').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+            travelMap.flyTo(Number(row.getAttribute('data-index')));
+          }
+          row.addEventListener('click', go);
+          row.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+        })(rows[r]);
+      }
+
+      if (reduceMotion || !('IntersectionObserver' in window)) return;
+      var CH = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      var cells = board.querySelectorAll('.flap');
+      function flip(el, delay) {
+        var target = el.textContent;
+        var frames = 8 + Math.floor(Math.random() * 6), f = 0;
+        setTimeout(function () {
+          var t = setInterval(function () {
+            f++;
+            if (f >= frames) { el.textContent = target; clearInterval(t); return; }
+            var out = '';
+            for (var i = 0; i < target.length; i++) {
+              var ch = target[i];
+              out += (ch === ' ' || ch === '.' || f > frames - (target.length - i) / 3) ? ch : CH[Math.floor(Math.random() * CH.length)];
+            }
+            el.textContent = out;
+          }, 55);
+        }, delay);
+      }
+      var io = new IntersectionObserver(function (entries) {
+        if (!entries[0].isIntersecting) return;
+        io.disconnect();
+        for (var i = 0; i < cells.length; i++) {
+          var rowIdx = Math.floor(i / 4);
+          flip(cells[i], rowIdx * 70);
+        }
+      }, { threshold: 0.15 });
+      io.observe(board);
+    })();
   })();
 </script>

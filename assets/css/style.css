@@ -350,3 +350,46 @@ body { border-top: 6px solid var(--link); }
 }
 .work:last-child::after, .pubs li:last-child::after, .honor-list li:last-child::after { display: none; }
 .work:hover::after, .pubs li:hover::after, .honor-list li:hover::after { opacity: 0; }
+
+/* ---------- departure board (Places > Travel) ---------- */
+.board {
+  margin-top: 2.25rem; background: #15181C; color: #F5C518;
+  border: 3px solid var(--text); border-radius: 14px; box-shadow: 6px 6px 0 var(--text);
+  font-family: "Roboto Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  overflow: hidden;
+}
+.board-head {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem 1.25rem;
+  padding: .9rem 1.1rem; background: #0E1013; border-bottom: 2px solid #2A2F36;
+}
+.board-title { font-size: 1.15rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #fff; }
+.board-plane { display: inline-block; color: #F5C518; transform: rotate(-30deg); margin-right: .25rem; }
+.board-from { color: #9AA4AF; font-size: .85rem; letter-spacing: .06em; }
+.board-clock { margin-left: auto; color: #F5C518; font-size: 1.1rem; font-weight: 700; letter-spacing: .1em; }
+.board-scroll { max-height: 26rem; overflow: auto; }
+.board-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: .9rem; color: inherit; font-family: inherit; }
+.board-table th {
+  position: sticky; top: 0; z-index: 1; background: #15181C; text-align: left;
+  color: #9AA4AF; font-weight: 600; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+  padding: .6rem 1.1rem; border-bottom: 1px solid #2A2F36;
+}
+.board-table td { padding: .5rem 1.1rem; border-bottom: 1px solid #22262C; white-space: nowrap; letter-spacing: .08em; }
+.board-table tbody tr { cursor: pointer; }
+.board-table tbody tr:nth-child(even) td { background: #181B20; }
+.board-table tbody tr:hover td, .board-table tbody tr:focus td { background: #232830; color: #FFD84D; }
+.board-table tbody tr:focus { outline: none; }
+.board-table tbody tr:focus-visible td:first-child { box-shadow: inset 3px 0 0 #F5C518; }
+.board-table .flap { font-variant-numeric: tabular-nums; }
+.board-table td.flap, .board-table td .flap {
+  display: inline-block; padding: .05rem .2rem; border-radius: 3px;
+  background: linear-gradient(#20242A 50%, #1A1D22 50%);
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,.6);
+}
+.board-table td.flap { display: table-cell; background: none; box-shadow: none; padding: .5rem 1.1rem; }
+.board-table .dest .flag { vertical-align: -2px; margin-left: .35rem; }
+.board-table .status .flap { color: #3DDC84; }
+@media (max-width: 600px) {
+  .board { box-shadow: 4px 4px 0 var(--text); }
+  .board-table td, .board-table th { padding-left: .7rem; padding-right: .7rem; }
+}
+@media print { .board { box-shadow: none; } }
