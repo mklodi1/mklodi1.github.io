@@ -78,6 +78,7 @@ permalink: /life-map/
         var u = 1 - t;
         pts.push([u * u * a[0] + 2 * u * t * c[0] + t * t * b[0], u * u * a[1] + 2 * u * t * c[1] + t * t * b[1]]);
       }
+      pts.bez = [a, c, b];
       return pts;
     }
 
@@ -151,8 +152,8 @@ permalink: /life-map/
         map.flyToBounds(L.latLngBounds(pts), { padding: [60, 60], duration: 1 });
         map.once('moveend', function () {
           if (my !== trip.token) return;
-          trip.marker = L.marker(pts[0], { icon: planeIcon(28, 'plane-trip'), interactive: false, keyboard: false, zIndexOffset: 2000 }).addTo(map);
-          trip.cancel = flyPlane(trip.marker, pts, 2600, function () {
+          trip.marker = L.marker(pts[0], { icon: planeIcon(34, 'plane-trip'), interactive: false, keyboard: false, zIndexOffset: 2000 }).addTo(map);
+          trip.cancel = flyPlane(trip.marker, pts, 3200, function () {
             if (my !== trip.token) return;
             map.removeLayer(trip.marker); trip.marker = null;
             zoomTo(i);
@@ -204,22 +205,30 @@ permalink: /life-map/
         });
       }
       // Moves a plane marker along pts over dur ms; calls done() on landing. Returns a cancel function.
+      // Flies a plane marker along the route's curve over dur ms, then calls done(). Returns a cancel function.
+      // Position and heading come straight from the curve's formula, so motion and turning stay smooth.
       function flyPlane(marker, pts, dur, done) {
-        var start = null, cancelled = false;
-        var el = function () { return marker.getElement() && marker.getElement().querySelector('.plane'); };
+        var bz = pts.bez || [pts[0], pts[Math.floor(pts.length / 2)], pts[pts.length - 1]];
+        var A = bz[0], C = bz[1], B = bz[2];
+        function at(t) {
+          var u = 1 - t;
+          return [u * u * A[0] + 2 * u * t * C[0] + t * t * B[0], u * u * A[1] + 2 * u * t * C[1] + t * t * B[1]];
+        }
+        var start = null, cancelled = false, heading = null;
+        var node = function () { var e = marker.getElement(); return e && e.querySelector('.plane'); };
         function step(ts) {
           if (cancelled) return;
           if (start === null) start = ts;
           var t = Math.min(1, (ts - start) / dur);
-          var e = t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;   // ease in-out
-          var f = e * (pts.length - 1), a = Math.floor(f), b = Math.min(pts.length - 1, a + 1), r = f - a;
-          var lat = pts[a][0] + (pts[b][0] - pts[a][0]) * r, lng = pts[a][1] + (pts[b][1] - pts[a][1]) * r;
-          marker.setLatLng([lat, lng]);
-          var p1 = map.latLngToLayerPoint(pts[a]), p2 = map.latLngToLayerPoint(pts[b === a ? a : b]);
-          if (b !== a) {
-            var deg = Math.atan2(p2.x - p1.x, -(p2.y - p1.y)) * 180 / Math.PI;
-            var node = el(); if (node) node.style.transform = 'rotate(' + deg + 'deg)';
-          }
+          var e = -(Math.cos(Math.PI * t) - 1) / 2;            // gentle sine ease in-out
+          var here = at(e);
+          marker.setLatLng(here);
+          var p1 = map.latLngToLayerPoint(at(Math.max(0, e - 0.01))), p2 = map.latLngToLayerPoint(at(Math.min(1, e + 0.01)));
+          var target = Math.atan2(p2.x - p1.x, -(p2.y - p1.y)) * 180 / Math.PI;
+          if (heading === null) heading = target;
+          var diff = ((target - heading + 540) % 360) - 180;   // shortest way round
+          heading += diff * 0.35;                              // ease the nose into each turn
+          var n = node(); if (n) n.style.transform = 'rotate(' + heading.toFixed(2) + 'deg)';
           if (t < 1) requestAnimationFrame(step); else if (done) done();
         }
         requestAnimationFrame(step);
