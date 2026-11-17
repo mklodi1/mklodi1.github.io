@@ -220,6 +220,15 @@ permalink: /life-map/
         travelMap.showAll(true);
       });
 
+      // Shuffle the board rows on every visit, like a live departures screen.
+      var tbody = board.querySelector('tbody');
+      var shuffled = Array.prototype.slice.call(board.querySelectorAll('tbody tr'));
+      for (var s = shuffled.length - 1; s > 0; s--) {
+        var j = Math.floor(Math.random() * (s + 1));
+        var tmp = shuffled[s]; shuffled[s] = shuffled[j]; shuffled[j] = tmp;
+      }
+      shuffled.forEach(function (tr) { tbody.appendChild(tr); });
+
       var rows = board.querySelectorAll('tbody tr');
       for (var r = 0; r < rows.length; r++) {
         (function (row) {
