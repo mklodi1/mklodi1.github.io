@@ -1,26 +1,21 @@
-# Newest first. "award", "link" and "poster" are optional.
-# poster: the file name in assets/posters/ without .pdf (needs NAME.pdf, NAME-large.jpg and NAME-thumb.jpg)
+# Newest first. "award" and "link" are optional.
 # Tip: wrap text in "double quotes" if it contains a colon.
 - event: "Molecular Biosciences Graduate Student Organization Symposium 2026"
   type: "Poster Presentation"
   date: "Mar 2026"
-  poster: "mbs-2026"
 
 - event: "Mid-Atlantic Bioinformatics Conference 2025"
   type: "Poster Presentation"
   date: "Oct 2025"
-  poster: "mabc-2025"
 
 - event: "Molecular Biosciences Graduate Student Organization Symposium 2025"
   type: "Poster Presentation"
   date: "Mar 2025"
-  poster: "mbs-2025"
 
 - event: "International Conference for Intelligent Biology & Medicine 2024"
   type: "Poster Presentation"
   date: "Oct 2024"
   award: "Conference Travel Award"
-  poster: "icibm-2024"
 
 - event: "Mid-Atlantic Bioinformatics Conference 2024"
   type: "Poster Presentation"
