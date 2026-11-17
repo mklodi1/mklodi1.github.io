@@ -9,10 +9,16 @@
   place: "Virginia Commonwealth University, Richmond, VA"
   detail: "Virginia Scholarship, UROP Fellowship"
 
+- when: "Apr 2021"
+  title: "Co-author paper published in Proteomes"
+
 - when: "Aug 2021 – Sep 2026"
   title: "Ph.D. in Quantitative Biomedicine"
   place: "Rutgers University, New Brunswick, NJ"
   detail: "Presidential Fellowship"
+
+- when: "Jul 2022"
+  title: "Co-author paper published in Frontiers in Genetics"
 
 - when: "Jan 2026"
   title: "First-author paper published in Genes"
