@@ -1,4 +1,4 @@
-# Places shown on the Travel map and departure board at /places/.
+# Places shown on the map and departure board at /life-map/.
 # The first entry is the home base that the flight routes start from.
 # country: two-letter country code for the flag (e.g. us, in, mx).
 # Optional: note: "A short description shown when someone clicks the pin"
