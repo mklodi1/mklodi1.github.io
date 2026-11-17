@@ -27,16 +27,124 @@ permalink: /personal/
   <section class="gallery-section" aria-labelledby="h-{{ folder }}">
     <h2 id="h-{{ folder }}">{{ heading }}</h2>
     {% assign shown = 0 %}
-    <div class="gallery">
-      {% for img in images %}
-      {% assign ext = img.extname | downcase %}
-      {% if ext == ".jpg" or ext == ".jpeg" or ext == ".png" or ext == ".webp" or ext == ".gif" %}
-      {% assign shown = shown | plus: 1 %}
-      <a href="{{ img.path | relative_url }}"><img src="{{ img.path | relative_url }}" alt="{{ img.basename | slice: 3, 200 | replace: '-', ' ' | replace: '_', ' ' }}" loading="lazy"></a>
+    <div class="deck" data-deck aria-roledescription="photo stack" aria-label="{{ heading }}">
+      <div class="deck-stack">
+        {% for img in images %}
+        {% assign ext = img.extname | downcase %}
+        {% if ext == ".jpg" or ext == ".jpeg" or ext == ".png" or ext == ".webp" or ext == ".gif" %}
+        {% assign shown = shown | plus: 1 %}
+        {% assign label = img.basename | slice: 3, 200 | replace: '-', ' ' | replace: '_', ' ' %}
+        {% assign caption = site.data.captions[img.basename] | default: label %}
+        <figure class="deck-card">
+          <img src="{{ img.path | relative_url }}" alt="{{ caption }}" loading="lazy" draggable="false">
+          <figcaption>{{ caption }}</figcaption>
+        </figure>
+        {% endif %}
+        {% endfor %}
+      </div>
+      {% if shown > 1 %}
+      <div class="deck-controls">
+        <button type="button" class="deck-btn" data-deck-prev aria-label="Previous photo">&#8592;</button>
+        <span class="deck-count" aria-live="polite"><span data-deck-pos>1</span> / {{ shown }}</span>
+        <button type="button" class="deck-btn" data-deck-next aria-label="Next photo">&#8594;</button>
+      </div>
+      <p class="deck-hint muted">Swipe, click the photo, or use the arrow keys to flip through.</p>
       {% endif %}
-      {% endfor %}
     </div>
     {% if shown == 0 %}<p class="muted">Coming soon.</p>{% endif %}
   </section>
   {% endfor %}
 </article>
+
+<script>
+  // Stacked photo cards: click or swipe the top card to send it to the back.
+  (function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var decks = document.querySelectorAll('[data-deck]');
+    Array.prototype.forEach.call(decks, function (deck) {
+      var stack = deck.querySelector('.deck-stack');
+      var cards = Array.prototype.slice.call(deck.querySelectorAll('.deck-card'));
+      if (cards.length < 2) { if (cards.length) deck.classList.add('deck-ready', 'deck-single'); return; }
+      deck.classList.add('deck-ready');
+      var order = cards.slice();          // order[0] is the top card
+      var pos = 0;                        // index of the top card in the original list
+      var posEl = deck.querySelector('[data-deck-pos]');
+      var tilts = cards.map(function (_, i) { return [-4, 3, -2, 4, -3, 2][i % 6]; });
+
+      function layout() {
+        order.forEach(function (card, k) {
+          var i = cards.indexOf(card);
+          var hidden = k > 3;
+          card.style.zIndex = String(order.length - k);
+          card.style.opacity = hidden ? '0' : '1';
+          card.style.transform = k === 0
+            ? 'translate(0,0) rotate(0deg)'
+            : 'translate(' + (k * 7) + 'px,' + (k * 5) + 'px) rotate(' + tilts[i] + 'deg) scale(' + (1 - k * 0.03) + ')';
+          card.setAttribute('aria-hidden', k === 0 ? 'false' : 'true');
+          card.tabIndex = k === 0 ? 0 : -1;
+        });
+        pos = cards.indexOf(order[0]);
+        if (posEl) posEl.textContent = String(pos + 1);
+      }
+
+      function next(dir) {
+        var top = order[0];
+        var dx = (dir || 1) * 140;
+        if (!reduce) {
+          top.style.transition = 'transform .35s ease, opacity .35s ease';
+          top.style.transform = 'translate(' + dx + '%, -6%) rotate(' + (dir || 1) * 18 + 'deg)';
+          top.style.opacity = '0';
+          setTimeout(function () { order.push(order.shift()); top.style.transition = ''; layout(); }, 300);
+        } else { order.push(order.shift()); layout(); }
+      }
+      function prev() {
+        order.unshift(order.pop());
+        var top = order[0];
+        if (!reduce) {
+          top.style.transition = 'none';
+          top.style.transform = 'translate(-140%, -6%) rotate(-18deg)';
+          top.style.opacity = '0';
+          top.style.zIndex = String(order.length + 1);
+          void top.offsetWidth;
+          top.style.transition = '';
+        }
+        layout();
+      }
+
+      // drag / swipe on the top card
+      var startX = null, dx = 0, dragging = false;
+      stack.addEventListener('pointerdown', function (e) {
+        if (!order[0].contains(e.target)) return;
+        startX = e.clientX; dx = 0; dragging = false;
+        order[0].style.transition = 'none';
+        stack.setPointerCapture && stack.setPointerCapture(e.pointerId);
+      });
+      stack.addEventListener('pointermove', function (e) {
+        if (startX === null) return;
+        dx = e.clientX - startX;
+        if (Math.abs(dx) > 6) dragging = true;
+        if (dragging) order[0].style.transform = 'translate(' + dx + 'px,0) rotate(' + dx / 18 + 'deg)';
+      });
+      function end() {
+        if (startX === null) return;
+        var top = order[0];
+        top.style.transition = '';
+        startX = null;
+        if (!dragging) { next(1); return; }
+        if (Math.abs(dx) > 80) next(dx > 0 ? 1 : -1); else layout();
+      }
+      stack.addEventListener('pointerup', end);
+      stack.addEventListener('pointercancel', function () { startX = null; layout(); });
+
+      var nb = deck.querySelector('[data-deck-next]'), pb = deck.querySelector('[data-deck-prev]');
+      if (nb) nb.addEventListener('click', function () { next(1); });
+      if (pb) pb.addEventListener('click', prev);
+      deck.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight') { e.preventDefault(); next(1); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+      });
+
+      layout();
+    });
+  })();
+</script>

@@ -406,3 +406,43 @@ body { border-top: 6px solid var(--link); }
   .board-table td, .board-table th { padding-left: .7rem; padding-right: .7rem; }
 }
 @media print { .board { box-shadow: none; } }
+
+/* ---------- stacked photo cards (Interests page) ---------- */
+/* without JavaScript the cards simply show as a grid */
+.deck-stack { display: grid; grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); gap: .75rem; }
+.deck-card { margin: 0; }
+.deck-card img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px; }
+.deck-card figcaption { display: none; }
+
+.deck-ready { display: flex; flex-direction: column; align-items: center; padding: 1rem 0 .5rem; }
+.deck-ready .deck-stack {
+  display: block; position: relative; width: min(100%, 21rem); aspect-ratio: 3 / 4.15;
+  touch-action: pan-y; user-select: none; -webkit-user-select: none;
+}
+.deck-ready .deck-card {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  background: #fff; padding: .7rem .7rem 0; border-radius: 6px;
+  border: 1px solid #E2E5E9; box-shadow: 0 2px 4px rgba(20,30,45,.08), 0 12px 28px rgba(20,30,45,.14);
+  cursor: grab; transform-origin: 50% 80%;
+}
+.deck-ready .deck-card:active { cursor: grabbing; }
+.deck-ready .deck-card img { flex: 1; min-height: 0; aspect-ratio: auto; height: 100%; border-radius: 2px; pointer-events: none; }
+.deck-ready .deck-card figcaption {
+  display: block; padding: .55rem .25rem .7rem; text-align: center;
+  font-style: italic; font-size: .92rem; color: var(--muted);
+}
+.deck-ready .deck-card:focus-visible { outline: 3px solid var(--link); outline-offset: 4px; }
+@media (prefers-reduced-motion: no-preference) {
+  .deck-ready .deck-card { transition: transform .45s cubic-bezier(.2, .8, .2, 1), opacity .3s ease; }
+}
+.deck-controls { display: none; }
+.deck-hint { display: none; }
+.deck-ready .deck-controls { display: flex; align-items: center; gap: 1.25rem; margin-top: 1.75rem; }
+.deck-ready .deck-hint { display: block; margin: .6rem 0 0; font-size: .85rem; }
+.deck-btn {
+  font: inherit; font-size: 1.1rem; width: 2.6rem; height: 2.6rem; border-radius: 50%; cursor: pointer;
+  color: var(--text); background: #fff; border: 2px solid var(--text); box-shadow: 2px 2px 0 var(--text);
+}
+.deck-btn:hover { background: #FFF3C4; }
+.deck-btn:active { transform: translate(2px, 2px); box-shadow: none; }
+.deck-count { font-variant-numeric: tabular-nums; color: var(--muted); min-width: 3.5rem; text-align: center; }

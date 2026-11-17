@@ -1,0 +1,12 @@
+# Captions shown under each photo on the Interests page.
+# The key is the image file name without the extension. Photos not listed here
+# get a caption made from their file name.
+01-zion-canyon-switchbacks: "Zion National Park"
+02-blue-nissan-skyline-gt-r: "Nissan Skyline GT-R"
+03-valley-of-fire-road: "Valley of Fire, Nevada"
+04-white-house-in-autumn: "Autumn colors"
+05-hoover-dam-bypass-bridge: "Hoover Dam bypass bridge"
+06-autumn-lake-reflection: "Autumn reflections"
+07-virgin-river-in-zion: "Virgin River, Zion"
+08-us-capitol-dome: "U.S. Capitol"
+09-porch-with-american-flag: "Old Glory on the porch"
