@@ -1,31 +1,18 @@
 # "Timeline" section on the home page, oldest first.
+# Fields: when, title, place (optional), detail (optional).
 - when: "Jun 2017"
-  title: "Salutatorian, Manassas Park High School"
-  place: "Manassas Park, VA"
-  kind: award
+  title: "Salutatorian"
+  place: "Manassas Park High School"
 
-- when: "Aug 2017"
-  title: "Started B.S. in Bioinformatics at VCU"
-  place: "Richmond, VA"
+- when: "Aug 2017 – May 2021"
+  title: "B.S. in Bioinformatics"
+  place: "Virginia Commonwealth University, Richmond, VA"
   detail: "Virginia Scholarship, UROP Fellowship"
-  kind: education
 
-- when: "May 2021"
-  title: "Graduated from VCU"
-  place: "Richmond, VA"
-  kind: education
-
-- when: "Aug 2021"
-  title: "Started Ph.D. in Quantitative Biomedicine at Rutgers University"
-  place: "New Brunswick, NJ"
+- when: "Aug 2021 – Sep 2026"
+  title: "Ph.D. in Quantitative Biomedicine"
+  place: "Rutgers University, New Brunswick, NJ"
   detail: "Presidential Fellowship"
-  kind: education
 
 - when: "Jan 2026"
   title: "First-author paper published in Genes"
-  kind: research
-
-- when: "Sep 2026"
-  title: "Completed Ph.D. in Quantitative Biomedicine at Rutgers University"
-  place: "New Brunswick, NJ"
-  kind: education

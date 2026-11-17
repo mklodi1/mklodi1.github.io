@@ -563,3 +563,11 @@ body { border-top: 6px solid var(--link); }
 .journey::after, .journey.journey-animate::after { display: none; }
 .journey::before { background: #DCEBF7; }
 .journey-animate .journey-plane { filter: none; }
+
+/* cleaner cards: date, title, school, then honors in small text */
+.journey-card { padding: .85rem 1.05rem; border-radius: 12px; }
+.journey-when { font-size: .74rem; letter-spacing: .03em; }
+.journey-title { font-size: 1.05rem; margin-top: .15rem !important; }
+.journey-place { margin: .15rem 0 0 !important; font-size: .92rem; color: #4A545E; }
+.journey-meta { margin-top: .45rem !important; padding-top: .45rem; border-top: 1px solid #EEF2F6; font-size: .84rem; }
+.journey-card { display: block; }

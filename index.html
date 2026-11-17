@@ -30,7 +30,8 @@ layout: default
         <div class="journey-card">
           <p class="journey-when">{{ j.when }}</p>
           <p class="journey-title">{{ j.title }}</p>
-          {% if j.place or j.detail %}<p class="journey-meta">{% if j.place %}{{ j.place }}{% endif %}{% if j.place and j.detail %}<br>{% endif %}{% if j.detail %}{{ j.detail }}{% endif %}</p>{% endif %}
+          {% if j.place %}<p class="journey-place">{{ j.place }}</p>{% endif %}
+          {% if j.detail %}<p class="journey-meta">{{ j.detail }}</p>{% endif %}
         </div>
       </li>
       {% endfor %}
