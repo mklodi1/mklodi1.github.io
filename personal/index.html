@@ -32,7 +32,7 @@ permalink: /personal/
       {% assign ext = img.extname | downcase %}
       {% if ext == ".jpg" or ext == ".jpeg" or ext == ".png" or ext == ".webp" or ext == ".gif" %}
       {% assign shown = shown | plus: 1 %}
-      <a href="{{ img.path | relative_url }}"><img src="{{ img.path | relative_url }}" alt="{{ heading }}: {{ img.basename | replace: '-', ' ' | replace: '_', ' ' }}" loading="lazy"></a>
+      <a href="{{ img.path | relative_url }}"><img src="{{ img.path | relative_url }}" alt="{{ img.basename | slice: 3, 200 | replace: '-', ' ' | replace: '_', ' ' }}" loading="lazy"></a>
       {% endif %}
       {% endfor %}
     </div>
