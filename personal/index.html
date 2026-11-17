@@ -19,7 +19,8 @@ permalink: /personal/
   {% assign images = site.static_files | where_exp: "f", "f.path contains prefix" | where_exp: "f", "f.extname != ''" | sort: "path" %}
   <section class="gallery-section" aria-labelledby="h-{{ folder }}">
     <h2 id="h-{{ folder }}">{{ heading }}</h2>
-    {% if folder == "sports" %}<p class="section-note">Founder &amp; Captain of Rutgers Cricket Club</p>{% endif %}
+    {% if folder == "sports" %}<p class="section-note">Founder &amp; Captain of Rutgers Cricket Club</p>
+    <p class="section-note section-note-sub">Play in leagues across Virginia and New Jersey</p>{% endif %}
     {% assign shown = 0 %}
     <div class="deck deck-{{ folder }}" data-deck aria-roledescription="photo stack" aria-label="{{ heading }}">
       <div class="deck-stack">
