@@ -17,7 +17,7 @@
   kind: education
 
 - when: "Aug 2021"
-  title: "Started Ph.D. in Quantitative Biomedicine at Rutgers"
+  title: "Started Ph.D. in Quantitative Biomedicine at Rutgers University"
   place: "New Brunswick, NJ"
   detail: "Presidential Fellowship"
   kind: education
@@ -27,6 +27,6 @@
   kind: research
 
 - when: "Sep 2026"
-  title: "Completed Ph.D."
-  place: "Rutgers University"
+  title: "Completed Ph.D. in Quantitative Biomedicine at Rutgers University"
+  place: "New Brunswick, NJ"
   kind: education
