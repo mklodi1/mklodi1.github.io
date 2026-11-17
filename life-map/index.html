@@ -131,13 +131,33 @@ permalink: /life-map/
       }
 
       var markers = [];
-      function flyTo(i) {
+      var trip = { token: 0, cancel: null, marker: null };
+      function zoomTo(i) {
         var p = places[i];
-        map.closePopup();
         map.flyTo([p.lat, p.lng], 10, { duration: reduceMotion ? 0 : 1.4 });
         map.once('moveend', function () { markers[i].openPopup(); });
+      }
+      function flyTo(i) {
+        map.closePopup();
         setActive(String(i));
         if (routes.length) highlight(i);
+        // stop any flight already in progress
+        trip.token++;
+        if (trip.cancel) trip.cancel();
+        if (trip.marker) { map.removeLayer(trip.marker); trip.marker = null; }
+        var route = routes[i];
+        if (!route || reduceMotion) { zoomTo(i); return; }
+        var my = trip.token, pts = route._pts;
+        map.flyToBounds(L.latLngBounds(pts), { padding: [60, 60], duration: 1 });
+        map.once('moveend', function () {
+          if (my !== trip.token) return;
+          trip.marker = L.marker(pts[0], { icon: planeIcon(28, 'plane-trip'), interactive: false, keyboard: false, zIndexOffset: 2000 }).addTo(map);
+          trip.cancel = flyPlane(trip.marker, pts, 2600, function () {
+            if (my !== trip.token) return;
+            map.removeLayer(trip.marker); trip.marker = null;
+            zoomTo(i);
+          });
+        });
       }
 
       var step = Math.min(160, Math.round(2000 / places.length));
@@ -163,11 +183,81 @@ permalink: /life-map/
         L.circleMarker([hub.lat, hub.lng], { radius: 16, className: 'hub-ring', interactive: false }).addTo(map);
         places.forEach(function (p, i) {
           if (i === 0 || hubLL.distanceTo([p.lat, p.lng]) < 80000) { routes.push(null); return; }
-          var line = L.polyline(arc([hub.lat, hub.lng], [p.lat, p.lng]), {
+          var pts = arc([hub.lat, hub.lng], [p.lat, p.lng]);
+          var line = L.polyline(reduceMotion ? pts : [pts[0], pts[0]], {
             className: 'route-line', color: colors[i % colors.length], weight: 2.5, opacity: .9, interactive: false
           }).addTo(map);
+          line._pts = pts;
           routes.push(line);
         });
+
+        // Takeoff: routes draw themselves outward from home, one after another.
+        if (!reduceMotion) {
+          var order = routes.filter(Boolean);
+          order.forEach(function (line, k) {
+            setTimeout(function () {
+              var pts = line._pts, start = null, dur = 700;
+              function grow(ts) {
+                if (start === null) start = ts;
+                var t = Math.min(1, (ts - start) / dur);
+                line.setLatLngs(pts.slice(0, Math.max(2, Math.ceil(t * pts.length))));
+                if (t < 1) requestAnimationFrame(grow);
+              }
+              requestAnimationFrame(grow);
+            }, 400 + k * 70);
+          });
+          // Planes in the air: a few small planes keep flying random routes once takeoff is done.
+          setTimeout(function () { for (var n = 0; n < 3; n++) ambient(n * 1800); }, 400 + order.length * 70 + 800);
+        }
+      }
+
+      // ---- airplanes ----
+      function planeIcon(size, cls) {
+        return L.divIcon({
+          className: 'plane-icon ' + (cls || ''),
+          html: '<div class="plane"><svg viewBox="0 0 24 24" width="' + size + '" height="' + size + '" aria-hidden="true">' +
+                '<path d="M12 1.5c.9 0 1.5 1.1 1.5 2.4v5.3l8 4.7v2.2l-8-2.4v4.6l2.3 1.8v1.8L12 21l-3.8.9v-1.8l2.3-1.8v-4.6l-8 2.4v-2.2l8-4.7V3.9c0-1.3.6-2.4 1.5-2.4z"/>' +
+                '</svg></div>',
+          iconSize: [size, size],
+          iconAnchor: [size / 2, size / 2]
+        });
+      }
+      // Moves a plane marker along pts over dur ms; calls done() on landing. Returns a cancel function.
+      function flyPlane(marker, pts, dur, done) {
+        var start = null, cancelled = false;
+        var el = function () { return marker.getElement() && marker.getElement().querySelector('.plane'); };
+        function step(ts) {
+          if (cancelled) return;
+          if (start === null) start = ts;
+          var t = Math.min(1, (ts - start) / dur);
+          var e = t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;   // ease in-out
+          var f = e * (pts.length - 1), a = Math.floor(f), b = Math.min(pts.length - 1, a + 1), r = f - a;
+          var lat = pts[a][0] + (pts[b][0] - pts[a][0]) * r, lng = pts[a][1] + (pts[b][1] - pts[a][1]) * r;
+          marker.setLatLng([lat, lng]);
+          var p1 = map.latLngToLayerPoint(pts[a]), p2 = map.latLngToLayerPoint(pts[b === a ? a : b]);
+          if (b !== a) {
+            var deg = Math.atan2(p2.x - p1.x, -(p2.y - p1.y)) * 180 / Math.PI;
+            var node = el(); if (node) node.style.transform = 'rotate(' + deg + 'deg)';
+          }
+          if (t < 1) requestAnimationFrame(step); else if (done) done();
+        }
+        requestAnimationFrame(step);
+        return function () { cancelled = true; };
+      }
+      function ambient(delay) {
+        setTimeout(function launch() {
+          var choices = routes.map(function (r, i) { return r ? i : -1; }).filter(function (i) { return i > 0; });
+          if (!choices.length) return;
+          var i = choices[Math.floor(Math.random() * choices.length)];
+          var pts = routes[i]._pts.slice();
+          if (Math.random() < .5) pts.reverse();
+          var m = L.marker(pts[0], { icon: planeIcon(16, 'plane-ambient'), interactive: false, keyboard: false, zIndexOffset: 800 }).addTo(map);
+          var px = map.latLngToLayerPoint(pts[0]).distanceTo(map.latLngToLayerPoint(pts[pts.length - 1]));
+          flyPlane(m, pts, Math.max(4000, Math.min(14000, px * 18)), function () {
+            map.removeLayer(m);
+            setTimeout(launch, 800 + Math.random() * 2500);
+          });
+        }, delay);
       }
       function highlight(i) {
         routes.forEach(function (r, j) {
@@ -181,6 +271,11 @@ permalink: /life-map/
 
       var allBounds = L.latLngBounds(places.map(function (p) { return [p.lat, p.lng]; }));
       function showAll(animate) {
+        if (typeof trip !== 'undefined') {
+          trip.token++;
+          if (trip.cancel) trip.cancel();
+          if (trip.marker) { map.removeLayer(trip.marker); trip.marker = null; }
+        }
         map.closePopup();
         if (places.length === 1) map.setView([places[0].lat, places[0].lng], 8);
         else if (animate && !reduceMotion) map.flyToBounds(allBounds, { padding: [50, 50], duration: 1.2 });
