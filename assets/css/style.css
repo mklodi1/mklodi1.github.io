@@ -540,3 +540,21 @@ body { border-top: 6px solid var(--link); }
   .journey-dot, .journey-item:nth-child(odd) .journey-dot { left: 0; right: auto; }
 }
 @media print { .journey-animate .journey-item { opacity: 1 !important; transform: none !important; } }
+
+/* lighter, cleaner timeline: light-blue line and hollow dots that match the plane */
+.journey { --tl: #7CC4F0; --tl-soft: #E8EEF4; }
+.journey::before { background: var(--tl-soft); }
+.journey::after { background: var(--tl); }
+.journey-dot {
+  width: 14px; height: 14px; top: .65rem; right: -7px; background: #fff;
+  border: 2px solid var(--tl); box-shadow: 0 0 0 4px #fff;
+}
+.journey-item:nth-child(odd) .journey-dot { left: -7px; right: auto; }
+.journey-item.in .journey-dot { background: var(--tl); }
+.journey-card { border-color: #EDF1F5; box-shadow: none; }
+.journey-when { color: #3B8FD0; font-weight: 600; }
+.journey-title { font-weight: 500; color: #2B333B; }
+.journey-item:hover .journey-card { border-color: var(--tl); box-shadow: 0 6px 18px rgba(60, 140, 210, .10); }
+@media (max-width: 600px) {
+  .journey-dot, .journey-item:nth-child(odd) .journey-dot { left: 1px; right: auto; }
+}
