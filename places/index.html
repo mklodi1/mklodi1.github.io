@@ -25,7 +25,7 @@ permalink: /places/
     <div class="board" id="departure-board" aria-label="Departure board of places I've traveled">
       <div class="board-head">
         <span class="board-title"><span class="board-plane" aria-hidden="true">&#9992;</span> Departures</span>
-        <span class="board-from">From {{ site.data.travel[0].city | split: ',' | first }}</span>
+        <span class="board-from">Origin: {{ site.data.travel[0].city | split: ',' | first }}</span>
         <button type="button" class="board-all" id="travel-all">Show all</button>
         <span class="board-clock" id="board-clock" aria-hidden="true"></span>
       </div>
