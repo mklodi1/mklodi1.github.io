@@ -1,8 +1,30 @@
-# Newest first. "award" and "link" are optional.
+# Newest first. "award", "link", "abstract_title" and "abstract" are optional.
 # Tip: wrap text in "double quotes" if it contains a colon.
 - event: "Molecular Biosciences Graduate Student Organization Symposium 2026"
   type: "Poster Presentation"
   date: "Mar 2026"
+  abstract_title: "Identifying Risk Genes Associated with Neural Progenitor Cell (NPC) Hyperproliferation"
+  abstract: >-
+    Neural progenitor cell (NPC) hyperproliferation has been implicated as a key mechanism underlying
+    altered early brain development in several neurodevelopmental disorders. Increased NPC proliferation
+    can result in greater neural cell production during early brain development, and has been linked to
+    macrocephaly, defined as increased head circumference. In 16p11.2 Deletion Syndrome (16pDel),
+    macrocephaly is observed in a subset of affected individuals, despite all patients sharing the same
+    primary genomic deletion. This evidence supports the genetic heterogeneity of neurodevelopmental
+    phenotypes, and suggests that additional genetic variation may influence NPC proliferation and
+    contribute to macrocephaly. To investigate the genetic architecture associated with macrocephaly in
+    16pDel, we performed a genome-wide analysis of genomic variation in patients stratified by head
+    circumference. By directly comparing macrocephalic and normocephalic 16pDel individuals, we aimed to
+    identify candidate genes enriched in patients with larger head circumference. This comparative
+    approach led to the isolation of genetic factors associated specifically with macrocephaly within
+    the context of a shared deletion. Our analysis identified 87 high-confidence genes associated with
+    macrocephaly, several of which are established regulators of neurodevelopment. Functional annotation
+    revealed enrichment of top candidate genes involved in chromatin remodeling, transcriptional
+    regulation, and neuronal development, suggesting biological pathways that may contribute to NPC
+    hyperproliferation and differences in head circumference. Through the study of genetic variation
+    present in 16pDeletion patients with and without macrocephaly, this study provides insight into
+    modifiers of neurodevelopmental growth and highlights biological mechanisms that may contribute to
+    NPC hyperproliferation.
 
 - event: "Mid-Atlantic Bioinformatics Conference 2025"
   type: "Poster Presentation"
@@ -16,6 +38,25 @@
   type: "Poster Presentation"
   date: "Oct 2024"
   award: "Conference Travel Award"
+  abstract_title: "Narrow Versus Broad Phenotype Definitions Affect Genetic Analysis of Language More Than Other Broad Autism Phenotype Traits"
+  abstract: >-
+    Autism spectrum disorder is a heritable neurodevelopmental condition that displays heterogeneity in
+    both presentation and etiology and it often presents with concomitant communication difficulties.
+    The hypothesis behind the New Jersey Language and Autism Genetic Study is that genetic heterogeneity
+    for component phenotypes of autism spectrum disorder may be reduced relative to the disorder as a
+    whole. We previously published an initial phase of this study with family recruitment that used very
+    restricted inclusion/exclusion criteria for both autism and language deficits in other family
+    members. Here we present an expanded sample that includes a wider range of phenotypic presentations
+    in the autism and language domains. We found that our previous findings on 15q and 16q, connecting
+    autism spectrum disorder and oral/written communication are only relevant to the narrow autism
+    spectrum disorder and language impairment phenotypes (with posterior probability of linkage of 57%
+    and 33%, respectively), although addition of families with broad phenotype definitions reduced the
+    sizes of both critical regions. After variant prioritization and additional filtration based on
+    segregation patterns and functional annotations, we determined a set of 10 and 6 top candidate risk
+    genes with strong association to language impairment and reading impairment, respectively. The top
+    candidate genes include both genes previously implicated in neurodevelopmental disorders (e.g.,
+    ZNF774 and DNAH3) and genes not previously reported but with strong evidence of being involved in
+    neurodevelopmental processes.
 
 - event: "Mid-Atlantic Bioinformatics Conference 2024"
   type: "Poster Presentation"
