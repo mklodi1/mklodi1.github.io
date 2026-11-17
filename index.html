@@ -35,10 +35,6 @@ layout: default
       </li>
       {% endfor %}
     </ol>
-    {% assign kinds = site.data.journey | map: 'kind' %}
-    <ul class="journey-key" aria-label="Key">
-      {% if kinds contains 'education' %}<li class="journey-education">Education</li>{% endif %}{% if kinds contains 'research' %}<li class="journey-research">Research</li>{% endif %}{% if kinds contains 'work' %}<li class="journey-work">Work</li>{% endif %}{% if kinds contains 'award' %}<li class="journey-award">Awards</li>{% endif %}{% if kinds contains 'life' %}<li class="journey-life">Life</li>{% endif %}
-    </ul>
   </section>
   <script>
     // Timeline: each milestone fades in as it scrolls into view, and the line fills as you go.

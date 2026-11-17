@@ -520,11 +520,7 @@ body { border-top: 6px solid var(--link); }
   .journey-animate .journey-item.in { opacity: 1; transform: none; }
 }
 
-.journey-education { --dot: #1F4E8C; }
-.journey-research  { --dot: #12A594; }
-.journey-work      { --dot: #8B5CF6; }
-.journey-award     { --dot: #D99A00; }
-.journey-life      { --dot: #E5534B; }
+/* every milestone uses the site's blue */
 
 /* the same white plane from the Life Map rides the timeline as you scroll */
 .journey-plane { display: none; }
@@ -536,8 +532,6 @@ body { border-top: 6px solid var(--link); }
 .journey-animate .journey-plane.up { transform: translate(-50%, -50%) rotate(0deg); }
 .journey-plane svg { display: block; }
 .journey-plane path { fill: #fff; stroke: #7CC4F0; stroke-width: 7; stroke-linejoin: round; }
-.journey-key { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: .35rem 1.1rem; margin: .75rem 0 0; padding: 0; font-size: .8rem; color: var(--muted); }
-.journey-key li::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--dot); margin-right: .4rem; vertical-align: 0; }
 
 @media (max-width: 600px) {
   .journey::before, .journey::after { left: 8px; }
