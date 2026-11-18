@@ -883,7 +883,7 @@ body { border-top: 6px solid var(--link); }
 .personal .gallery-section:first-of-type, .personal .poetry { margin-top: .5rem; }
 
 /* States visited by region */
-.regions { display: grid; grid-template-columns: repeat(4, 1fr); gap: .6rem; margin-top: 1.25rem; }
+.regions { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: .6rem; margin-top: 1.25rem; }
 .region { font: inherit; text-align: left; display: flex; flex-direction: column; gap: .2rem; padding: .7rem .85rem; background: #fff; border: 1px solid var(--rule); border-radius: 10px; cursor: pointer; transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
 .region:hover, .region:focus-visible { border-color: #9CCBEF; box-shadow: 0 4px 12px rgba(31,78,140,.08); transform: translateY(-2px); outline: none; }
 .region-name { font-weight: 700; font-size: 1rem; color: var(--text); }

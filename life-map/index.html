@@ -55,7 +55,7 @@ permalink: /life-map/
     <p class="tally-count">{{ nstates }} of 50</p>
     {% assign padded = " " | append: visited %}
     {% include us-map.html %}
-    {% assign regions = "Northeast,Midwest,South,West" | split: "," %}
+    {% assign regions = "Pacific Northwest,Pacific,Mountain West,Southwest,Great Plains,Midwest,Southeast,Mid-Atlantic,New England" | split: "," %}
     <div class="regions" aria-label="States visited by region">
       {% for r in regions %}
       {% assign total = 0 %}{% assign seen = 0 %}{% assign abs = "" %}
