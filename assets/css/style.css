@@ -733,7 +733,8 @@ body { border-top: 6px solid var(--link); }
 .proj-close, .proj-more[open] .proj-open { display: none; }
 .proj-more[open] .proj-close { display: inline; }
 .proj-body { border-top: 1px solid var(--rule); margin-top: .6rem; padding-top: .4rem; animation: proj-in .25s ease; }
-.proj-body h4 { font-size: .8rem; font-weight: 700; color: var(--muted); margin: 1rem 0 .3rem; letter-spacing: .02em; }
+.proj-title { font-size: 1.08rem; line-height: 1.35; margin-bottom: .45rem; }
+.proj-body h3 { font-size: .8rem; font-weight: 700; color: var(--muted); margin: 1rem 0 .3rem; letter-spacing: .02em; }
 .proj-body p, .proj-body ul { margin: 0; }
 .proj-body ul { padding-left: 1.15rem; }
 .proj-body li { margin-bottom: .25rem; }

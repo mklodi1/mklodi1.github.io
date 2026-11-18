@@ -1,81 +1,65 @@
-# Projects shown at /projects/. Each group has a heading and a list of projects.
-# Fields per project:
-#   title, status (short label, e.g. "Published"), summary (one or two sentences)
-#   question, approach (list, shown as Methods), results (list)
-#   Optional: link (url), link_text, figure (/assets/img/...), figure_alt
+# Projects shown at /projects/, in order.
+# Fields: title, summary, question, approach (list, shown as Methods), results (list).
+# Optional: link, link_text, figure (/assets/img/...), figure_alt
 # Tip: wrap text in "double quotes" if it contains a colon.
 
-- group: "Dissertation Research"
-  where: "Rutgers University, Ph.D. in Quantitative Biomedicine"
-  intro: "My dissertation, Identifying Candidate Genes for Neurodevelopmental Disorders Through Convergent Rare-Variant Analysis, looks at specific, measurable traits that show up across many neurodevelopmental disorders, such as abnormal head size and language impairment, instead of broad diagnoses like autism. Narrowing the focus this way makes it easier to find the genes behind each trait."
-  note: "The study design builds on my first-author paper in Genes (2026)."
-  note_link: "https://doi.org/10.3390/genes17020125"
-  projects:
-    - title: "Risk Genes for Macrocephaly in 16p11.2 Deletion Syndrome"
-      status: "Aim 1"
-      summary: "Everyone in this group carries the same 16p11.2 deletion, but only some develop macrocephaly (an unusually large head). Comparing the two groups isolates the extra genetic variation that drives brain overgrowth."
-      question: "Beyond the shared deletion, which genes contribute to macrocephaly in people with 16p11.2 deletion syndrome?"
-      approach:
-        - "Selected people with the deletion from the SFARI cohort and grouped them by head circumference: macrocephaly or normal head size."
-        - "Ran quality control on whole-exome sequencing data."
-        - "Found rare variants with two complementary tools: pVAAST (family-based gene burden and segregation) and Slivar (inheritance-based filtering, including de novo variants)."
-        - "Ranked genes with a tiered evidence system based on statistical support, brain expression (GTEx, BrainSpan, HDBR), expression in the developing brain, loss-of-function intolerance and mouse model data."
-        - "Removed genes also found in people with normal head size, then ran network and enrichment analysis (HumanBase, ToppGene)."
-      results:
-        - "Identified 140 top candidate genes specific to macrocephaly."
-        - "Candidate genes were enriched in the canonical Wnt signaling pathway, which controls how neural progenitor cells multiply. This is a new route to brain overgrowth in 16p11.2 deletion syndrome."
-        - "Manuscript in preparation."
+- title: "Risk Genes for Macrocephaly in 16p11.2 Deletion Syndrome"
+  summary: "Everyone in this group carries the same 16p11.2 deletion, but only some develop macrocephaly (an unusually large head). Comparing the two groups isolates the extra genetic variation that drives brain overgrowth."
+  question: "Beyond the shared deletion, which genes contribute to macrocephaly in people with 16p11.2 deletion syndrome?"
+  approach:
+    - "Selected people with the deletion from the SFARI cohort and grouped them by head circumference: macrocephaly or normal head size."
+    - "Ran quality control on whole-exome sequencing data."
+    - "Found rare variants with two complementary tools: pVAAST (family-based gene burden and segregation) and Slivar (inheritance-based filtering, including de novo variants)."
+    - "Ranked genes with a tiered evidence system based on statistical support, brain expression (GTEx, BrainSpan, HDBR), expression in the developing brain, loss-of-function intolerance and mouse model data."
+    - "Removed genes also found in people with normal head size, then ran network and enrichment analysis (HumanBase, ToppGene)."
+  results:
+    - "Identified 140 top candidate genes specific to macrocephaly."
+    - "Candidate genes were enriched in the canonical Wnt signaling pathway, which controls how neural progenitor cells multiply. This is a new route to brain overgrowth in 16p11.2 deletion syndrome."
+    - "Manuscript in preparation."
 
-    - title: "Risk Genes for Abnormal Head Growth in Idiopathic Autism"
-      status: "Aim 2"
-      summary: "In autism with no known genetic cause, some people have an unusually large head and others an unusually small one. Studying both extremes in the same group tests whether they come from different genes or from the same pathways pushed in opposite directions."
-      question: "Which genes contribute to macrocephaly and microcephaly in idiopathic autism, and do the two share biology?"
-      approach:
-        - "Selected people with autism from the New Jersey Language and Autism Genetics Study (NJLAGS) and grouped them by head circumference: macrocephaly, microcephaly or normal head size."
-        - "Analyzed whole-genome sequencing data (GATK)."
-        - "Used the same two-tool rare variant approach (pVAAST and Slivar) and tiered gene ranking as Aim 1."
-        - "Compared each group with the normal head size group, then ran network and enrichment analysis."
-      results:
-        - "Identified 52 top candidate genes for macrocephaly and 50 for microcephaly."
-        - "Found strong candidates with known links to other neurodevelopmental disorders, along with new ones."
-        - "The Wnt signaling pathway came up again, as in Aim 1. Since this happened in two different genetic backgrounds, it supports the idea that large and small head size sit on the same axis of brain growth."
-        - "Manuscript in preparation."
+- title: "Risk Genes for Abnormal Head Growth in Idiopathic Autism"
+  summary: "In autism with no known genetic cause, some people have an unusually large head and others an unusually small one. Studying both extremes in the same group tests whether they come from different genes or from the same pathways pushed in opposite directions."
+  question: "Which genes contribute to macrocephaly and microcephaly in idiopathic autism, and do the two share biology?"
+  approach:
+    - "Selected people with autism from the New Jersey Language and Autism Genetics Study (NJLAGS) and grouped them by head circumference: macrocephaly, microcephaly or normal head size."
+    - "Analyzed whole-genome sequencing data (GATK)."
+    - "Used the same two-tool rare variant approach (pVAAST and Slivar) and tiered gene ranking as Aim 1."
+    - "Compared each group with the normal head size group, then ran network and enrichment analysis."
+  results:
+    - "Identified 52 top candidate genes for macrocephaly and 50 for microcephaly."
+    - "Found strong candidates with known links to other neurodevelopmental disorders, along with new ones."
+    - "The Wnt signaling pathway came up again, as in Aim 1. Since this happened in two different genetic backgrounds, it supports the idea that large and small head size sit on the same axis of brain growth."
+    - "Manuscript in preparation."
 
-    - title: "Risk Genes for Language and Reading Impairment"
-      status: "Aim 3"
-      summary: "Using families with both autism and language difficulties, this project narrows down genes for language and reading impairment within regions of the genome already linked to these traits."
-      question: "Which genes inside the known linkage regions for language and reading impairment are most likely to cause these traits?"
-      approach:
-        - "Studied extended NJLAGS families in which at least one person has autism and another has a language impairment."
-        - "Ran genome-wide linkage analysis (KELVIN) on SNP array data, which refined the regions on chromosome 15 (language) and chromosome 16 (reading) and made them smaller."
-        - "Prioritized genes within those regions using several kinds of variants from whole-genome sequencing: SNVs, indels, structural variants and CNVs."
-        - "Ranked genes by variant impact, segregation within families, brain expression and literature evidence."
-      results:
-        - "Identified 34 candidate genes for language impairment and 13 for reading impairment."
-        - "Narrowed these to 10 top candidates for language and 6 for reading, including genes not previously linked to neurodevelopmental disorders."
+- title: "Risk Genes for Language and Reading Impairment"
+  summary: "Using families with both autism and language difficulties, this project narrows down genes for language and reading impairment within regions of the genome already linked to these traits."
+  question: "Which genes inside the known linkage regions for language and reading impairment are most likely to cause these traits?"
+  approach:
+    - "Studied extended NJLAGS families in which at least one person has autism and another has a language impairment."
+    - "Ran genome-wide linkage analysis (KELVIN) on SNP array data, which refined the regions on chromosome 15 (language) and chromosome 16 (reading) and made them smaller."
+    - "Prioritized genes within those regions using several kinds of variants from whole-genome sequencing: SNVs, indels, structural variants and CNVs."
+    - "Ranked genes by variant impact, segregation within families, brain expression and literature evidence."
+  results:
+    - "Identified 34 candidate genes for language impairment and 13 for reading impairment."
+    - "Narrowed these to 10 top candidates for language and 6 for reading, including genes not previously linked to neurodevelopmental disorders."
 
-- group: "Machine Learning Internship"
-  where: "EIMplus"
-  projects:
-    - title: "Derivatives Pricing and Market Risk Simulation Engine"
-      status: "Deployed"
-      summary: "An end-to-end tool that supports daily options trading decisions by finding underpriced options and estimating the risk of each trade."
-      question: "Which options are underpriced today, and what is the expected profit and tail risk of trading them?"
-      approach:
-        - "Built a pricing module combining Black-Scholes and the Greeks with GARCH volatility forecasts to flag underpriced options."
-        - "Ran Monte Carlo simulations from empirical historical return distributions to estimate expected PnL, VaR and CVaR for each trade."
-        - "Trained classification models (XGBoost, logistic regression) to filter trading signals."
-        - "Published daily volatility forecasts and results in a Streamlit dashboard."
-      results:
-        - "Deployed tool used to support daily trading decisions."
+- title: "Derivatives Pricing and Market Risk Simulation Engine"
+  summary: "An end-to-end tool that supports daily options trading decisions by finding underpriced options and estimating the risk of each trade."
+  question: "Which options are underpriced today, and what is the expected profit and tail risk of trading them?"
+  approach:
+    - "Built a pricing module combining Black-Scholes and the Greeks with GARCH volatility forecasts to flag underpriced options."
+    - "Ran Monte Carlo simulations from empirical historical return distributions to estimate expected PnL, VaR and CVaR for each trade."
+    - "Trained classification models (XGBoost, logistic regression) to filter trading signals."
+    - "Published daily volatility forecasts and results in a Streamlit dashboard."
+  results:
+    - "Deployed tool used to support daily trading decisions."
 
-    - title: "AI for Scientific Literature Review"
-      status: "Deployed"
-      summary: "A retrieval-augmented generation (RAG) system and LLM agent that reviews scientific papers and answers questions with semantic search."
-      question: "Can an AI agent take over the slow, manual parts of reviewing scientific literature?"
-      approach:
-        - "Built a RAG pipeline with embeddings, a vector database (ChromaDB) and semantic similarity search."
-        - "Added an LLM agent that searches, reads and summarizes relevant papers."
-        - "Deployed with Docker and CI/CD, and tracked experiments with MLflow."
-      results:
-        - "Cut manual literature review time by 85%."
+- title: "AI for Scientific Literature Review"
+  summary: "A retrieval-augmented generation (RAG) system and LLM agent that reviews scientific papers and answers questions with semantic search."
+  question: "Can an AI agent take over the slow, manual parts of reviewing scientific literature?"
+  approach:
+    - "Built a RAG pipeline with embeddings, a vector database (ChromaDB) and semantic similarity search."
+    - "Added an LLM agent that searches, reads and summarizes relevant papers."
+    - "Deployed with Docker and CI/CD, and tracked experiments with MLflow."
+  results:
+    - "Cut manual literature review time by 85%."
