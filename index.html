@@ -73,7 +73,7 @@ layout: default
   {% endif %}
 
   <section id="work" aria-labelledby="work-h">
-    <h2 id="work-h">Selected Work</h2>
+    <h2 id="work-h">Project Overview</h2>
     {% for w in site.data.work %}
     <article class="work{% if w.figure %} has-figure{% endif %}">
       {% if w.figure %}<img src="{{ w.figure | relative_url }}" alt="" loading="lazy">{% endif %}
