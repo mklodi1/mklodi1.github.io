@@ -39,13 +39,12 @@ permalink: /life-map/
   </section>
 
   {% comment %} States and countries visited, worked out from _data/travel.yml. {% endcomment %}
-  {% assign visited = "" %}{% assign keyst = "" %}{% assign codes = "" %}
+  {% assign visited = "" %}{% assign codes = "" %}
   {% for p in site.data.travel %}
     {% assign cc = p.country | downcase %}
     {% if cc == "us" %}
       {% if p.city contains "D.C." %}{% assign st = "DC" %}{% else %}{% assign st = p.city | split: ", " | last | strip %}{% endif %}
       {% unless visited contains st %}{% assign visited = visited | append: st | append: " " %}{% endunless %}
-      {% if p.key %}{% assign keyst = keyst | append: st | append: " " %}{% endif %}
     {% endif %}
     {% if cc and cc != "vi" %}{% assign probe = "|" | append: cc | append: "|" %}{% unless codes contains probe %}{% assign codes = codes | append: probe %}{% endunless %}{% endif %}
   {% endfor %}
@@ -59,11 +58,9 @@ permalink: /life-map/
     {% assign tiles = "AK,0,0 ME,0,10 VT,1,9 NH,1,10 WA,2,0 ID,2,1 MT,2,2 ND,2,3 MN,2,4 IL,2,5 WI,2,6 MI,2,7 NY,2,8 RI,2,9 MA,2,10 OR,3,0 NV,3,1 WY,3,2 SD,3,3 IA,3,4 IN,3,5 OH,3,6 PA,3,7 NJ,3,8 CT,3,9 CA,4,0 UT,4,1 CO,4,2 NE,4,3 MO,4,4 KY,4,5 WV,4,6 VA,4,7 MD,4,8 DE,4,9 AZ,5,1 NM,5,2 KS,5,3 AR,5,4 TN,5,5 NC,5,6 SC,5,7 DC,5,8 OK,6,3 LA,6,4 MS,6,5 AL,6,6 GA,6,7 HI,7,0 TX,7,3 FL,7,8" | split: " " %}
     <div class="state-grid" role="list" aria-label="Map of US states, {{ nstates }} visited">
       {% for t in tiles %}{% assign f = t | split: "," %}{% assign ab = f[0] %}{% assign r = f[1] | plus: 1 %}{% assign c = f[2] | plus: 1 %}
-      {% assign probe = ab | append: " " %}{% assign probe2 = " " | append: probe %}{% assign padded = " " | append: visited %}{% assign kpad = " " | append: keyst %}
+      {% assign probe = ab | append: " " %}{% assign probe2 = " " | append: probe %}{% assign padded = " " | append: visited %}
       {% if padded contains probe2 %}
-        {% assign cities = "" %}{% for p in site.data.travel %}{% if p.country == "us" %}{% if ab == "DC" %}{% if p.city contains "D.C." %}{% assign cities = cities | append: p.city | append: "; " %}{% endif %}{% else %}{% assign last = p.city | split: ", " | last | strip %}{% if last == ab %}{% assign nm = p.city | split: "," | first %}{% assign cities = cities | append: nm | append: "; " %}{% endif %}{% endif %}{% endif %}{% endfor %}
-        {% assign cities = cities | split: "; " | join: ", " %}
-        <span role="listitem" tabindex="0" class="st st-on{% if kpad contains probe2 %} st-key{% endif %}{% if ab == 'DC' %} st-dc{% endif %}" style="grid-row:{{ r }};grid-column:{{ c }}" data-tip="{{ cities }}" aria-label="{{ ab }}, visited: {{ cities }}">{{ ab }}</span>
+        <span role="listitem" class="st st-on{% if ab == 'DC' %} st-dc{% endif %}" style="grid-row:{{ r }};grid-column:{{ c }}" aria-label="{{ ab }}, visited">{{ ab }}</span>
       {% else %}
         <span role="listitem" class="st{% if ab == 'DC' %} st-dc{% endif %}" style="grid-row:{{ r }};grid-column:{{ c }}" aria-label="{{ ab }}, not yet visited">{{ ab }}</span>
       {% endif %}
@@ -78,8 +75,7 @@ permalink: /life-map/
     <ul class="country-list">
       {% for cc in clist %}{% if cc != "" %}
       {% assign name = cc | upcase %}{% for pair in cnames %}{% assign kv = pair | split: ":" %}{% if kv[0] == cc %}{% assign name = kv[1] %}{% endif %}{% endfor %}
-      {% assign n = 0 %}{% for p in site.data.travel %}{% assign pc = p.country | downcase %}{% if pc == cc %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
-      <li class="country"><img class="country-flag" src="https://flagcdn.com/{{ cc }}.svg" alt="" width="36" height="24" loading="lazy" onerror="this.remove()"><span class="country-name">{{ name }}</span><span class="country-n">{{ n }} {% if n == 1 %}city{% else %}cities{% endif %}</span></li>
+      <li class="country"><img class="country-flag" src="https://flagcdn.com/{{ cc }}.svg" alt="" width="36" height="24" loading="lazy" onerror="this.remove()"><span class="country-name">{{ name }}</span></li>
       {% endif %}{% endfor %}
     </ul>
   </section>
