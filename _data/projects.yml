@@ -5,30 +5,30 @@
 
 - title: "Identifying Risk Genes Associated with Macrocephaly in 16p11.2 Deletion Syndrome Patients"
   question: "Despite a shared primary deletion, only a subset of 16pDel patients exhibit macrocephaly. Which additional modifying genetic variants contribute to neural progenitor cell (NPC) hyperproliferation and macrocephaly in these patients?"
-  skills: "Rare variant analysis, Whole-exome sequencing, pVAAST, Python, Linux/HPC"
+  skills: "Python, SQL, Linux/HPC, Gene burden testing, Permutation testing"
   results:
     - "Identified 140 candidate genes unique to macrocephaly, converging on the canonical Wnt signaling pathway as an alternative route to progenitor proliferation not previously implicated in 16p11.2 Deletion Syndrome."
 
 - title: "Identifying Risk Genes Associated with Abnormal Cranial Growth in Idiopathic ASD Patients"
   question: "Do macrocephaly and microcephaly in idiopathic ASD arise from distinct genetic contributions, or do they converge on shared biological pathways perturbed in opposing directions?"
-  skills: "Rare variant analysis, Whole-genome sequencing, Pathway enrichment analysis, Python, Linux/HPC"
+  skills: "Python, SQL, Linux/HPC, Enrichment analysis, Network analysis"
   results:
     - "Identified 52 candidate genes for macrocephaly and 50 for microcephaly; recurrence of the canonical Wnt signaling pathway supports macrocephaly and microcephaly as opposite poles of a shared genetic axis of cranial growth regulation."
 
 - title: "Identifying Risk Genes Associated with Language and Reading Impairment within Linkage-Defined Regions"
   question: "Which candidate genes within the linkage regions 15q23–26 and 16p12 contribute to language impairment (LI) and reading impairment (RI), and do they indicate a shared etiology of ASD and language impairment?"
-  skills: "Linkage analysis, Whole-genome sequencing, Variant prioritization, Statistical genetics, Python"
+  skills: "Python, SQL, Linux/HPC, Bayesian linkage analysis, Statistical genetics"
   results:
     - "Prioritized top candidate genes for LI* and RI* within the linkage regions, indicating a shared etiology of ASD and language impairment at these two loci."
 
 - title: "Derivatives Pricing and Market Risk Simulation Engine"
   question: "Which options are underpriced today, and what is the expected profit and tail risk of trading them?"
-  skills: "Python, GARCH, Monte Carlo simulation, XGBoost, Streamlit"
+  skills: "Python, Time series analysis (GARCH), Monte Carlo simulation, Black-Scholes, XGBoost"
   results:
     - "Deployed tool used to support daily trading decisions."
 
 - title: "AI for Scientific Literature Review"
   question: "Can an AI agent assist with manual literature review and improve efficiency?"
-  skills: "LLMs, RAG, ChromaDB, Docker, MLflow"
+  skills: "Python, LLMs, RAG, Embeddings, Vector databases"
   results:
     - "Automated literature search, retrieval and summarization, reducing the manual effort of scientific literature review."
