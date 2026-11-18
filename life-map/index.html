@@ -52,30 +52,27 @@ permalink: /life-map/
   <section class="tally" aria-labelledby="h-states">
     <h2 id="h-states">States Visited</h2>
     <p class="tally-count">{{ nstates }} of 50</p>
-    <div class="state-grid" role="list" aria-label="Map of US states, {{ nstates }} visited">
-      {% assign padded = " " | append: visited %}
-      {% for t in site.data.states %}{% assign probe = " " | append: t.ab | append: " " %}{% if padded contains probe %}{% assign on = true %}{% else %}{% assign on = false %}{% endif %}
-      <span role="listitem"{% if on %} tabindex="0"{% endif %} class="st{% if on %} st-on{% endif %}{% if t.ab == 'DC' %} st-dc{% endif %}" style="grid-row:{{ t.row }};grid-column:{{ t.col }}" data-ab="{{ t.ab | downcase }}" data-name="{{ t.name }}" aria-label="{{ t.name }}{% if on %}, visited{% endif %}">{{ t.ab }}</span>
-      {% endfor %}
-    </div>
+    {% assign padded = " " | append: visited %}
+    {% include us-map.html %}
     <div class="state-card" id="state-card" aria-hidden="true"><img class="state-card-flag" alt="" width="64" height="40"><div><p class="state-card-name"></p></div></div>
   </section>
   {% endif %}
 </article>
 <script>
   (function () {
-    var grid = document.querySelector('.state-grid'), card = document.getElementById('state-card');
+    var grid = document.querySelector('.us-map'), card = document.getElementById('state-card');
     if (!grid || !card) return;
     var img = card.querySelector('img'), nm = card.querySelector('.state-card-name');
     var current = null;
     img.onerror = function () { img.style.display = 'none'; };
     function show(t) {
       if (!t) return;
+      if (current && current !== t) current.classList.remove('hot');
       current = t;
+      t.classList.add('hot');
       img.style.display = '';
       img.src = 'https://flagcdn.com/us-' + t.getAttribute('data-ab') + '.svg';
       nm.textContent = t.getAttribute('data-name');
-      
       card.classList.add('on');
       var box = card.parentNode.getBoundingClientRect(), r = t.getBoundingClientRect();
       var w = card.offsetWidth, h = card.offsetHeight;
@@ -83,8 +80,14 @@ permalink: /life-map/
       var y = r.top - h - 8 < 0 ? r.bottom - box.top + 8 : r.top - box.top - h - 8;
       card.style.left = x + 'px'; card.style.top = y + 'px';
     }
-    function hide() { current = null; card.classList.remove('on'); }
-    grid.addEventListener('mouseover', function (e) { var t = e.target.closest('.st-on'); if (t) show(t); else hide(); });
+    function hide() { if (current) current.classList.remove('hot'); current = null; card.classList.remove('on'); }
+    grid.addEventListener('mouseover', function (e) {
+      var t = e.target.closest('.st-on');
+      if (!t) { hide(); return; }
+      if (t === current) return;
+      if (t.tagName.toLowerCase() === 'path') t.parentNode.appendChild(t);   // bring the state's outline to the front
+      show(t);
+    });
     grid.addEventListener('mouseleave', hide);
     grid.addEventListener('focusin', function (e) { var t = e.target.closest('.st-on'); if (t) show(t); });
     grid.addEventListener('focusout', hide);
