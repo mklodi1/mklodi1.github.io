@@ -628,3 +628,11 @@ body { border-top: 6px solid var(--link); }
 .journey-research .journey-title { font-size: .96rem; font-weight: 600; color: #2B333B; }
 .journey-research .journey-place { font-size: .86rem; margin-top: .1rem !important; }
 .journey-research .journey-dot { width: 12px; height: 12px; left: 2px !important; top: .75rem; border-width: 2px; }
+
+/* timeline markers: circles for degrees, small squares for research jobs, small diamonds for papers */
+.journey-research .journey-dot, .journey-paper .journey-dot {
+  width: 10px; height: 10px; left: 4px !important; border-width: 2px; border-radius: 1.5px;
+}
+.journey-research .journey-dot { top: .8rem; }
+.journey-paper .journey-dot { top: .5rem; transform: rotate(45deg); }
+.journey-paper:hover .journey-dot { transform: rotate(45deg) scale(1.2); }
