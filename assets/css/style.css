@@ -641,3 +641,8 @@ body { border-top: 6px solid var(--link); }
 .journey-research .journey-dot, .journey-paper .journey-dot { width: 8px; height: 8px; left: 5px !important; border-width: 1.5px; border-radius: 1px; }
 .journey-research .journey-dot { top: .85rem; }
 .journey-paper .journey-dot { top: .55rem; }
+
+/* smaller circles for degrees; everything else is a small square */
+.journey-education .journey-dot { width: 14px; height: 14px; left: 2px !important; top: 1.15rem; border-width: 2.5px; }
+.journey-research .journey-dot, .journey-paper .journey-dot { width: 7px; height: 7px; left: 5.5px !important; border-width: 1.5px; border-radius: 1px; transform: none; }
+.journey-paper:hover .journey-dot, .journey-research:hover .journey-dot { transform: scale(1.2); }
