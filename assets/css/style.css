@@ -600,10 +600,7 @@ body { border-top: 6px solid var(--link); }
 }
 
 /* schools stand out; papers sit quietly between them */
-.journey-education .journey-card {
-  background: linear-gradient(180deg, #F4FAFF, #fff 70%); border-color: #D6EAF8;
-  box-shadow: inset 3px 0 0 var(--tl); padding: 1rem 1.15rem 1rem 1.3rem;
-}
+.journey-education .journey-card { background: #fff; padding: 1.1rem 1.25rem; }
 .journey-education .journey-title { font-size: 1.15rem; font-weight: 600; color: #1F2A35; }
 .journey-education .journey-dot { width: 18px; height: 18px; left: -1px !important; top: 1.05rem; border-width: 3px; }
 .journey-paper { padding-bottom: .55rem !important; }
