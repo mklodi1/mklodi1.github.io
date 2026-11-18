@@ -585,9 +585,9 @@ body { border-top: 6px solid var(--link); }
 .journey-item.in .journey-dot { background: #fff; }
 .journey-item.reached .journey-dot, .journey:not(.journey-animate) .journey-dot { background: var(--tl); }
 .journey-card { position: relative; }
-.journey-card:has(.journey-logo) { padding-right: 5rem; }
+.journey-card:has(.journey-logo) { padding-right: 6.5rem; }
 .journey-logo {
-  position: absolute; right: 1rem; top: 50%; width: 52px; height: 52px; object-fit: contain;
+  position: absolute; right: 1.1rem; top: 50%; width: 72px; height: 60px; object-fit: contain;
   transform: translateY(-50%); opacity: 1;
 }
 @media (prefers-reduced-motion: no-preference) {
@@ -596,7 +596,7 @@ body { border-top: 6px solid var(--link); }
 }
 @media (max-width: 600px) {
   .journey-card:has(.journey-logo) { padding-right: 4rem; }
-  .journey-logo { width: 40px; height: 40px; right: .75rem; }
+  .journey-logo { width: 48px; height: 42px; right: .75rem; }
 }
 
 /* schools stand out; papers sit quietly between them */
@@ -611,3 +611,12 @@ body { border-top: 6px solid var(--link); }
 .journey-doc { flex: none; color: #7CC4F0; }
 .journey-paper:hover .journey-card { border: 0; box-shadow: none; }
 .journey-paper:hover .journey-title { color: var(--link); }
+
+/* keep room for the logo so it never overlaps text */
+.journey-education .journey-card:has(.journey-logo) { padding-right: 6.5rem; }
+@media (max-width: 600px) {
+  .journey-education .journey-card:has(.journey-logo) { padding-right: 3.9rem; }
+  .journey-logo { top: .9rem; width: 44px; height: 38px; right: .7rem; transform: none; }
+  .journey-animate .journey-logo { transform: scale(.6); }
+  .journey-animate .reached .journey-logo { transform: none; }
+}
