@@ -700,7 +700,7 @@ body { border-top: 6px solid var(--link); }
 .st-on { background: #DCEBF7; border-color: #9CCBEF; color: var(--link); cursor: default; transition: transform .15s ease, box-shadow .15s ease; }
 .st-dc { font-size: .62rem; border-style: dashed; }
 .st { cursor: default; transition: transform .15s ease, box-shadow .15s ease; }
-.st:hover, .st:focus-visible { transform: translateY(-2px); box-shadow: 0 3px 8px rgba(31,78,140,.18); outline: none; }
+.st-on:hover, .st-on:focus-visible { transform: translateY(-2px); box-shadow: 0 3px 8px rgba(31,78,140,.18); outline: none; }
 .st:focus-visible { box-shadow: 0 0 0 2px var(--link); }
 .tally { position: relative; }
 .state-card {

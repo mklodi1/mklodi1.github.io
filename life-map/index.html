@@ -57,7 +57,7 @@ permalink: /life-map/
       {% for t in site.data.states %}{% assign probe = " " | append: t.ab | append: " " %}{% if padded contains probe %}{% assign on = true %}{% else %}{% assign on = false %}{% endif %}
       {% assign cities = "" %}{% if on %}{% for p in site.data.travel %}{% if p.country == "us" %}{% if t.ab == "DC" %}{% if p.city contains "D.C." %}{% assign cities = cities | append: p.city | append: "|" %}{% endif %}{% else %}{% assign last = p.city | split: ", " | last | strip %}{% if last == t.ab %}{% assign nm = p.city | split: "," | first %}{% assign cities = cities | append: nm | append: "|" %}{% endif %}{% endif %}{% endif %}{% endfor %}{% endif %}
       {% assign cities = cities | split: "|" | join: ", " %}
-      <span role="listitem" tabindex="0" class="st{% if on %} st-on{% endif %}{% if t.ab == 'DC' %} st-dc{% endif %}" style="grid-row:{{ t.row }};grid-column:{{ t.col }}" data-ab="{{ t.ab | downcase }}" data-name="{{ t.name }}" data-cities="{{ cities }}" aria-label="{{ t.name }}{% if on %}, visited: {{ cities }}{% endif %}">{{ t.ab }}</span>
+      <span role="listitem"{% if on %} tabindex="0"{% endif %} class="st{% if on %} st-on{% endif %}{% if t.ab == 'DC' %} st-dc{% endif %}" style="grid-row:{{ t.row }};grid-column:{{ t.col }}" data-ab="{{ t.ab | downcase }}" data-name="{{ t.name }}" data-cities="{{ cities }}" aria-label="{{ t.name }}{% if on %}, visited: {{ cities }}{% endif %}">{{ t.ab }}</span>
       {% endfor %}
     </div>
     <div class="state-card" id="state-card" aria-hidden="true"><img class="state-card-flag" alt="" width="64" height="40"><div><p class="state-card-name"></p><p class="state-card-cap"></p></div></div>
@@ -86,11 +86,11 @@ permalink: /life-map/
       card.style.left = x + 'px'; card.style.top = y + 'px';
     }
     function hide() { current = null; card.classList.remove('on'); }
-    grid.addEventListener('mouseover', function (e) { var t = e.target.closest('.st'); if (t) show(t); });
+    grid.addEventListener('mouseover', function (e) { var t = e.target.closest('.st-on'); if (t) show(t); else hide(); });
     grid.addEventListener('mouseleave', hide);
-    grid.addEventListener('focusin', function (e) { var t = e.target.closest('.st'); if (t) show(t); });
+    grid.addEventListener('focusin', function (e) { var t = e.target.closest('.st-on'); if (t) show(t); });
     grid.addEventListener('focusout', hide);
-    document.addEventListener('click', function (e) { var t = e.target.closest && e.target.closest('.st'); if (t && grid.contains(t)) show(t); else hide(); });
+    document.addEventListener('click', function (e) { var t = e.target.closest && e.target.closest('.st-on'); if (t && grid.contains(t)) show(t); else hide(); });
   })();
 </script>
 
