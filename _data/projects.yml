@@ -24,6 +24,6 @@
   objective: "Build an end-to-end tool that supports daily options trading decisions by identifying underpriced options and estimating the expected profit and tail risk of each trade."
   skills: "Python, Time series analysis (GARCH), Monte Carlo simulation, Black-Scholes, XGBoost"
 
-- title: "AI for Scientific Literature Review"
+- title: "Agentic AI for Scientific Literature Review"
   objective: "Build an AI agent that assists with manual literature review and improves efficiency through retrieval-augmented generation and semantic search."
   skills: "Python, LLMs, RAG, Embeddings, Vector databases"
