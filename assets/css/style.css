@@ -785,3 +785,14 @@ body { border-top: 6px solid var(--link); }
 .proj > .proj-tools { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .35rem; }
 .proj-skills-label { margin: .9rem 0 .35rem; }
 .proj .proj-q { margin-bottom: 0; }
+
+/* dissertation sub-cards */
+.proj-studies { margin-top: 1rem; }
+.study-list { display: grid; gap: .75rem; margin-top: .75rem; animation: proj-in .25s ease; }
+.study { background: var(--desk); border: 1px solid var(--rule); border-radius: 8px; padding: .9rem 1rem; }
+.study-title { display: flex; align-items: center; gap: .55rem; font-size: 1rem; line-height: 1.35; margin-bottom: .35rem; }
+.study-n { flex: none; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: #DCEBF7; color: var(--link); font-size: .8rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+.study-label { font-size: .78rem; font-weight: 700; color: var(--muted); letter-spacing: .02em; margin: .65rem 0 .1rem; }
+.study p { margin: 0; }
+.study p + .study-label { margin-top: .65rem; }
+@media (prefers-reduced-motion: reduce) { .study-list { animation: none; } }

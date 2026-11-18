@@ -14,6 +14,21 @@ description: "Dissertation research in statistical genetics and machine learning
     {% if p.figure %}<img class="proj-fig" src="{{ p.figure | relative_url }}" alt="{{ p.figure_alt }}" loading="lazy">{% endif %}
     {% if p.objective %}<p class="proj-q"><span class="proj-q-label">Objective</span>{{ p.objective }}</p>{% endif %}
     {% if p.skills %}<p class="proj-q-label proj-skills-label">Skills</p><ul class="proj-tools">{% assign sk = p.skills | split: ", " %}{% for s in sk %}<li>{{ s }}</li>{% endfor %}</ul>{% endif %}
+    {% if p.studies %}
+    <details class="proj-more proj-studies">
+      <summary><span class="proj-open">View the {{ p.studies.size }} studies</span><span class="proj-close">Hide the studies</span></summary>
+      <div class="study-list">
+        {% for st in p.studies %}
+        <section class="study">
+          <h3 class="study-title"><span class="study-n">{{ forloop.index }}</span>{{ st.title }}</h3>
+          {% if st.background %}<p class="study-label">Background</p><p>{{ st.background }}</p>{% endif %}
+          {% if st.objective %}<p class="study-label">Objective</p><p>{{ st.objective }}</p>{% endif %}
+          {% if st.findings %}<p class="study-label">Key findings</p><p>{{ st.findings }}</p>{% endif %}
+        </section>
+        {% endfor %}
+      </div>
+    </details>
+    {% endif %}
     {% if p.link %}<p class="proj-link"><a href="{{ p.link }}">{{ p.link_text | default: "Learn more" }}</a></p>{% endif %}
   </article>
   {% endfor %}
