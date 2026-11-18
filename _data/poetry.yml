@@ -1,30 +1,30 @@
-# Couplets for the Poetry card on /personal/. One is chosen each day; visitors can browse the rest.
-# Only use public-domain verse (classical poets, or works published before 1929) or your own writing.
+# Couplets for the Poetry card on /personal/. One is shown at random on each page load.
+# Urdu text as printed by Rekhta (rekhta.org). Only public-domain verse.
 # Fields: urdu (two lines, separated by a | ), english, poet
+- urdu: "عشق نے غالبؔ نکما کر دیا | ورنہ ہم بھی آدمی تھے کام کے"
+  english: "Love has made me useless, Ghalib. Otherwise I too was a man of some worth."
+  poet: "Mirza Ghalib"
+
+- urdu: "محبت میں نہیں ہے فرق جینے اور مرنے کا | اسی کو دیکھ کر جیتے ہیں جس کافر پہ دم نکلے"
+  english: "In love there's no difference between living and dying: I live by gazing at the very one I'd die for."
+  poet: "Mirza Ghalib"
+
+- urdu: "رگوں میں دوڑتے پھرنے کے ہم نہیں قائل | جب آنکھ ہی سے نہ ٹپکا تو پھر لہو کیا ہے"
+  english: "I'm not convinced by blood that merely runs through the veins. If it never dripped from the eyes, what is blood worth?"
+  poet: "Mirza Ghalib"
+
 - urdu: "ہزاروں خواہشیں ایسی کہ ہر خواہش پہ دم نکلے | بہت نکلے مرے ارمان لیکن پھر بھی کم نکلے"
   english: "A thousand desires, each one worth dying for. Many of my hopes came true, and still they were too few."
   poet: "Mirza Ghalib"
 
-- urdu: "پتا پتا بوٹا بوٹا حال ہمارا جانے ہے | جانے نہ جانے گل ہی نہ جانے باغ تو سارا جانے ہے"
-  english: "Every leaf and every plant knows the state I am in. The rose alone may not know, but the whole garden does."
-  poet: "Mir Taqi Mir"
-
-- urdu: "دل ناداں تجھے ہوا کیا ہے | آخر اس درد کی دوا کیا ہے"
-  english: "Naive heart, what has come over you? What, after all, is the cure for this pain?"
+- urdu: "رنج سے خوگر ہوا انساں تو مٹ جاتا ہے رنج | مشکلیں مجھ پر پڑیں اتنی کہ آساں ہو گئیں"
+  english: "When a person grows used to sorrow, sorrow disappears. So many hardships fell on me that they became easy."
   poet: "Mirza Ghalib"
 
-- urdu: "ابتدائے عشق ہے روتا ہے کیا | آگے آگے دیکھیے ہوتا ہے کیا"
-  english: "This is only the beginning of love, so why weep? Just wait and see what lies ahead."
-  poet: "Mir Taqi Mir"
-
-- urdu: "ہم کو معلوم ہے جنت کی حقیقت لیکن | دل کے خوش رکھنے کو غالبؔ یہ خیال اچھا ہے"
-  english: "I know the truth about paradise, Ghalib, but to keep the heart content, it is a pleasant thought."
+- urdu: "ہم وہاں ہیں جہاں سے ہم کو بھی | کچھ ہماری خبر نہیں آتی"
+  english: "I've gone to where even news of myself doesn't reach me."
   poet: "Mirza Ghalib"
 
-- urdu: "سارے جہاں سے اچھا ہندوستاں ہمارا | ہم بلبلیں ہیں اس کی یہ گلستاں ہمارا"
-  english: "Better than all the world is our homeland. We are its nightingales, and it is our garden."
-  poet: "Allama Iqbal"
-
-- urdu: "عشق نے غالبؔ نکما کر دیا | ورنہ ہم بھی آدمی تھے کام کے"
-  english: "Love has made me useless, Ghalib. Otherwise I too was a man of some worth."
+- urdu: "بنا کر فقیروں کا ہم بھیس غالبؔ | تماشائے اہل کرم دیکھتے ہیں"
+  english: "Disguised as a beggar, Ghalib, I watch how the generous really behave."
   poet: "Mirza Ghalib"
