@@ -1,0 +1,39 @@
+---
+layout: default
+title: Projects
+permalink: /projects/
+description: "Dissertation research in statistical genetics and machine learning projects in quantitative finance and AI."
+---
+<article class="wrap projects">
+  <h1>Projects</h1>
+
+  {% for g in site.data.projects %}
+  <section class="proj-group" aria-labelledby="pg-{{ forloop.index }}">
+    <h2 id="pg-{{ forloop.index }}">{{ g.group }}</h2>
+    {% if g.where %}<p class="proj-where">{{ g.where }}</p>{% endif %}
+
+    {% for p in g.projects %}
+    {% assign pid = p.title | slugify %}
+    <article class="proj" id="{{ pid }}">
+      <header class="proj-head">
+        <h3>{{ p.title }}</h3>
+        {% if p.status %}<span class="proj-status{% if p.status contains 'Published' or p.status contains 'Deployed' %} proj-done{% endif %}">{{ p.status }}</span>{% endif %}
+      </header>
+      <p class="proj-summary">{{ p.summary }}</p>
+
+      <details class="proj-more">
+        <summary><span class="proj-open">Read more</span><span class="proj-close">Show less</span></summary>
+        <div class="proj-body">
+          {% if p.figure %}<img class="proj-fig" src="{{ p.figure | relative_url }}" alt="{{ p.figure_alt }}" loading="lazy">{% endif %}
+          {% if p.question %}<h4>The question</h4><p>{{ p.question }}</p>{% endif %}
+          {% if p.approach %}<h4>Approach</h4><ul>{% for a in p.approach %}<li>{{ a }}</li>{% endfor %}</ul>{% endif %}
+          {% if p.results %}<h4>Results</h4><ul>{% for r in p.results %}<li>{{ r }}</li>{% endfor %}</ul>{% endif %}
+          {% if p.tools %}<h4>Tools</h4><ul class="proj-tools">{% assign tools = p.tools | split: ", " %}{% for t in tools %}<li>{{ t }}</li>{% endfor %}</ul>{% endif %}
+          {% if p.link %}<p class="proj-link"><a href="{{ p.link }}">{{ p.link_text | default: "Learn more" }}</a></p>{% endif %}
+        </div>
+      </details>
+    </article>
+    {% endfor %}
+  </section>
+  {% endfor %}
+</article>

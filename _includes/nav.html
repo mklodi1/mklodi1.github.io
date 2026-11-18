@@ -3,6 +3,7 @@
   <a class="nav-home" href="{{ '/' | relative_url }}">{{ site.title }}</a>
   <nav aria-label="Main">
     <a href="{{ '/cv/' | relative_url }}"{% if page.url contains '/cv' %} aria-current="page"{% endif %}>CV</a>
+    <a href="{{ '/projects/' | relative_url }}"{% if page.url contains '/projects' %} aria-current="page"{% endif %}>Projects</a>
     <a href="{{ '/conferences/' | relative_url }}"{% if page.url contains '/conferences' %} aria-current="page"{% endif %}>Conferences &amp; Awards</a>
     <a href="{{ '/life-map/' | relative_url }}"{% if page.url contains '/life-map' %} aria-current="page"{% endif %}>Life Map</a>
     <a href="{{ '/personal/' | relative_url }}"{% if page.url contains '/personal' %} aria-current="page"{% endif %}>Personal</a>
