@@ -836,3 +836,27 @@ body { border-top: 6px solid var(--link); }
 .state-card-photos img { width: 64px; height: 64px; object-fit: cover; border-radius: 6px; box-shadow: 0 0 0 1px rgba(0,0,0,.06); }
 .state-card-more { width: 64px; height: 64px; border-radius: 6px; background: var(--wash); color: var(--muted); font-weight: 600; font-size: .9rem; display: inline-flex; align-items: center; justify-content: center; }
 @media (max-width: 560px) { .state-card-photos img, .state-card-more { width: 52px; height: 52px; } }
+
+/* ---- Enlarged view on hover (Interests) ---- */
+.lb-lock { overflow: hidden; }
+.lightbox { position: fixed; inset: 0; z-index: 100; background: rgba(15, 22, 32, .55); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity .2s ease; }
+.lightbox.on { opacity: 1; }
+.lightbox[hidden] { display: none; }
+.lb-frame { position: relative; width: min(92vw, 1200px); height: min(90vh, 900px); background: #fff; border-radius: 14px; box-shadow: 0 20px 60px rgba(0,0,0,.3); display: flex; align-items: center; justify-content: center; padding: 1.5rem 4rem; transform: scale(.96); transition: transform .25s cubic-bezier(.2,.8,.2,1); }
+.lightbox.on .lb-frame { transform: none; }
+.lb-content { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; min-height: 0; }
+.lb-photo { margin: 0; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .6rem; min-height: 0; }
+.lb-photo img { max-width: 100%; max-height: calc(100% - 2.2rem); object-fit: contain; border-radius: 6px; display: block; }
+.lb-photo figcaption { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-weight: 500; font-size: 1rem; color: #1D2228; }
+.lb-poem { display: block !important; margin: 0; text-align: center; max-width: 52rem; animation: none !important; }
+.lb-poem .poem-urdu { font-size: 2.4rem; line-height: 2.6; margin-bottom: 1.5rem; }
+.lb-poem .poem-en { font-size: 1.3rem; max-width: 40rem; }
+.lb-poem .poem-by { font-size: 1.1rem; margin-top: 1.5rem; }
+.lb-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 2.6rem; height: 2.6rem; border-radius: 50%; border: 1px solid var(--rule); background: #fff; color: var(--text); font-size: 1.1rem; cursor: pointer; }
+.lb-btn:hover { background: var(--wash); }
+.lb-prev { left: .9rem; } .lb-next { right: .9rem; }
+.lb-close { position: absolute; top: .7rem; right: .8rem; width: 2.2rem; height: 2.2rem; border: 0; background: transparent; font-size: 1.6rem; line-height: 1; color: var(--muted); cursor: pointer; border-radius: 50%; }
+.lb-close:hover { background: var(--wash); color: var(--text); }
+.lb-btn:focus-visible, .lb-close:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+[data-deck]:not(.deck-sports) .deck-stack, #poem-card { cursor: zoom-in; }
+@media (prefers-reduced-motion: reduce) { .lightbox, .lb-frame { transition: none; } }

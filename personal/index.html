@@ -245,3 +245,88 @@ permalink: /personal/
     });
   })();
 </script>
+
+<div class="lightbox" id="lightbox" hidden>
+  <div class="lb-frame" role="dialog" aria-modal="true" aria-label="Enlarged view">
+    <button type="button" class="lb-btn lb-prev" aria-label="Previous">&#8592;</button>
+    <div class="lb-content"></div>
+    <button type="button" class="lb-btn lb-next" aria-label="Next">&#8594;</button>
+    <button type="button" class="lb-close" aria-label="Close">&times;</button>
+  </div>
+</div>
+<script>
+  // Hover over a photo stack or the poetry card (not Sports) to see it enlarged; move the mouse off to close.
+  (function () {
+    if (!window.matchMedia || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    var box = document.getElementById('lightbox');
+    if (!box) return;
+    var frame = box.querySelector('.lb-frame'), content = box.querySelector('.lb-content');
+    var src = null, entered = false, timer = null, pressed = false;
+
+    function render() {
+      content.innerHTML = '';
+      if (!src) return;
+      if (src.kind === 'poem') {
+        var p = src.el.querySelector('.poem.on');
+        if (p) { var c = p.cloneNode(true); c.classList.add('lb-poem'); content.appendChild(c); }
+        box.classList.add('lb-is-poem');
+      } else {
+        var top = src.el.querySelector('.deck-card[aria-hidden="false"]') || src.el.querySelector('.deck-card');
+        if (!top) return;
+        var im = top.querySelector('img'), cap = top.querySelector('.deck-place');
+        var fig = document.createElement('figure'); fig.className = 'lb-photo';
+        var big = new Image(); big.src = im.currentSrc || im.src; big.alt = im.alt; fig.appendChild(big);
+        if (cap) { var fc = document.createElement('figcaption'); fc.textContent = cap.textContent; fig.appendChild(fc); }
+        content.appendChild(fig);
+        box.classList.remove('lb-is-poem');
+      }
+    }
+    function open(s) {
+      src = s; entered = false; render();
+      box.hidden = false;
+      requestAnimationFrame(function () { box.classList.add('on'); });
+      document.documentElement.classList.add('lb-lock');
+    }
+    function close() {
+      if (box.hidden) return;
+      box.classList.remove('on');
+      document.documentElement.classList.remove('lb-lock');
+      if (src) src.el.dataset.lbWait = '1';   // don't reopen until the mouse leaves the card
+      src = null;
+      setTimeout(function () { if (!box.classList.contains('on')) box.hidden = true; }, 220);
+    }
+    function step(d) {
+      if (!src) return;
+      var b = src.el.parentNode.querySelector(src.kind === 'poem' ? (d > 0 ? '[data-poem-next]' : '[data-poem-prev]') : (d > 0 ? '[data-deck-next]' : '[data-deck-prev]'));
+      if (b) b.click();
+      setTimeout(render, src.kind === 'poem' ? 0 : 60);
+    }
+
+    function watch(el, kind) {
+      el.addEventListener('mouseenter', function () {
+        if (el.dataset.lbWait) return;
+        clearTimeout(timer);
+        timer = setTimeout(function () { if (!pressed) open({ el: el, kind: kind }); }, 450);
+      });
+      el.addEventListener('mouseleave', function () { clearTimeout(timer); delete el.dataset.lbWait; });
+      el.addEventListener('pointerdown', function () { pressed = true; clearTimeout(timer); });
+      document.addEventListener('pointerup', function () { pressed = false; });
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('[data-deck]:not(.deck-sports) .deck-stack'), function (st) { watch(st, 'deck'); });
+    var poem = document.querySelector('#poem-card .poem-stage') || document.getElementById('poem-card');
+    if (poem) watch(poem, 'poem');
+
+    frame.addEventListener('mouseenter', function () { entered = true; });
+    frame.addEventListener('mouseleave', function () { if (entered) close(); });
+    box.addEventListener('click', function (e) { if (e.target === box) close(); });
+    box.querySelector('.lb-close').addEventListener('click', close);
+    box.querySelector('.lb-prev').addEventListener('click', function () { step(-1); });
+    box.querySelector('.lb-next').addEventListener('click', function () { step(1); });
+    document.addEventListener('keydown', function (e) {
+      if (box.hidden) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowRight') step(1);
+      else if (e.key === 'ArrowLeft') step(-1);
+    });
+  })();
+</script>
