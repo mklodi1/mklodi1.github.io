@@ -5,7 +5,7 @@
 
 - title: "Convergent Rare-Variant Analysis Pipeline for Neurodevelopmental Disorders"
   question: "Can a customizable pipeline that integrates two complementary rare variant tools, pVAAST and Slivar, identify candidate genes for specific neurodevelopmental phenotypes that are obscured within broad diagnoses?"
-  skills: "Python, SQL, Linux/HPC, Gene burden testing, Statistical genetics"
+  skills: "Linux, Python, R, SQL, Gene burden testing, Permutation testing, Inheritance modeling"
   results:
     - "Applied the pipeline across three distinct genetic contexts (16p11.2 Deletion Syndrome, idiopathic ASD, and language and reading impairment), recovering well-established neurodevelopmental genes that validated the approach and identifying novel high-confidence candidate genes and shared pathways such as Wnt signaling."
 
