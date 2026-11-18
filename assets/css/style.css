@@ -866,5 +866,15 @@ body { border-top: 6px solid var(--link); }
 .poem-card .poem { position: relative; }
 .poem-by { font-style: normal; }
 .lb-is-poem .lb-btn { display: none; }
-/* departure board: narrower, centered */
-.board { max-width: 36rem; margin-left: auto; margin-right: auto; }
+/* departure board: two columns of destinations on wider screens */
+@media (min-width: 760px) {
+  .board-table thead { display: none; }
+  .board-table tbody { display: grid; grid-template-columns: 1fr 1fr; column-gap: 0; }
+  .board-table tbody tr { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #22262C; }
+  .board-table tbody tr:nth-child(odd) { border-right: 1px solid #2A2F36; }
+  .board-table td, .board-table td.flap { border-bottom: 0; padding: .38rem .9rem; font-size: .85rem; }
+  .board-table tbody tr:nth-child(even) td { background: none; }
+  .board-table tbody tr:nth-child(4n+3) td, .board-table tbody tr:nth-child(4n+4) td { background: #181B20; }
+  .board-table tbody tr:hover td { background: #232830; }
+  .board-scroll { max-height: 22rem; }
+}
