@@ -15,21 +15,55 @@ description: "Dissertation research in statistical genetics and machine learning
     {% if p.objective %}<p class="proj-q"><span class="proj-q-label">Objective</span>{{ p.objective }}</p>{% endif %}
     {% if p.skills %}<p class="proj-q-label proj-skills-label">Skills</p><ul class="proj-tools">{% assign sk = p.skills | split: ", " %}{% for s in sk %}<li>{{ s }}</li>{% endfor %}</ul>{% endif %}
     {% if p.studies %}
-    <details class="proj-more proj-studies">
-      <summary>Details</summary>
-      <div class="study-list">
-        {% for st in p.studies %}
-        <section class="study">
-          <h3 class="study-title"><span class="study-n">{{ forloop.index }}</span>{{ st.title }}</h3>
+    <p class="proj-q-label proj-skills-label">Studies</p>
+    <div class="study-row">
+      {% for st in p.studies %}
+      <section class="study{% if forloop.first %} active{% endif %}" tabindex="0" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}">
+        <h3 class="study-title"><span class="study-n">{{ forloop.index }}</span><span>{{ st.title }}</span></h3>
+        <div class="study-body">
           {% if st.background %}<p class="study-label">Background</p><p>{{ st.background }}</p>{% endif %}
           {% if st.objective %}<p class="study-label">Objective</p><p>{{ st.objective }}</p>{% endif %}
           {% if st.findings %}<p class="study-label">Key Findings</p><p>{{ st.findings }}</p>{% endif %}
-        </section>
-        {% endfor %}
-      </div>
-    </details>
+        </div>
+      </section>
+      {% endfor %}
+    </div>
     {% endif %}
     {% if p.link %}<p class="proj-link"><a href="{{ p.link }}">{{ p.link_text | default: "Learn more" }}</a></p>{% endif %}
   </article>
   {% endfor %}
 </article>
+<script>
+  (function () {
+    Array.prototype.forEach.call(document.querySelectorAll('.study-row'), function (row) {
+      var cards = row.querySelectorAll('.study');
+      function activate(c) {
+        for (var i = 0; i < cards.length; i++) {
+          var on = cards[i] === c;
+          cards[i].classList.toggle('active', on);
+          cards[i].setAttribute('aria-expanded', on ? 'true' : 'false');
+        }
+      }
+      var hover = window.matchMedia('(hover: hover) and (min-width: 721px)');
+      for (var i = 0; i < cards.length; i++) {
+        (function (c) {
+          c.addEventListener('mouseenter', function () { if (hover.matches) activate(c); });
+          c.addEventListener('focus', function () { activate(c); });
+          c.addEventListener('click', function () { activate(c); });
+          c.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(c); } });
+        })(cards[i]);
+      }
+      // keep the row the same height whichever study is open, so the page doesn't jump
+      function fit() {
+        row.style.minHeight = '';
+        if (window.innerWidth <= 720) return;
+        var current = row.querySelector('.study.active'), max = 0;
+        for (var j = 0; j < cards.length; j++) { activate(cards[j]); row.classList.add('measuring'); max = Math.max(max, row.offsetHeight); row.classList.remove('measuring'); }
+        activate(current);
+        row.style.minHeight = max + 'px';
+      }
+      fit();
+      var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(fit, 150); });
+    });
+  })();
+</script>
