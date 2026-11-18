@@ -646,3 +646,43 @@ body { border-top: 6px solid var(--link); }
 .journey-education .journey-dot { width: 14px; height: 14px; left: 2px !important; top: 1.15rem; border-width: 2.5px; }
 .journey-research .journey-dot, .journey-paper .journey-dot { width: 7px; height: 7px; left: 5.5px !important; border-width: 1.5px; border-radius: 1px; transform: none; }
 .journey-paper:hover .journey-dot, .journey-research:hover .journey-dot { transform: scale(1.2); }
+
+/* ---------- Technical Skills (home page) ---------- */
+.skills { display: grid; grid-template-columns: 11rem 1fr; gap: .9rem 1.25rem; margin: 0; }
+.skills dt { font-size: .9rem; font-weight: 600; color: #4A545E; padding-top: .3rem; }
+.skills dd { margin: 0; }
+.skill-tags { list-style: none; display: flex; flex-wrap: wrap; gap: .4rem; margin: 0; padding: 0; }
+.skill-tags li {
+  font-size: .82rem; line-height: 1.3; padding: .28rem .65rem; border-radius: 999px;
+  background: #F4F8FC; border: 1px solid #DCEAF6; color: #2B4A66;
+}
+.skill-tags li:hover { border-color: #7CC4F0; background: #fff; }
+@media (prefers-reduced-motion: no-preference) { .skill-tags li { transition: border-color .15s ease, background-color .15s ease; } }
+@media (max-width: 600px) {
+  .skills { grid-template-columns: 1fr; gap: .3rem; }
+  .skills dd { margin-bottom: .8rem; }
+}
+
+/* ---------- back-to-top plane ---------- */
+.to-top {
+  position: fixed; right: 1.4rem; bottom: 1.4rem; z-index: 50; width: 48px; height: 48px; border-radius: 50%;
+  display: grid; place-items: center; cursor: pointer; background: #fff; border: 1px solid #DCEAF6;
+  box-shadow: 0 6px 18px rgba(20, 40, 70, .14); opacity: 0; transform: translateY(12px); pointer-events: none;
+}
+.to-top.show { opacity: 1; transform: none; pointer-events: auto; }
+.to-top svg { display: block; overflow: visible; }
+.to-top path { fill: #fff; stroke: #7CC4F0; stroke-width: 7; stroke-linejoin: round; }
+.to-top:hover { border-color: #7CC4F0; }
+.to-top:hover svg { transform: translateY(-3px); }
+.to-top:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
+@media (prefers-reduced-motion: no-preference) {
+  .to-top { transition: opacity .25s ease, transform .25s ease, border-color .2s ease; }
+  .to-top svg { transition: transform .2s ease; }
+  .to-top.launch svg { animation: plane-launch .8s cubic-bezier(.5, 0, .75, 0) forwards; }
+  @keyframes plane-launch {
+    0% { transform: translateY(0); opacity: 1; }
+    30% { transform: translateY(4px); }
+    100% { transform: translateY(-140px) scale(.7); opacity: 0; }
+  }
+}
+@media print { .to-top { display: none !important; } }

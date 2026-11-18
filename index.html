@@ -72,6 +72,18 @@ layout: default
   </figure>
   {% endif %}
 
+  {% if site.data.cv.skills %}
+  <section id="skills" aria-labelledby="skills-h">
+    <h2 id="skills-h">Technical Skills</h2>
+    <dl class="skills">
+      {% for g in site.data.cv.skills %}
+      <dt>{{ g.area }}</dt>
+      <dd><ul class="skill-tags">{% assign tools = g.tools | split: ", " %}{% for t in tools %}<li>{{ t }}</li>{% endfor %}</ul></dd>
+      {% endfor %}
+    </dl>
+  </section>
+  {% endif %}
+
   <section id="work" aria-labelledby="work-h">
     <h2 id="work-h">Selected Work</h2>
     {% for w in site.data.work %}
