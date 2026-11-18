@@ -419,7 +419,7 @@ body { border-top: 6px solid var(--link); }
 
 .deck-ready { display: flex; flex-direction: column; align-items: center; padding: 1rem 0 .5rem; }
 .deck-ready .deck-stack {
-  display: block; position: relative; width: min(100%, 21rem); aspect-ratio: 3 / 4;
+  display: block; position: relative; width: min(100%, 30rem); aspect-ratio: 3 / 4;
   touch-action: pan-y; user-select: none; -webkit-user-select: none;
 }
 .deck-ready .deck-card {
@@ -439,7 +439,7 @@ body { border-top: 6px solid var(--link); }
   .deck-ready .deck-card { transition: transform .45s cubic-bezier(.2, .8, .2, 1), opacity .3s ease; }
 }
 /* drawings are landscape sketchbook pages */
-.deck-ready.deck-drawing .deck-stack { width: min(100%, 30rem); aspect-ratio: 4 / 3; }
+.deck-ready.deck-drawing .deck-stack { width: min(100%, 44rem); aspect-ratio: 4 / 3; }
 .deck-ready.deck-drawing .deck-card img { object-fit: contain; background: #F3EDE2; }
 .deck-controls { display: none; }
 .deck-hint { display: none; }
@@ -809,14 +809,14 @@ body { border-top: 6px solid var(--link); }
 
 
 /* ---- Poetry card (Interests page) ---- */
-.poem-card { background: #fff; border: 1px solid var(--rule); border-radius: 14px; padding: 1.75rem 1.5rem 1.1rem; text-align: center; box-shadow: 0 2px 0 #E6EDF4; }
+.poem-card { background: #fff; border: 1px solid var(--rule); border-radius: 14px; padding: 2.5rem 2rem 1.4rem; text-align: center; box-shadow: 0 2px 0 #E6EDF4; }
 .poem { display: none; margin: 0; }
 .poem.on { display: block; animation: poem-in .5s ease; }
 .poem blockquote { margin: 0; padding: 0; border: 0; }
-.poem-urdu { font-family: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Urdu Typesetting", serif; font-size: 1.45rem; line-height: 2.5; color: var(--text); margin: 0 0 1rem; }
+.poem-urdu { font-family: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Urdu Typesetting", serif; font-size: 1.9rem; line-height: 2.5; color: var(--text); margin: 0 0 1rem; }
 .poem-urdu span, .poem-roman span { display: block; }
 .poem-roman { font-style: italic; color: var(--muted); font-size: .95rem; line-height: 1.6; margin: 0 0 .9rem; }
-.poem-en { font-size: 1rem; line-height: 1.6; margin: 0 auto; max-width: 32rem; }
+.poem-en { font-size: 1.15rem; line-height: 1.6; margin: 0 auto; max-width: 40rem; }
 .poem-by { margin-top: 1rem; font-weight: 600; font-size: .92rem; color: var(--link); }
 .poem-by span { font-weight: 400; color: var(--muted); }
 .poem-card .poem-controls { display: flex; align-items: center; gap: 1.25rem; justify-content: center; margin-top: 1rem; }
