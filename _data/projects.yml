@@ -5,7 +5,7 @@
 
 - title: "Convergent Rare-Variant Analysis Pipeline for Neurodevelopmental Disorders"
   objective: "Build a customizable pipeline that integrates two complementary statistical genetics tools, pVAAST and Slivar, to identify candidate genes for specific neurodevelopmental phenotypes, such as abnormal head size and language impairment, that are obscured within broad diagnoses."
-  skills: "Linux, Python, R, SQL, Gene burden testing, Permutation testing"
+  skills: "Linux, Python, R, SQL, Statistical Modeling, Data Integration"
   studies:
     - title: "Macrocephaly in 16p11.2 Deletion Syndrome"
       background: "16p11.2 Deletion Syndrome (16pDel) is a recurrent ~600 kb deletion on chromosome 16 associated with neural progenitor cell (NPC) hyperproliferation and brain overgrowth. Despite the shared primary deletion, only a subset of patients exhibit macrocephaly, suggesting that additional modifying genetic variation influences susceptibility to abnormal NPC proliferation."
