@@ -17,7 +17,7 @@ description: "Dissertation research in statistical genetics and machine learning
       <div class="proj-body">
         {% if p.figure %}<img class="proj-fig" src="{{ p.figure | relative_url }}" alt="{{ p.figure_alt }}" loading="lazy">{% endif %}
         {% if p.question %}<h3>Key question</h3><p>{{ p.question }}</p>{% endif %}
-        {% if p.approach %}<h3>Methods</h3><ul>{% for a in p.approach %}<li>{{ a }}</li>{% endfor %}</ul>{% endif %}
+        {% if p.approach %}<h3>Methodology</h3><ul>{% for a in p.approach %}<li>{{ a }}</li>{% endfor %}</ul>{% endif %}
         {% if p.results %}<h3>Results</h3><ul>{% for r in p.results %}<li>{{ r }}</li>{% endfor %}</ul>{% endif %}
         {% if p.link %}<p class="proj-link"><a href="{{ p.link }}">{{ p.link_text | default: "Learn more" }}</a></p>{% endif %}
       </div>

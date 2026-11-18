@@ -1,23 +1,35 @@
 # Projects shown at /projects/, in order.
-# Fields: title, summary, question, approach (optional list, shown as Methods), results (list).
+# Fields: title, summary, question, approach (list, shown as Methodology), results (list).
 # Optional: link, link_text, figure (/assets/img/...), figure_alt
 # Tip: wrap text in "double quotes" if it contains a colon.
 
 - title: "Identifying Risk Genes Associated with Macrocephaly in 16p11.2 Deletion Syndrome Patients"
   summary: "A genome-wide analysis using 16p11.2 Deletion Syndrome (16pDel) as a shared genetic background to identify genomic variants that contribute specifically to macrocephaly and brain overgrowth."
   question: "Despite a shared primary deletion, only a subset of 16pDel patients exhibit macrocephaly. Which additional modifying genetic variants contribute to neural progenitor cell (NPC) hyperproliferation and macrocephaly in these patients?"
+  approach:
+    - "Built an end-to-end rare variant analysis pipeline in Python on a Linux high-performance computing (HPC) cluster, from sequencing data quality control to gene ranking."
+    - "Combined two gene discovery tools (pVAAST and Slivar) and ranked candidate genes using brain expression and functional evidence."
+    - "Compared patients with and without macrocephaly to isolate genes specific to the trait."
   results:
     - "Identified 140 candidate genes unique to macrocephaly, converging on the canonical Wnt signaling pathway as an alternative route to progenitor proliferation not previously implicated in 16p11.2 Deletion Syndrome."
 
 - title: "Identifying Risk Genes Associated with Abnormal Cranial Growth in Idiopathic ASD Patients"
   summary: "A genome-wide analysis using idiopathic autism spectrum disorder (ASD) as a shared genetic background to identify genetic factors associated with both macrocephaly and microcephaly."
   question: "Do macrocephaly and microcephaly in idiopathic ASD arise from distinct genetic contributions, or do they converge on shared biological pathways perturbed in opposing directions?"
+  approach:
+    - "Applied and extended the same pipeline to whole-genome sequencing data from autism families."
+    - "Analyzed both extremes of head size in one cohort to test whether they share underlying biology."
+    - "Used network and pathway enrichment analysis to find common biological themes."
   results:
     - "Identified 52 candidate genes for macrocephaly and 50 for microcephaly; recurrence of the canonical Wnt signaling pathway supports macrocephaly and microcephaly as opposite poles of a shared genetic axis of cranial growth regulation."
 
 - title: "Identifying Risk Genes Associated with Language and Reading Impairment within Linkage-Defined Regions"
   summary: "A candidate gene analysis within linkage regions previously associated with language and reading impairment, using ASD as a shared genetic background."
   question: "Which candidate genes within the linkage regions 15q23–26 and 16p12 contribute to language impairment (LI) and reading impairment (RI), and do they indicate a shared etiology of ASD and language impairment?"
+  approach:
+    - "Ran genome-wide linkage analysis to narrow down the regions of the genome tied to language and reading."
+    - "Searched those regions for candidate genes using several types of genetic variants from whole-genome sequencing."
+    - "Ranked genes by how they are inherited within families and how they are expressed in the brain."
   results:
     - "Prioritized top candidate genes for LI* and RI* within the linkage regions, indicating a shared etiology of ASD and language impairment at these two loci."
 
@@ -25,10 +37,9 @@
   summary: "An end-to-end tool that supports daily options trading decisions by finding underpriced options and estimating the risk of each trade."
   question: "Which options are underpriced today, and what is the expected profit and tail risk of trading them?"
   approach:
-    - "Built a pricing module combining Black-Scholes and the Greeks with GARCH volatility forecasts to flag underpriced options."
-    - "Ran Monte Carlo simulations from empirical historical return distributions to estimate expected PnL, VaR and CVaR for each trade."
-    - "Trained classification models (XGBoost, logistic regression) to filter trading signals."
-    - "Published daily volatility forecasts and results in a Streamlit dashboard."
+    - "Built an end-to-end options pricing and risk tool in Python, with a Streamlit dashboard for daily use."
+    - "Used Black-Scholes and GARCH volatility forecasts to find underpriced options, and Monte Carlo simulation to estimate expected profit and tail risk (VaR, CVaR)."
+    - "Trained XGBoost and logistic regression models to filter trading signals."
   results:
     - "Deployed tool used to support daily trading decisions."
 
@@ -36,8 +47,8 @@
   summary: "A retrieval-augmented generation (RAG) system and LLM agent that reviews scientific papers and answers questions with semantic search."
   question: "Can an AI agent assist with manual literature review and improve efficiency?"
   approach:
-    - "Built a RAG pipeline with embeddings, a vector database (ChromaDB) and semantic similarity search."
-    - "Added an LLM agent that searches, reads and summarizes relevant papers."
+    - "Built a retrieval-augmented generation (RAG) pipeline with embeddings and a ChromaDB vector database for semantic search across papers."
+    - "Added an LLM agent that finds, reads and summarizes relevant papers."
     - "Deployed with Docker and CI/CD, and tracked experiments with MLflow."
   results:
     - "Automated literature search, retrieval and summarization, reducing the manual effort of scientific literature review."

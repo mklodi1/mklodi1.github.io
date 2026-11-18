@@ -750,3 +750,33 @@ body { border-top: 6px solid var(--link); }
 .proj-intro { margin: 0 0 .5rem; }
 .proj-note { margin: 0 0 1.25rem; font-size: .92rem; }
 .proj-group .proj-where + .proj-intro { margin-top: -.25rem; }
+
+.projects { padding-block: 3.5rem 2rem; }
+
+/* ---- Phone menu ---- */
+.nav-toggle { display: none; }
+@media (max-width: 640px) {
+  .nav { align-items: center; padding-block: 1.25rem 0; position: relative; }
+  .nav-home { font-size: 1.05rem; }
+  .nav-toggle {
+    display: inline-flex; align-items: center; gap: .5rem; margin-left: auto;
+    font: inherit; font-size: .9rem; font-weight: 600; color: var(--text);
+    background: #fff; border: 1px solid var(--rule); border-radius: 999px; padding: .4rem .8rem; cursor: pointer;
+  }
+  .nav-toggle:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+  .nav-bars, .nav-bars::before, .nav-bars::after { display: block; width: 14px; height: 2px; border-radius: 2px; background: currentColor; transition: transform .2s ease, opacity .2s ease; }
+  .nav-bars { position: relative; }
+  .nav-bars::before, .nav-bars::after { content: ""; position: absolute; left: 0; }
+  .nav-bars::before { top: -5px; }
+  .nav-bars::after { top: 5px; }
+  .nav-toggle[aria-expanded="true"] .nav-bars { background: transparent; }
+  .nav-toggle[aria-expanded="true"] .nav-bars::before { transform: translateY(5px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .nav-bars::after { transform: translateY(-5px) rotate(-45deg); }
+  .nav nav { display: none; flex-basis: 100%; flex-direction: column; gap: 0; margin-top: .75rem; border-top: 1px solid var(--rule); }
+  .nav nav.open { display: flex; animation: nav-in .18s ease; }
+  .nav nav a { padding: .75rem .1rem; border-bottom: 1px solid var(--rule); font-size: 1rem; }
+  .nav nav a[aria-current] { font-weight: 600; }
+  .home, .cv, .places, .personal, .writing-index, .post, .notfound, .projects { padding-top: 2.25rem; }
+}
+@keyframes nav-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .nav nav.open { animation: none; } .nav-bars, .nav-bars::before, .nav-bars::after { transition: none; } }
