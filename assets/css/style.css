@@ -818,7 +818,7 @@ body { border-top: 6px solid var(--link); }
 .poem { display: none; margin: 0; }
 .poem.on { display: block; animation: poem-in .5s ease; }
 .poem blockquote { margin: 0; padding: 0; border: 0; }
-.poem-urdu { font-family: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Urdu Typesetting", serif; font-size: 1.45rem; line-height: 2.5; color: var(--text); margin: 0 0 .6rem; }
+.poem-urdu { font-family: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Urdu Typesetting", serif; font-size: 1.45rem; line-height: 2.5; color: var(--text); margin: 0 0 1rem; }
 .poem-urdu span, .poem-roman span { display: block; }
 .poem-roman { font-style: italic; color: var(--muted); font-size: .95rem; line-height: 1.6; margin: 0 0 .9rem; }
 .poem-en { font-size: 1rem; line-height: 1.6; margin: 0 auto; max-width: 32rem; }

@@ -57,14 +57,13 @@ permalink: /personal/
     <h2 id="h-poetry">Poetry</h2>
     <div class="poem-card" id="poem-card">
       {% for c in site.data.poetry %}
-      {% assign ur = c.urdu | split: " | " %}{% assign ro = c.roman | split: " | " %}
+      {% assign ur = c.urdu | split: " | " %}
       <figure class="poem{% if forloop.first %} on{% endif %}" data-poem>
         <blockquote>
           <p class="poem-urdu" lang="ur" dir="rtl">{% for l in ur %}<span>{{ l }}</span>{% endfor %}</p>
-          <p class="poem-roman">{% for l in ro %}<span>{{ l }}</span>{% endfor %}</p>
           <p class="poem-en">{{ c.english }}</p>
         </blockquote>
-        <figcaption class="poem-by">{{ c.poet }}{% if c.years %} <span>({{ c.years }})</span>{% endif %}</figcaption>
+        <figcaption class="poem-by">{{ c.poet }}</figcaption>
       </figure>
       {% endfor %}
       {% if site.data.poetry.size > 1 %}
