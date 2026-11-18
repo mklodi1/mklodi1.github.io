@@ -1,22 +1,16 @@
 # Projects shown at /projects/, in order.
-# Fields: title, question (shown at the top), skills (top 5, comma-separated), results (one bullet).
+# Fields: title, objective, skills (comma-separated).
 # Optional: link, link_text, figure (/assets/img/...), figure_alt
 # Tip: wrap text in "double quotes" if it contains a colon.
 
 - title: "Convergent Rare-Variant Analysis Pipeline for Neurodevelopmental Disorders"
-  question: "Can a customizable pipeline that integrates two complementary rare variant tools, pVAAST and Slivar, identify candidate genes for specific neurodevelopmental phenotypes that are obscured within broad diagnoses?"
-  skills: "Linux, Python, R, SQL, Gene burden testing, Permutation testing, Inheritance modeling"
-  results:
-    - "Applied the pipeline across three distinct genetic contexts (16p11.2 Deletion Syndrome, idiopathic ASD, and language and reading impairment), recovering well-established neurodevelopmental genes that validated the approach and identifying novel high-confidence candidate genes and shared pathways such as Wnt signaling."
+  objective: "Build a customizable pipeline that integrates two complementary rare variant tools, pVAAST and Slivar, to identify candidate genes for specific neurodevelopmental phenotypes, such as abnormal head size and language impairment, that are obscured within broad diagnoses."
+  skills: "Linux, Python, R, SQL, Gene burden testing, Permutation testing"
 
 - title: "Derivatives Pricing and Market Risk Simulation Engine"
-  question: "Which options are underpriced today, and what is the expected profit and tail risk of trading them?"
+  objective: "Build an end-to-end tool that supports daily options trading decisions by identifying underpriced options and estimating the expected profit and tail risk of each trade."
   skills: "Python, Time series analysis (GARCH), Monte Carlo simulation, Black-Scholes, XGBoost"
-  results:
-    - "Deployed tool used to support daily trading decisions."
 
 - title: "AI for Scientific Literature Review"
-  question: "Can an AI agent assist with manual literature review and improve efficiency?"
+  objective: "Build an AI agent that assists with manual literature review and improves efficiency through retrieval-augmented generation and semantic search."
   skills: "Python, LLMs, RAG, Embeddings, Vector databases"
-  results:
-    - "Automated literature search, retrieval and summarization, reducing the manual effort of scientific literature review."

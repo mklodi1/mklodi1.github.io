@@ -782,3 +782,6 @@ body { border-top: 6px solid var(--link); }
 @media (prefers-reduced-motion: reduce) { .nav nav.open { animation: none; } .nav-bars, .nav-bars::before, .nav-bars::after { transition: none; } }
 .proj-q { margin: 0 0 .5rem; }
 .proj-q-label { display: block; font-size: .8rem; font-weight: 700; color: var(--muted); letter-spacing: .02em; margin-bottom: .15rem; }
+.proj > .proj-tools { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .35rem; }
+.proj-skills-label { margin: .9rem 0 .35rem; }
+.proj .proj-q { margin-bottom: 0; }
