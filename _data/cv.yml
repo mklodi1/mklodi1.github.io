@@ -56,6 +56,8 @@ coursework:
 skills:
   - area: "Languages"
     tools: "Python, SQL, R, Java"
+  - area: "Bioinformatics"
+    tools: "Statistical genetics, Genomic analysis (WGS/WES), Transcriptomics (RNA-seq), Variant calling (GATK), bcftools, SAMtools, Quality control (QC), Phenotype analysis, Cohort analysis"
   - area: "Data & Infrastructure"
     tools: "Linux/Unix, Bash, AWS, Nextflow, pandas, NumPy, Matplotlib, Git, Docker, SLURM"
   - area: "Machine Learning"
