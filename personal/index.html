@@ -10,7 +10,7 @@ permalink: /personal/
 <article class="wrap personal">
   <h1>Interests</h1>
 
-  {% assign sections = "poetry|Poetry,photography|Photography,drawing|Drawing,sports|Sports" | split: "," %}
+  {% assign sections = "photography|Photography,drawing|Drawing,poetry|Poetry,sports|Sports" | split: "," %}
   {% for sec in sections %}
   {% assign parts = sec | split: "|" %}
   {% assign folder = parts[0] %}
