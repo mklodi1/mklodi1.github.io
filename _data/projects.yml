@@ -56,7 +56,7 @@
 
 - title: "AI for Scientific Literature Review"
   summary: "A retrieval-augmented generation (RAG) system and LLM agent that reviews scientific papers and answers questions with semantic search."
-  question: "Can an AI agent take over the slow, manual parts of reviewing scientific literature?"
+  question: "Can an AI agent assist with manual literature review and improve efficiency?"
   approach:
     - "Built a RAG pipeline with embeddings, a vector database (ChromaDB) and semantic similarity search."
     - "Added an LLM agent that searches, reads and summarizes relevant papers."
