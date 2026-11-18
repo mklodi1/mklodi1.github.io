@@ -12,6 +12,5 @@
   summary: "A retrieval-augmented generation (RAG) system and LLM agent that reviews scientific papers and performs semantic search."
   # link: https://github.com/mklodi1/REPO-NAME
 
-- title: "Predicting Candidate Risk Genes for Neurological Disorders"
-  venue: "Doctoral Dissertation Work"
-  summary: "Developed end-to-end pipeline for candidate gene identification, integrating multiple statistical tools together for family-based rare variant analysis. Identified 300+ high-confidence candidate genes for neurodevelopmental phenotypes such as Autism Spectrum Disorder, language impairment, and abnormal cranial growth."
+- title: "Convergent Rare-Variant Analysis Pipeline for Neurodevelopmental Disorders"
+  summary: "Build a customizable pipeline that integrates two complementary statistical genetics tools, pVAAST and Slivar, to identify candidate genes for specific neurodevelopmental phenotypes, such as abnormal head size and language impairment, that are obscured within broad diagnoses."
