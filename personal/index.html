@@ -51,7 +51,55 @@ permalink: /personal/
     {% endif %}
   </section>
   {% endfor %}
+
+  {% if site.data.poetry %}
+  <section class="gallery-section poetry" aria-labelledby="h-poetry">
+    <h2 id="h-poetry">Poetry</h2>
+    <div class="poem-card" id="poem-card">
+      {% for c in site.data.poetry %}
+      {% assign ur = c.urdu | split: " | " %}{% assign ro = c.roman | split: " | " %}
+      <figure class="poem{% if forloop.first %} on{% endif %}" data-poem>
+        <blockquote>
+          <p class="poem-urdu" lang="ur" dir="rtl">{% for l in ur %}<span>{{ l }}</span>{% endfor %}</p>
+          <p class="poem-roman">{% for l in ro %}<span>{{ l }}</span>{% endfor %}</p>
+          <p class="poem-en">{{ c.english }}</p>
+        </blockquote>
+        <figcaption class="poem-by">{{ c.poet }}{% if c.years %} <span>({{ c.years }})</span>{% endif %}</figcaption>
+      </figure>
+      {% endfor %}
+      {% if site.data.poetry.size > 1 %}
+      <div class="deck-controls poem-controls">
+        <button type="button" class="deck-btn" data-poem-prev aria-label="Previous couplet">&#8592;</button>
+        <span class="deck-count" aria-live="polite"><span data-poem-pos>1</span> / {{ site.data.poetry.size }}</span>
+        <button type="button" class="deck-btn" data-poem-next aria-label="Next couplet">&#8594;</button>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+  {% endif %}
 </article>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
+<script>
+  // Poetry card: shows a different couplet each day; arrows browse the rest.
+  (function () {
+    var card = document.getElementById('poem-card');
+    if (!card) return;
+    var poems = card.querySelectorAll('[data-poem]'), pos = card.querySelector('[data-poem-pos]');
+    if (!poems.length) return;
+    var now = new Date();
+    var day = Math.floor((Date.UTC(now.getFullYear(), now.getMonth(), now.getDate())) / 86400000);
+    var i = day % poems.length;
+    function show(n) {
+      i = (n + poems.length) % poems.length;
+      for (var k = 0; k < poems.length; k++) poems[k].classList.toggle('on', k === i);
+      if (pos) pos.textContent = i + 1;
+    }
+    show(i);
+    var prev = card.querySelector('[data-poem-prev]'), next = card.querySelector('[data-poem-next]');
+    if (prev) prev.addEventListener('click', function () { show(i - 1); });
+    if (next) next.addEventListener('click', function () { show(i + 1); });
+  })();
+</script>
 
 <script>
   // Stacked photo cards: click or swipe the top card to send it to the back.

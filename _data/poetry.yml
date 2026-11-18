@@ -1,0 +1,44 @@
+# Couplets for the Poetry card on /personal/. One is chosen each day; visitors can browse the rest.
+# Only use public-domain verse (classical poets, or works published before 1929) or your own writing.
+# Fields: urdu (two lines, separated by a | ), roman (two lines, separated by a | ), english, poet, years
+- urdu: "ہزاروں خواہشیں ایسی کہ ہر خواہش پہ دم نکلے | بہت نکلے مرے ارمان لیکن پھر بھی کم نکلے"
+  roman: "Hazāroñ ḳhwāhisheñ aisī ki har ḳhwāhish pe dam nikle | Bahut nikle mire armān lekin phir bhī kam nikle"
+  english: "A thousand desires, each one worth dying for. Many of my hopes came true, and still they were too few."
+  poet: "Mirza Ghalib"
+  years: "1797–1869"
+
+- urdu: "پتا پتا بوٹا بوٹا حال ہمارا جانے ہے | جانے نہ جانے گل ہی نہ جانے باغ تو سارا جانے ہے"
+  roman: "Pattā pattā boṭā boṭā hāl hamārā jāne hai | Jāne na jāne gul hī na jāne bāġh to sārā jāne hai"
+  english: "Every leaf and every plant knows the state I am in. The rose alone may not know, but the whole garden does."
+  poet: "Mir Taqi Mir"
+  years: "1723–1810"
+
+- urdu: "دل ناداں تجھے ہوا کیا ہے | آخر اس درد کی دوا کیا ہے"
+  roman: "Dil-e-nādāñ tujhe huā kyā hai | Āḳhir is dard kī dawā kyā hai"
+  english: "Naive heart, what has come over you? What, after all, is the cure for this pain?"
+  poet: "Mirza Ghalib"
+  years: "1797–1869"
+
+- urdu: "ابتدائے عشق ہے روتا ہے کیا | آگے آگے دیکھیے ہوتا ہے کیا"
+  roman: "Ibtidā-e-ishq hai rotā hai kyā | Āge āge dekhiye hotā hai kyā"
+  english: "This is only the beginning of love, so why weep? Just wait and see what lies ahead."
+  poet: "Mir Taqi Mir"
+  years: "1723–1810"
+
+- urdu: "ہم کو معلوم ہے جنت کی حقیقت لیکن | دل کے خوش رکھنے کو غالبؔ یہ خیال اچھا ہے"
+  roman: "Ham ko maʿlūm hai jannat kī haqīqat lekin | Dil ke ḳhush rakhne ko Ġhālib ye ḳhayāl achchhā hai"
+  english: "I know the truth about paradise, Ghalib, but to keep the heart content, it is a pleasant thought."
+  poet: "Mirza Ghalib"
+  years: "1797–1869"
+
+- urdu: "سارے جہاں سے اچھا ہندوستاں ہمارا | ہم بلبلیں ہیں اس کی یہ گلستاں ہمارا"
+  roman: "Sāre jahāñ se achchhā Hindostāñ hamārā | Ham bulbuleñ haiñ is kī ye gulsitāñ hamārā"
+  english: "Better than all the world is our homeland. We are its nightingales, and it is our garden."
+  poet: "Allama Iqbal"
+  years: "1877–1938"
+
+- urdu: "عشق نے غالبؔ نکما کر دیا | ورنہ ہم بھی آدمی تھے کام کے"
+  roman: "Ishq ne Ġhālib nikammā kar diyā | Warna ham bhī ādmī the kām ke"
+  english: "Love has made me useless, Ghalib. Otherwise I too was a man of some worth."
+  poet: "Mirza Ghalib"
+  years: "1797–1869"
