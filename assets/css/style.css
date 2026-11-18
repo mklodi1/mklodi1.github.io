@@ -686,3 +686,39 @@ body { border-top: 6px solid var(--link); }
   }
 }
 @media print { .to-top { display: none !important; } }
+
+/* ---- States & countries visited ---- */
+.tally { margin-top: 3rem; }
+.tally h2 { font-size: 2rem; font-weight: 600; line-height: 1.25; margin-bottom: .25rem; }
+.tally-count { color: var(--muted); margin: 0 0 1.25rem; font-size: 1.05rem; }
+.state-grid { display: grid; grid-template-columns: repeat(11, 1fr); gap: 5px; max-width: 36rem; }
+.st {
+  aspect-ratio: 1; display: flex; align-items: center; justify-content: center; position: relative;
+  border-radius: 6px; font-size: .78rem; font-weight: 600; letter-spacing: .02em;
+  background: var(--wash); color: #A9B2BC; border: 1px solid transparent;
+}
+.st-on { background: #DCEBF7; border-color: #9CCBEF; color: var(--link); cursor: default; transition: transform .15s ease, box-shadow .15s ease; }
+.st-key { background: #FFF1C9; border-color: #F2C14E; color: #8A5A00; }
+.st-dc { font-size: .62rem; border-style: dashed; }
+.st-on:hover, .st-on:focus-visible { transform: translateY(-2px); box-shadow: 0 3px 8px rgba(31,78,140,.18); z-index: 3; outline: none; }
+.st-on:focus-visible { box-shadow: 0 0 0 2px var(--link); }
+.st-on[data-tip]:hover::after, .st-on[data-tip]:focus-visible::after {
+  content: attr(data-tip); position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
+  background: #fff; color: var(--text); border: 1px solid var(--rule); border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,.08);
+  padding: .35rem .55rem; font-size: .78rem; font-weight: 500; letter-spacing: 0; white-space: nowrap; pointer-events: none;
+}
+.country-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(11.5rem, 1fr)); gap: .6rem; }
+.country { display: flex; align-items: center; gap: .65rem; padding: .6rem .75rem; border: 1px solid var(--rule); border-radius: 8px; background: #fff; transition: transform .15s ease, box-shadow .15s ease; }
+.country:hover { transform: translateY(-2px); box-shadow: 0 3px 10px rgba(0,0,0,.06); }
+.country-flag { width: 32px; height: auto; border-radius: 3px; box-shadow: 0 0 0 1px rgba(0,0,0,.08); flex: none; }
+.country-name { font-weight: 600; line-height: 1.2; }
+.country-n { margin-left: auto; color: var(--muted); font-size: .82rem; white-space: nowrap; }
+@media (max-width: 560px) {
+  .state-grid { gap: 3px; }
+  .st { font-size: .58rem; border-radius: 4px; }
+  .st-dc { font-size: .48rem; }
+  .country-list { grid-template-columns: 1fr 1fr; gap: .45rem; }
+  .country { flex-wrap: wrap; gap: .2rem .5rem; padding: .5rem .6rem; }
+  .country-n { margin-left: 0; flex-basis: 100%; }
+}
+@media (prefers-reduced-motion: reduce) { .st-on, .country { transition: none; } }
