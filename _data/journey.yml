@@ -21,14 +21,24 @@
   type: research
   place: "Rutgers University"
 
-- when: "May 2021 – Aug 2021"
+- when: "Apr 2021"
+  title: "Co-author paper published in Proteomes"
+  type: paper
+
+- when: "Aug 2020 – Aug 2021"
   title: "Senior Research Assistant, Joh Lab"
   type: research
   place: "VCU Massey Cancer Center"
 
-- when: "Apr 2021"
-  title: "Co-author paper published in Proteomes"
-  type: paper
+- when: "May 2020 – Aug 2021"
+  title: "Undergraduate Research Assistant, Uetz Lab"
+  type: research
+  place: "Virginia Commonwealth University"
+
+- when: "May 2018 – Apr 2019"
+  title: "Undergraduate Research Assistant, Guruli Lab"
+  type: research
+  place: "Virginia Commonwealth University"
 
 - when: "Aug 2017 – May 2021"
   title: "B.S. in Bioinformatics"
