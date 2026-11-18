@@ -31,7 +31,7 @@
 - { ab: "MO", name: "Missouri", capital: "Jefferson City", row: 5, col: 5, region: "Midwest" }
 - { ab: "KY", name: "Kentucky", capital: "Frankfort", row: 5, col: 6, region: "Southeast" }
 - { ab: "WV", name: "West Virginia", capital: "Charleston", row: 5, col: 7, region: "Southeast" }
-- { ab: "VA", name: "Virginia", capital: "Richmond", row: 5, col: 8, region: "Mid-Atlantic" }
+- { ab: "VA", name: "Virginia", capital: "Richmond", row: 5, col: 8, region: "Southeast" }
 - { ab: "MD", name: "Maryland", capital: "Annapolis", row: 5, col: 9, region: "Mid-Atlantic" }
 - { ab: "DE", name: "Delaware", capital: "Dover", row: 5, col: 10, region: "Mid-Atlantic" }
 - { ab: "AZ", name: "Arizona", capital: "Phoenix", row: 6, col: 2, region: "Southwest" }

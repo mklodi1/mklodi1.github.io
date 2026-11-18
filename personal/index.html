@@ -58,7 +58,7 @@ permalink: /personal/
       {% if shown > 1 %}
       <div class="deck-controls">
         <button type="button" class="deck-btn" data-deck-prev aria-label="Previous">&#8592;</button>
-        <span class="deck-count" aria-live="polite"><span data-deck-pos>1</span> / {{ shown }}</span>
+        <span class="sr-only" aria-live="polite"><span data-deck-pos>1</span> of {{ shown }}</span>
         <button type="button" class="deck-btn" data-deck-next aria-label="Next">&#8594;</button>
       </div>
       {% endif %}
