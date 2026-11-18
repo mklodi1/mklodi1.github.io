@@ -45,11 +45,13 @@ description: "Dissertation research in statistical genetics and machine learning
         }
       }
       var hover = window.matchMedia('(hover: hover) and (min-width: 721px)');
+      function isPhone() { return window.innerWidth <= 720; }
+      if (isPhone()) activate(null);   // on phones, start with every study closed
       for (var i = 0; i < cards.length; i++) {
         (function (c) {
           c.addEventListener('mouseenter', function () { if (hover.matches) activate(c); });
-          c.addEventListener('focus', function () { activate(c); });
-          c.addEventListener('click', function () { activate(c); });
+          c.addEventListener('focus', function () { if (!isPhone()) activate(c); });
+          c.addEventListener('click', function () { if (isPhone() && c.classList.contains('active')) activate(null); else activate(c); });
           c.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(c); } });
         })(cards[i]);
       }
