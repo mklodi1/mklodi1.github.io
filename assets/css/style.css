@@ -878,3 +878,6 @@ body { border-top: 6px solid var(--link); }
   .board-table tbody tr:hover td { background: #232830; }
   .board-scroll { max-height: 22rem; }
 }
+/* Interests: larger section headers, no visible page title */
+.personal .gallery-section h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 1.25rem; padding-bottom: .6rem; }
+.personal .gallery-section:first-of-type, .personal .poetry { margin-top: .5rem; }
