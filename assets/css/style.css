@@ -811,3 +811,22 @@ body { border-top: 6px solid var(--link); }
   .study:not(.active) .study-title { flex-direction: row; font-size: .95rem; }
 }
 @media (prefers-reduced-motion: reduce) { .study { transition: none; } .study.active .study-body { animation: none; } }
+
+/* ---- 747 takeoff on the home page (once per visit) ---- */
+.takeoff { position: fixed; inset: 0; pointer-events: none; z-index: 60; overflow: hidden; }
+.takeoff-move { position: absolute; left: 0; top: 0; opacity: 0; }
+.takeoff-rot svg { display: block; }
+.takeoff-rot path { fill: #fff; stroke: #7CC4F0; stroke-width: 4.5; stroke-linejoin: round; }
+.takeoff.go .takeoff-move { animation: takeoff-move 3.2s cubic-bezier(.5,0,.3,1) .5s forwards; }
+.takeoff.go .takeoff-rot { animation: takeoff-rot 3.2s cubic-bezier(.5,0,.3,1) .5s forwards; transform: rotate(84deg); }
+@keyframes takeoff-move {
+  0%   { opacity: 0; transform: translate(-70px, var(--ground, 268px)) scale(.9); filter: drop-shadow(1px 2px 0 rgba(31,78,140,.28)); }
+  8%   { opacity: 1; }
+  42%  { transform: translate(40vw, calc(var(--ground, 268px) - 4px)) scale(.95); filter: drop-shadow(3px 5px 1px rgba(31,78,140,.24)); }
+  100% { opacity: 1; transform: translate(calc(100vw + 80px), -30px) scale(1.45); filter: drop-shadow(26px 32px 7px rgba(31,78,140,.08)); }
+}
+@keyframes takeoff-rot {
+  0%, 42% { transform: rotate(84deg); }
+  100% { transform: rotate(66deg); }
+}
+@media (prefers-reduced-motion: reduce) { .takeoff { display: none; } }

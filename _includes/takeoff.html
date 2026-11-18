@@ -1,0 +1,16 @@
+<div class="takeoff" id="takeoff" aria-hidden="true"><div class="takeoff-move"><div class="takeoff-rot"><svg viewBox="0 0 100 100" width="54" height="54"><path d="M50 3 C52.8 3 54.2 7.5 54.2 13.5 L54.2 37 L95 59.5 L95 63.2 L54.2 52.8 L54.2 79 L69 88.5 L69 92 L54 89.5 L52 97 L48 97 L46 89.5 L31 92 L31 88.5 L45.8 79 L45.8 52.8 L5 63.2 L5 59.5 L45.8 37 L45.8 13.5 C45.8 7.5 47.2 3 50 3 Z M62.6 41.6 a1.9 4.2 0 1 0 3.8 0 a1.9 4.2 0 1 0 -3.8 0 Z M77.2 49.6 a1.8 3.9 0 1 0 3.6 0 a1.8 3.9 0 1 0 -3.6 0 Z M33.6 41.6 a1.9 4.2 0 1 0 3.8 0 a1.9 4.2 0 1 0 -3.8 0 Z M19.2 49.6 a1.8 3.9 0 1 0 3.6 0 a1.8 3.9 0 1 0 -3.6 0 Z"/></svg></div></div></div>
+<script>
+  (function () {
+    var el = document.getElementById('takeoff');
+    if (!el) return;
+    var seen = false;
+    try { seen = sessionStorage.getItem('takeoff') === '1'; sessionStorage.setItem('takeoff', '1'); } catch (e) {}
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (seen || reduce) { el.remove(); return; }
+    // roll along the gap just below the intro, then climb out to the top right
+    var intro = document.querySelector('.home .intro');
+    if (intro) el.style.setProperty('--ground', Math.round(intro.getBoundingClientRect().bottom + 6) + 'px');
+    el.classList.add('go');
+    el.querySelector('.takeoff-move').addEventListener('animationend', function () { el.remove(); });
+  })();
+</script>
