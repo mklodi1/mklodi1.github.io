@@ -828,3 +828,10 @@ body { border-top: 6px solid var(--link); }
 @keyframes poem-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 @media (max-width: 560px) { .poem-card { padding: 1.4rem 1rem 1rem; } .poem-urdu { font-size: 1.2rem; line-height: 2.4; } }
 @media (prefers-reduced-motion: reduce) { .poem.on { animation: none; } }
+
+/* handwritten place labels under photos */
+.deck-card figcaption.deck-place { display: block; }
+.deck-place, .deck-ready .deck-card figcaption.deck-place {
+  font-family: "Caveat", "Segoe Print", "Bradley Hand", cursive; font-style: normal; font-weight: 500;
+  font-size: 1.3rem; line-height: 1.1; color: #1D2228; text-align: center; padding: .45rem .25rem .1rem;
+}

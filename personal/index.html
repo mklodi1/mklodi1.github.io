@@ -5,12 +5,12 @@ permalink: /personal/
 ---
 {% comment %}
   Galleries fill themselves: upload images (.jpg, .jpeg, .png, .webp) into
-  assets/img/sports/, assets/img/photography/ or assets/img/drawing/ and they appear here, sorted by file name.
+  assets/img/sports/, assets/img/photography/, assets/img/aviation/ or assets/img/drawing/ and they appear here, sorted by file name.
 {% endcomment %}
 <article class="wrap personal">
   <h1>Interests</h1>
 
-  {% assign sections = "photography|Photography,drawing|Drawing,poetry|Poetry,sports|Sports" | split: "," %}
+  {% assign sections = "photography|Photography,aviation|Aviation,drawing|Drawing,poetry|Poetry,sports|Sports" | split: "," %}
   {% for sec in sections %}
   {% assign parts = sec | split: "|" %}
   {% assign folder = parts[0] %}
@@ -57,6 +57,7 @@ permalink: /personal/
         {% assign caption = site.data.captions[img.basename] | default: label %}
         <figure class="deck-card">
           <img src="{{ img.path | relative_url }}" alt="{{ caption }}" loading="lazy" draggable="false">
+          {% assign place = site.data.photo_places[img.basename] %}{% if place %}<figcaption class="deck-place">{{ place }}</figcaption>{% endif %}
         </figure>
         {% endif %}
         {% endfor %}
@@ -79,7 +80,7 @@ permalink: /personal/
   </section>
   {% endfor %}
 </article>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600&family=Caveat:wght@500&display=swap" rel="stylesheet">
 <script>
   // Poetry card: shows a different couplet each day; arrows browse the rest.
   (function () {
