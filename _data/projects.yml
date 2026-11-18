@@ -1,48 +1,25 @@
 # Projects shown at /projects/, in order.
-# Fields: title, summary, question, approach (list, shown as Methods), results (list).
+# Fields: title, summary, question, approach (optional list, shown as Methods), results (list).
 # Optional: link, link_text, figure (/assets/img/...), figure_alt
 # Tip: wrap text in "double quotes" if it contains a colon.
 
 - title: "Identifying Risk Genes Associated with Macrocephaly in 16p11.2 Deletion Syndrome Patients"
   summary: "A genome-wide analysis using 16p11.2 Deletion Syndrome (16pDel) as a shared genetic background to identify genomic variants that contribute specifically to macrocephaly and brain overgrowth."
   question: "Despite a shared primary deletion, only a subset of 16pDel patients exhibit macrocephaly. Which additional modifying genetic variants contribute to neural progenitor cell (NPC) hyperproliferation and macrocephaly in these patients?"
-  approach:
-    - "Stratified 16pDel probands from the Simons Foundation Autism Research Initiative (SFARI) cohort into macrocephalic and normocephalic groups using sex-specific head circumference percentiles."
-    - "Performed variant and sample-level quality control on whole-exome sequencing data."
-    - "Applied a rare variant prioritization strategy integrating two independent gene discovery approaches: pVAAST (pedigree-based gene burden and segregation analysis with functional annotation) and Slivar (inheritance-based filtering under dominant, recessive and de novo models)."
-    - "Merged both candidate gene lists into a convergent, high-confidence gene set, then applied a tier-based selection strategy integrating statistical significance, brain expression (GTEx, BrainSpan, HDBR), expression in the developing brain, loss-of-function intolerance (gnomAD pLI) and model organism evidence (IMPC)."
-    - "Performed convergent analysis against the normocephalic gene set, followed by network and functional enrichment analyses (HumanBase, ToppGene)."
   results:
-    - "Identified 140 top candidate genes unique to macrocephaly."
-    - "Candidate genes converged on biological processes involved in brain development, including the canonical Wnt signaling pathway."
-    - "Wnt signaling represents an alternative route to progenitor proliferation not previously implicated in 16p11.2 Deletion Syndrome, distinct from the established MAPK/ERK mechanism."
+    - "Identified 140 candidate genes unique to macrocephaly, converging on the canonical Wnt signaling pathway as an alternative route to progenitor proliferation not previously implicated in 16p11.2 Deletion Syndrome."
 
 - title: "Identifying Risk Genes Associated with Abnormal Cranial Growth in Idiopathic ASD Patients"
   summary: "A genome-wide analysis using idiopathic autism spectrum disorder (ASD) as a shared genetic background to identify genetic factors associated with both macrocephaly and microcephaly."
   question: "Do macrocephaly and microcephaly in idiopathic ASD arise from distinct genetic contributions, or do they converge on shared biological pathways perturbed in opposing directions?"
-  approach:
-    - "Stratified ASD probands from the New Jersey Language and Autism Genetics Study (NJLAGS) into macrocephalic, microcephalic and normocephalic groups using sex-specific head circumference percentiles."
-    - "Analyzed whole-genome sequencing data called with the GATK best-practice pipeline."
-    - "Applied the same rare variant prioritization strategy combining pVAAST and Slivar."
-    - "Incorporated detailed functional annotations, including population frequency metrics, brain expression patterns and pathway enrichment relevant to neurogenesis and brain development."
-    - "Performed convergent analysis against the normocephalic gene set, followed by network and functional enrichment analyses (HumanBase, ToppGene)."
   results:
-    - "Identified 52 top candidate genes for macrocephaly and 50 for microcephaly."
-    - "Recovered well-established neurodevelopmental genes, validating the approach, alongside novel candidates."
-    - "The canonical Wnt signaling pathway recurred across both genetic backgrounds, supporting the hypothesis that macrocephaly and microcephaly represent opposite poles of a shared genetic axis of cranial growth regulation."
+    - "Identified 52 candidate genes for macrocephaly and 50 for microcephaly; recurrence of the canonical Wnt signaling pathway supports macrocephaly and microcephaly as opposite poles of a shared genetic axis of cranial growth regulation."
 
 - title: "Identifying Risk Genes Associated with Language and Reading Impairment within Linkage-Defined Regions"
   summary: "A candidate gene analysis within linkage regions previously associated with language and reading impairment, using ASD as a shared genetic background."
   question: "Which candidate genes within the linkage regions 15q23–26 and 16p12 contribute to language impairment (LI) and reading impairment (RI), and do they indicate a shared etiology of ASD and language impairment?"
-  approach:
-    - "Defined categorical LI* and RI* phenotypes under an etiological equivalence model in multiplex NJLAGS families."
-    - "Performed genome-wide linkage analysis on SNP array data with KELVIN, using the posterior probability of linkage (PPL) with Bayesian sequential updating, refining the critical regions to 15q23–15q26 (LI*) and 16p12 (RI*)."
-    - "Prioritized candidate genes within the linkage regions using SNVs, indels, structural variants (SVs) and copy number variants (CNVs) from whole-genome sequencing and genotyping array data."
-    - "Ranked genes by variant impact, segregation pattern, gene function and brain expression, supported by systematic literature review."
   results:
-    - "Identified 34 candidate genes associated with LI* and 13 with RI*."
-    - "Prioritized 10 top candidate genes for LI* and 6 for RI*, including genes previously implicated in neurodevelopmental disorders and novel candidates."
-    - "Top candidate genes indicate a shared etiology of ASD and language impairment at these two loci."
+    - "Prioritized top candidate genes for LI* and RI* within the linkage regions, indicating a shared etiology of ASD and language impairment at these two loci."
 
 - title: "Derivatives Pricing and Market Risk Simulation Engine"
   summary: "An end-to-end tool that supports daily options trading decisions by finding underpriced options and estimating the risk of each trade."
@@ -63,4 +40,4 @@
     - "Added an LLM agent that searches, reads and summarizes relevant papers."
     - "Deployed with Docker and CI/CD, and tracked experiments with MLflow."
   results:
-    - "Cut manual literature review time by 85%."
+    - "Automated literature search, retrieval and summarization, reducing the manual effort of scientific literature review."
