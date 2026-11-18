@@ -19,7 +19,7 @@ permalink: /personal/
   {% if site.data.poetry %}
   <section class="gallery-section poetry" aria-labelledby="h-poetry">
     <h2 id="h-poetry">Poetry</h2>
-    <div class="poem-card" id="poem-card"><span class="poem-mark" aria-hidden="true">&ldquo;</span>
+    <div class="poem-card" id="poem-card">
       {% for c in site.data.poetry %}
       {% assign ur = c.urdu | split: " | " %}
       <figure class="poem{% if forloop.first %} on{% endif %}" data-poem>
@@ -75,15 +75,18 @@ permalink: /personal/
 </article>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
 <script>
-  // Poetry card: shows a different couplet each day.
+  // Poetry card: shows a random couplet each time the page loads.
   (function () {
     var card = document.getElementById('poem-card');
     if (!card) return;
     var poems = card.querySelectorAll('[data-poem]'), pos = card.querySelector('[data-poem-pos]');
     if (!poems.length) return;
-    var now = new Date();
-    var day = Math.floor((Date.UTC(now.getFullYear(), now.getMonth(), now.getDate())) / 86400000);
-    var i = day % poems.length;
+    // a different couplet on every visit (never the same one twice in a row)
+    var last = -1;
+    try { last = parseInt(sessionStorage.getItem('poem'), 10); } catch (e) {}
+    var i = Math.floor(Math.random() * poems.length);
+    if (poems.length > 1 && i === last) i = (i + 1 + Math.floor(Math.random() * (poems.length - 1))) % poems.length;
+    try { sessionStorage.setItem('poem', i); } catch (e) {}
     function show(n) {
       i = (n + poems.length) % poems.length;
       for (var k = 0; k < poems.length; k++) poems[k].classList.toggle('on', k === i);
@@ -248,7 +251,7 @@ permalink: /personal/
   </div>
 </div>
 <script>
-  // Hover over a photo stack or the poetry card (not Sports) to see it enlarged; move the mouse off to close.
+  // Hover over the poetry card to see it enlarged; move the mouse off to close.
   (function () {
     if (!window.matchMedia || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
     var box = document.getElementById('lightbox');
@@ -305,7 +308,6 @@ permalink: /personal/
       el.addEventListener('pointerdown', function () { pressed = true; clearTimeout(timer); });
       document.addEventListener('pointerup', function () { pressed = false; });
     }
-    Array.prototype.forEach.call(document.querySelectorAll('[data-deck]:not(.deck-sports) .deck-stack'), function (st) { watch(st, 'deck'); });
     var poem = document.querySelector('#poem-card .poem-stage') || document.getElementById('poem-card');
     if (poem) watch(poem, 'poem');
 
