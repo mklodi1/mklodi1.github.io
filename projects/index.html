@@ -11,6 +11,8 @@ description: "Dissertation research in statistical genetics and machine learning
   <section class="proj-group" aria-labelledby="pg-{{ forloop.index }}">
     <h2 id="pg-{{ forloop.index }}">{{ g.group }}</h2>
     {% if g.where %}<p class="proj-where">{{ g.where }}</p>{% endif %}
+    {% if g.intro %}<p class="proj-intro">{{ g.intro }}</p>{% endif %}
+    {% if g.note %}<p class="proj-note">{% if g.note_link %}<a href="{{ g.note_link }}">{{ g.note }}</a>{% else %}{{ g.note }}{% endif %}</p>{% endif %}
 
     {% for p in g.projects %}
     {% assign pid = p.title | slugify %}
