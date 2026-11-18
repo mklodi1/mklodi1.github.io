@@ -1,5 +1,5 @@
 # Couplets for the Poetry card on /personal/. One is shown at random on each page load.
-# Urdu text as printed by Rekhta (rekhta.org). Only public-domain verse.
+# Urdu text as printed by Rekhta (rekhta.org), Dagh couplet from urdushahkar.org. Only public-domain verse.
 # Fields: urdu (two lines, separated by a | ), english, poet
 - urdu: "عشق نے غالبؔ نکما کر دیا | ورنہ ہم بھی آدمی تھے کام کے"
   english: "Love has made me useless, Ghalib. Otherwise I too was a man of some worth."
@@ -28,3 +28,15 @@
 - urdu: "بنا کر فقیروں کا ہم بھیس غالبؔ | تماشائے اہل کرم دیکھتے ہیں"
   english: "Disguised as a beggar, Ghalib, I watch how the generous really behave."
   poet: "Mirza Ghalib"
+
+- urdu: "تم مرے پاس ہوتے ہو گویا | جب کوئی دوسرا نہیں ہوتا"
+  english: "You are with me, as it were, when no one else is there."
+  poet: "Momin Khan Momin"
+
+- urdu: "نہ تھی حال کی جب ہمیں خبر رہے دیکھتے اوروں کے عیب و ہنر | پڑی اپنی برائیوں پر جو نظر تو نگاہ میں کوئی برا نہ رہا"
+  english: "While I didn't know myself, I kept judging others' faults and virtues. Once I saw my own flaws, no one else seemed bad."
+  poet: "Bahadur Shah Zafar"
+
+- urdu: "اُردو ہے جس کا نام ہمیں جانتے ہیں داغؔ | ہندوستاں میں دھوم ہماری زباں کی ہے"
+  english: "Only we, Dagh, know the language called Urdu. Our tongue is celebrated across Hindustan."
+  poet: "Dagh Dehlvi"
