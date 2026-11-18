@@ -881,3 +881,15 @@ body { border-top: 6px solid var(--link); }
 /* Interests: larger section headers, no visible page title */
 .personal .gallery-section h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 1.25rem; padding-bottom: .6rem; }
 .personal .gallery-section:first-of-type, .personal .poetry { margin-top: .5rem; }
+
+/* States visited by region */
+.regions { display: grid; grid-template-columns: repeat(4, 1fr); gap: .6rem; margin-top: 1.25rem; }
+.region { font: inherit; text-align: left; display: flex; flex-direction: column; gap: .2rem; padding: .7rem .85rem; background: #fff; border: 1px solid var(--rule); border-radius: 10px; cursor: pointer; transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+.region:hover, .region:focus-visible { border-color: #9CCBEF; box-shadow: 0 4px 12px rgba(31,78,140,.08); transform: translateY(-2px); outline: none; }
+.region-name { font-weight: 700; font-size: 1rem; color: var(--text); }
+.region-count { font-size: .88rem; color: var(--muted); }
+.region-bar { display: block; height: 5px; border-radius: 999px; background: var(--wash); overflow: hidden; margin-top: .3rem; }
+.region-bar i { display: block; height: 100%; background: #7CC4F0; border-radius: inherit; }
+.us-map.region-focus .st { opacity: .35; transition: opacity .15s ease; }
+.us-map.region-focus .st.in-region { opacity: 1; stroke: #1F4E8C; stroke-width: 1.6; }
+@media (max-width: 640px) { .regions { grid-template-columns: 1fr 1fr; } }

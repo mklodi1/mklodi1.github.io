@@ -55,6 +55,19 @@ permalink: /life-map/
     <p class="tally-count">{{ nstates }} of 50</p>
     {% assign padded = " " | append: visited %}
     {% include us-map.html %}
+    {% assign regions = "Northeast,Midwest,South,West" | split: "," %}
+    <div class="regions" aria-label="States visited by region">
+      {% for r in regions %}
+      {% assign total = 0 %}{% assign seen = 0 %}{% assign abs = "" %}
+      {% for st in site.data.states %}{% if st.region == r %}{% assign total = total | plus: 1 %}{% assign abs = abs | append: st.ab | downcase | append: " " %}{% assign probe = " " | append: st.ab | append: " " %}{% if padded contains probe %}{% assign seen = seen | plus: 1 %}{% endif %}{% endif %}{% endfor %}
+      {% assign pct = seen | times: 100 | divided_by: total %}
+      <button type="button" class="region" data-states="{{ abs | strip }}">
+        <span class="region-name">{{ r }}</span>
+        <span class="region-count">{{ seen }} of {{ total }}</span>
+        <span class="region-bar" aria-hidden="true"><i style="width: {{ pct }}%"></i></span>
+      </button>
+      {% endfor %}
+    </div>
     <div class="state-card" id="state-card" aria-hidden="true"><div class="state-card-head"><img class="state-card-flag" alt="" width="64" height="40"><p class="state-card-name"></p></div><div class="state-card-photos"></div></div>
     {% comment %} Photos from the Interests page, grouped by the state in their place label (_data/photo_places.yml). {% endcomment %}
     {% assign pfix = "/assets/img/photography/" %}
@@ -65,6 +78,27 @@ permalink: /life-map/
   </section>
   {% endif %}
 </article>
+<script>
+  // Region buttons: hover or focus one to highlight its states on the map.
+  (function () {
+    var map = document.querySelector('.us-map');
+    if (!map) return;
+    function set(btn) {
+      var on = btn ? btn.getAttribute('data-states').split(' ') : [];
+      map.classList.toggle('region-focus', !!btn);
+      Array.prototype.forEach.call(map.querySelectorAll('.st'), function (el) {
+        el.classList.toggle('in-region', on.indexOf(el.getAttribute('data-ab')) > -1);
+      });
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('.region'), function (b) {
+      b.addEventListener('mouseenter', function () { set(b); });
+      b.addEventListener('mouseleave', function () { set(null); });
+      b.addEventListener('focus', function () { set(b); });
+      b.addEventListener('blur', function () { set(null); });
+      b.addEventListener('click', function () { set(b); });
+    });
+  })();
+</script>
 <script>
   (function () {
     var grid = document.querySelector('.us-map'), card = document.getElementById('state-card');
