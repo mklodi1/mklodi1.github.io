@@ -1,0 +1,52 @@
+# Tiles for the States Visited map on /life-map/ (row and col place each tile on the grid).
+- { ab: "AK", name: "Alaska", capital: "Juneau", row: 1, col: 1 }
+- { ab: "ME", name: "Maine", capital: "Augusta", row: 1, col: 11 }
+- { ab: "VT", name: "Vermont", capital: "Montpelier", row: 2, col: 10 }
+- { ab: "NH", name: "New Hampshire", capital: "Concord", row: 2, col: 11 }
+- { ab: "WA", name: "Washington", capital: "Olympia", row: 3, col: 1 }
+- { ab: "ID", name: "Idaho", capital: "Boise", row: 3, col: 2 }
+- { ab: "MT", name: "Montana", capital: "Helena", row: 3, col: 3 }
+- { ab: "ND", name: "North Dakota", capital: "Bismarck", row: 3, col: 4 }
+- { ab: "MN", name: "Minnesota", capital: "Saint Paul", row: 3, col: 5 }
+- { ab: "IL", name: "Illinois", capital: "Springfield", row: 3, col: 6 }
+- { ab: "WI", name: "Wisconsin", capital: "Madison", row: 3, col: 7 }
+- { ab: "MI", name: "Michigan", capital: "Lansing", row: 3, col: 8 }
+- { ab: "NY", name: "New York", capital: "Albany", row: 3, col: 9 }
+- { ab: "RI", name: "Rhode Island", capital: "Providence", row: 3, col: 10 }
+- { ab: "MA", name: "Massachusetts", capital: "Boston", row: 3, col: 11 }
+- { ab: "OR", name: "Oregon", capital: "Salem", row: 4, col: 1 }
+- { ab: "NV", name: "Nevada", capital: "Carson City", row: 4, col: 2 }
+- { ab: "WY", name: "Wyoming", capital: "Cheyenne", row: 4, col: 3 }
+- { ab: "SD", name: "South Dakota", capital: "Pierre", row: 4, col: 4 }
+- { ab: "IA", name: "Iowa", capital: "Des Moines", row: 4, col: 5 }
+- { ab: "IN", name: "Indiana", capital: "Indianapolis", row: 4, col: 6 }
+- { ab: "OH", name: "Ohio", capital: "Columbus", row: 4, col: 7 }
+- { ab: "PA", name: "Pennsylvania", capital: "Harrisburg", row: 4, col: 8 }
+- { ab: "NJ", name: "New Jersey", capital: "Trenton", row: 4, col: 9 }
+- { ab: "CT", name: "Connecticut", capital: "Hartford", row: 4, col: 10 }
+- { ab: "CA", name: "California", capital: "Sacramento", row: 5, col: 1 }
+- { ab: "UT", name: "Utah", capital: "Salt Lake City", row: 5, col: 2 }
+- { ab: "CO", name: "Colorado", capital: "Denver", row: 5, col: 3 }
+- { ab: "NE", name: "Nebraska", capital: "Lincoln", row: 5, col: 4 }
+- { ab: "MO", name: "Missouri", capital: "Jefferson City", row: 5, col: 5 }
+- { ab: "KY", name: "Kentucky", capital: "Frankfort", row: 5, col: 6 }
+- { ab: "WV", name: "West Virginia", capital: "Charleston", row: 5, col: 7 }
+- { ab: "VA", name: "Virginia", capital: "Richmond", row: 5, col: 8 }
+- { ab: "MD", name: "Maryland", capital: "Annapolis", row: 5, col: 9 }
+- { ab: "DE", name: "Delaware", capital: "Dover", row: 5, col: 10 }
+- { ab: "AZ", name: "Arizona", capital: "Phoenix", row: 6, col: 2 }
+- { ab: "NM", name: "New Mexico", capital: "Santa Fe", row: 6, col: 3 }
+- { ab: "KS", name: "Kansas", capital: "Topeka", row: 6, col: 4 }
+- { ab: "AR", name: "Arkansas", capital: "Little Rock", row: 6, col: 5 }
+- { ab: "TN", name: "Tennessee", capital: "Nashville", row: 6, col: 6 }
+- { ab: "NC", name: "North Carolina", capital: "Raleigh", row: 6, col: 7 }
+- { ab: "SC", name: "South Carolina", capital: "Columbia", row: 6, col: 8 }
+- { ab: "DC", name: "District of Columbia", capital: "Washington", row: 6, col: 9 }
+- { ab: "OK", name: "Oklahoma", capital: "Oklahoma City", row: 7, col: 4 }
+- { ab: "LA", name: "Louisiana", capital: "Baton Rouge", row: 7, col: 5 }
+- { ab: "MS", name: "Mississippi", capital: "Jackson", row: 7, col: 6 }
+- { ab: "AL", name: "Alabama", capital: "Montgomery", row: 7, col: 7 }
+- { ab: "GA", name: "Georgia", capital: "Atlanta", row: 7, col: 8 }
+- { ab: "HI", name: "Hawaii", capital: "Honolulu", row: 8, col: 1 }
+- { ab: "TX", name: "Texas", capital: "Austin", row: 8, col: 4 }
+- { ab: "FL", name: "Florida", capital: "Tallahassee", row: 8, col: 9 }
