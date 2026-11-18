@@ -1,16 +1,11 @@
 # Your best 2–4 pieces of work. "figure", "link" and "venue" are optional.
 # Put images in assets/img/ and reference them like /assets/img/project-one.png
 # Tip: wrap text in "double quotes" if it contains a colon.
+- title: "Convergent Rare-Variant Analysis Pipeline for Neurodevelopmental Disorders"
+  summary: "A customizable pipeline that integrates two complementary statistical genetics tools, pVAAST and Slivar, to identify candidate genes for specific neurodevelopmental phenotypes, such as abnormal head size and language impairment, that are obscured within broad diagnoses."
+
 - title: "Derivatives Pricing and Market Risk Simulation Engine"
-  #venue: "EIMplus, 2025–2026"
-  summary: "An end-to-end tool to assist options trading decision-making, integrating Black-Scholes model to identify underpriced options, GARCH to forecast volatility, and Monte Carlo simulations to estimate expected PnL and tail risk for each trade."
-  # link: https://github.com/mklodi1/REPO-NAME
-  # figure: /assets/img/risk-engine.png
+  summary: "An end-to-end tool that supports daily options trading decisions by identifying underpriced options and estimating the expected profit and tail risk of each trade."
 
 - title: "Agentic AI for Scientific Literature Review"
-  #venue: "EIMplus, 2025–2026"
-  summary: "A retrieval-augmented generation (RAG) system and LLM agent that reviews scientific papers and performs semantic search."
-  # link: https://github.com/mklodi1/REPO-NAME
-
-- title: "Convergent Rare-Variant Analysis Pipeline for Neurodevelopmental Disorders"
-  summary: "Build a customizable pipeline that integrates two complementary statistical genetics tools, pVAAST and Slivar, to identify candidate genes for specific neurodevelopmental phenotypes, such as abnormal head size and language impairment, that are obscured within broad diagnoses."
+  summary: "An AI agent that assists with manual literature review and improves efficiency through retrieval-augmented generation and semantic search."
