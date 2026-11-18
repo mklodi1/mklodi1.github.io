@@ -22,7 +22,7 @@
 
 - title: "Derivatives Pricing and Market Risk Simulation Engine"
   objective: "Build an end-to-end tool that supports daily options trading decisions by identifying underpriced options and estimating the expected profit and tail risk of each trade."
-  skills: "Python, Time Series Analysis (GARCH), Monte Carlo Simulation, Black-Scholes, XGBoost"
+  skills: "Python, Time Series Analysis (GARCH), Monte Carlo Simulation, Predictive Modeling, Logistic Regression"
 
 - title: "Agentic AI for Scientific Literature Review"
   objective: "Build an AI agent that assists with manual literature review and improves efficiency through retrieval-augmented generation and semantic search."
