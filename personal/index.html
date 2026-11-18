@@ -5,12 +5,12 @@ permalink: /personal/
 ---
 {% comment %}
   Galleries fill themselves: upload images (.jpg, .jpeg, .png, .webp) into
-  assets/img/sports/, assets/img/photography/, assets/img/aviation/ or assets/img/drawing/ and they appear here, sorted by file name.
+  assets/img/sports/, assets/img/photography/ or assets/img/drawing/ and they appear here, sorted by file name.
 {% endcomment %}
 <article class="wrap personal">
   <h1>Interests</h1>
 
-  {% assign sections = "photography|Photography,aviation|Aviation,drawing|Drawing,poetry|Poetry,sports|Sports" | split: "," %}
+  {% assign sections = "poetry|Poetry,photography|Photography,drawing|Drawing,sports|Sports" | split: "," %}
   {% for sec in sections %}
   {% assign parts = sec | split: "|" %}
   {% assign folder = parts[0] %}
@@ -19,7 +19,7 @@ permalink: /personal/
   {% if site.data.poetry %}
   <section class="gallery-section poetry" aria-labelledby="h-poetry">
     <h2 id="h-poetry">Poetry</h2>
-    <div class="poem-card" id="poem-card">
+    <div class="poem-card" id="poem-card"><span class="poem-mark" aria-hidden="true">&ldquo;</span>
       {% for c in site.data.poetry %}
       {% assign ur = c.urdu | split: " | " %}
       <figure class="poem{% if forloop.first %} on{% endif %}" data-poem>
@@ -27,16 +27,9 @@ permalink: /personal/
           <p class="poem-urdu" lang="ur" dir="rtl">{% for l in ur %}<span>{{ l }}</span>{% endfor %}</p>
           <p class="poem-en">{{ c.english }}</p>
         </blockquote>
-        <figcaption class="poem-by">{{ c.poet }}</figcaption>
+        <figcaption class="poem-by">&mdash; {{ c.poet }}</figcaption>
       </figure>
       {% endfor %}
-      {% if site.data.poetry.size > 1 %}
-      <div class="deck-controls poem-controls">
-        <button type="button" class="deck-btn" data-poem-prev aria-label="Previous couplet">&#8592;</button>
-        <span class="deck-count" aria-live="polite"><span data-poem-pos>1</span> / {{ site.data.poetry.size }}</span>
-        <button type="button" class="deck-btn" data-poem-next aria-label="Next couplet">&#8594;</button>
-      </div>
-      {% endif %}
     </div>
   </section>
   {% endif %}
@@ -82,7 +75,7 @@ permalink: /personal/
 </article>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
 <script>
-  // Poetry card: shows a different couplet each day; arrows browse the rest.
+  // Poetry card: shows a different couplet each day.
   (function () {
     var card = document.getElementById('poem-card');
     if (!card) return;

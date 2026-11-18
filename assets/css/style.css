@@ -809,7 +809,7 @@ body { border-top: 6px solid var(--link); }
 
 
 /* ---- Poetry card (Interests page) ---- */
-.poem-card { background: #fff; border: 1px solid var(--rule); border-radius: 14px; padding: 2.5rem 2rem 1.4rem; text-align: center; box-shadow: 0 2px 0 #E6EDF4; }
+.poem-card { position: relative; background: #fff; border: 1px solid var(--rule); border-radius: 14px; padding: 2.75rem 2.5rem 2rem; text-align: center; box-shadow: 0 2px 0 #E6EDF4; }
 .poem { display: none; margin: 0; }
 .poem.on { display: block; animation: poem-in .5s ease; }
 .poem blockquote { margin: 0; padding: 0; border: 0; }
@@ -860,3 +860,22 @@ body { border-top: 6px solid var(--link); }
 .lb-btn:focus-visible, .lb-close:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
 [data-deck]:not(.deck-sports) .deck-stack, #poem-card { cursor: zoom-in; }
 @media (prefers-reduced-motion: reduce) { .lightbox, .lb-frame { transition: none; } }
+
+/* quote-of-the-day look */
+.poetry { margin-top: 1.5rem; }
+.poem-mark { position: absolute; top: -.15rem; left: 1.1rem; font-family: Georgia, "Times New Roman", serif; font-size: 6rem; line-height: 1; color: #DCEBF7; pointer-events: none; }
+.poem-card .poem { position: relative; }
+.poem-by { font-style: normal; }
+.lb-is-poem .lb-btn { display: none; }
+/* departure board: two columns of destinations on wider screens */
+@media (min-width: 760px) {
+  .board-table thead { display: none; }
+  .board-table tbody { display: grid; grid-template-columns: 1fr 1fr; column-gap: 0; }
+  .board-table tbody tr { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #22262C; }
+  .board-table tbody tr:nth-child(odd) { border-right: 1px solid #2A2F36; }
+  .board-table td, .board-table td.flap { border-bottom: 0; padding: .38rem .9rem; font-size: .85rem; }
+  .board-table tbody tr:nth-child(even) td { background: none; }
+  .board-table tbody tr:nth-child(4n+3) td, .board-table tbody tr:nth-child(4n+4) td { background: #181B20; }
+  .board-table tbody tr:hover td { background: #232830; }
+  .board-scroll { max-height: 22rem; }
+}
