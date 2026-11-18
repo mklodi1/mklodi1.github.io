@@ -1,17 +1,17 @@
 # "Timeline" section on the home page, ordered by completion date, most recent first.
 # Fields: when, title, type (education, research or paper), place (optional), detail (optional),
 # logo (optional): an image in assets/img/logos/, shown when the plane reaches the card.
-- when: "Aug 2021 – Oct 2026"
-  title: "Graduate Research Assistant, Xing Lab of Genomics"
-  type: research
-  place: "Rutgers University"
-
 - when: "Aug 2021 – Sep 2026"
   title: "Ph.D. in Quantitative Biomedicine"
   type: education
   place: "Rutgers University, New Brunswick, NJ"
   detail: "Presidential Fellowship"
   logo: /assets/img/logos/rutgers.png
+
+- when: "Aug 2021 – Sep 2026"
+  title: "Graduate Research Assistant, Xing Lab of Genomics"
+  type: research
+  place: "Rutgers University"
 
 - when: "Jan 2026"
   title: "First-author paper published in Genes"
