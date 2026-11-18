@@ -55,7 +55,13 @@ permalink: /life-map/
     <p class="tally-count">{{ nstates }} of 50</p>
     {% assign padded = " " | append: visited %}
     {% include us-map.html %}
-    <div class="state-card" id="state-card" aria-hidden="true"><img class="state-card-flag" alt="" width="64" height="40"><div><p class="state-card-name"></p></div></div>
+    <div class="state-card" id="state-card" aria-hidden="true"><div class="state-card-head"><img class="state-card-flag" alt="" width="64" height="40"><p class="state-card-name"></p></div><div class="state-card-photos"></div></div>
+    {% comment %} Photos from the Interests page, grouped by the state in their place label (_data/photo_places.yml). {% endcomment %}
+    {% assign pfix = "/assets/img/photography/" %}
+    {% assign pfiles = site.static_files | where_exp: "f", "f.path contains pfix" | sort: "path" %}
+    <script>
+      window.STATE_PHOTOS = [{% for f in pfiles %}{% assign pl = site.data.photo_places[f.basename] %}{% if pl %}{% if pl contains "D.C." %}{% assign sc = "dc" %}{% else %}{% assign sc = pl | split: ", " | last | strip | downcase %}{% endif %}{ "s": {{ sc | jsonify }}, "src": {{ f.path | relative_url | jsonify }}, "alt": {{ site.data.captions[f.basename] | default: pl | jsonify }} },{% endif %}{% endfor %}];
+    </script>
   </section>
   {% endif %}
 </article>
@@ -63,7 +69,9 @@ permalink: /life-map/
   (function () {
     var grid = document.querySelector('.us-map'), card = document.getElementById('state-card');
     if (!grid || !card) return;
-    var img = card.querySelector('img'), nm = card.querySelector('.state-card-name');
+    var img = card.querySelector('.state-card-flag'), nm = card.querySelector('.state-card-name'), strip = card.querySelector('.state-card-photos');
+    var byState = {};
+    (window.STATE_PHOTOS || []).forEach(function (p) { (byState[p.s] = byState[p.s] || []).push(p); });
     var current = null;
     img.onerror = function () { img.style.display = 'none'; };
     function show(t) {
@@ -74,6 +82,11 @@ permalink: /life-map/
       img.style.display = '';
       img.src = 'https://flagcdn.com/us-' + t.getAttribute('data-ab') + '.svg';
       nm.textContent = t.getAttribute('data-name');
+      var pics = byState[t.getAttribute('data-ab')] || [];
+      strip.innerHTML = '';
+      pics.slice(0, 4).forEach(function (p) { var im = new Image(); im.src = p.src; im.alt = p.alt; im.loading = 'eager'; strip.appendChild(im); });
+      if (pics.length > 4) { var more = document.createElement('span'); more.className = 'state-card-more'; more.textContent = '+' + (pics.length - 4); strip.appendChild(more); }
+      card.classList.toggle('has-photos', pics.length > 0);
       card.classList.add('on');
       var box = card.parentNode.getBoundingClientRect(), r = t.getBoundingClientRect();
       var w = card.offsetWidth, h = card.offsetHeight;
