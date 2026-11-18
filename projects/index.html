@@ -27,10 +27,9 @@ description: "Dissertation research in statistical genetics and machine learning
         <summary><span class="proj-open">Read more</span><span class="proj-close">Show less</span></summary>
         <div class="proj-body">
           {% if p.figure %}<img class="proj-fig" src="{{ p.figure | relative_url }}" alt="{{ p.figure_alt }}" loading="lazy">{% endif %}
-          {% if p.question %}<h4>The question</h4><p>{{ p.question }}</p>{% endif %}
-          {% if p.approach %}<h4>Approach</h4><ul>{% for a in p.approach %}<li>{{ a }}</li>{% endfor %}</ul>{% endif %}
+          {% if p.question %}<h4>Key question</h4><p>{{ p.question }}</p>{% endif %}
+          {% if p.approach %}<h4>Methods</h4><ul>{% for a in p.approach %}<li>{{ a }}</li>{% endfor %}</ul>{% endif %}
           {% if p.results %}<h4>Results</h4><ul>{% for r in p.results %}<li>{{ r }}</li>{% endfor %}</ul>{% endif %}
-          {% if p.tools %}<h4>Tools</h4><ul class="proj-tools">{% assign tools = p.tools | split: ", " %}{% for t in tools %}<li>{{ t }}</li>{% endfor %}</ul>{% endif %}
           {% if p.link %}<p class="proj-link"><a href="{{ p.link }}">{{ p.link_text | default: "Learn more" }}</a></p>{% endif %}
         </div>
       </details>

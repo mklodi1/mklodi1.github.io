@@ -1,7 +1,7 @@
 # Projects shown at /projects/. Each group has a heading and a list of projects.
 # Fields per project:
 #   title, status (short label, e.g. "Published"), summary (one or two sentences)
-#   question, approach (list), results (list), tools (comma-separated)
+#   question, approach (list, shown as Methods), results (list)
 #   Optional: link (url), link_text, figure (/assets/img/...), figure_alt
 # Tip: wrap text in "double quotes" if it contains a colon.
 
@@ -16,8 +16,8 @@
       summary: "Everyone in this group carries the same 16p11.2 deletion, but only some develop macrocephaly (an unusually large head). Comparing the two groups isolates the extra genetic variation that drives brain overgrowth."
       question: "Beyond the shared deletion, which genes contribute to macrocephaly in people with 16p11.2 deletion syndrome?"
       approach:
-        - "Selected 75 people with the deletion from the SFARI cohort and grouped them by head circumference: 36 with macrocephaly and 39 with normal head size."
-        - "Ran quality control on whole-exome sequencing data covering more than 212,000 variants."
+        - "Selected people with the deletion from the SFARI cohort and grouped them by head circumference: macrocephaly or normal head size."
+        - "Ran quality control on whole-exome sequencing data."
         - "Found rare variants with two complementary tools: pVAAST (family-based gene burden and segregation) and Slivar (inheritance-based filtering, including de novo variants)."
         - "Ranked genes with a tiered evidence system based on statistical support, brain expression (GTEx, BrainSpan, HDBR), expression in the developing brain, loss-of-function intolerance and mouse model data."
         - "Removed genes also found in people with normal head size, then ran network and enrichment analysis (HumanBase, ToppGene)."
@@ -25,15 +25,14 @@
         - "Identified 140 top candidate genes specific to macrocephaly."
         - "Candidate genes were enriched in the canonical Wnt signaling pathway, which controls how neural progenitor cells multiply. This is a new route to brain overgrowth in 16p11.2 deletion syndrome."
         - "Manuscript in preparation."
-      tools: "Whole-exome sequencing, pVAAST, Slivar, Ensembl VEP, gnomAD, GTEx, BrainSpan, HumanBase, ToppGene, Python, Linux/HPC"
 
     - title: "Risk Genes for Abnormal Head Growth in Idiopathic Autism"
       status: "Aim 2"
       summary: "In autism with no known genetic cause, some people have an unusually large head and others an unusually small one. Studying both extremes in the same group tests whether they come from different genes or from the same pathways pushed in opposite directions."
       question: "Which genes contribute to macrocephaly and microcephaly in idiopathic autism, and do the two share biology?"
       approach:
-        - "Selected 56 people with autism from the New Jersey Language and Autism Genetics Study (NJLAGS) and grouped them as macrocephalic (10), microcephalic (5) or normal head size (41)."
-        - "Analyzed whole-genome sequencing data (GATK) covering more than 22 million variants."
+        - "Selected people with autism from the New Jersey Language and Autism Genetics Study (NJLAGS) and grouped them by head circumference: macrocephaly, microcephaly or normal head size."
+        - "Analyzed whole-genome sequencing data (GATK)."
         - "Used the same two-tool rare variant approach (pVAAST and Slivar) and tiered gene ranking as Aim 1."
         - "Compared each group with the normal head size group, then ran network and enrichment analysis."
       results:
@@ -41,7 +40,6 @@
         - "Found strong candidates with known links to other neurodevelopmental disorders, along with new ones."
         - "The Wnt signaling pathway came up again, as in Aim 1. Since this happened in two different genetic backgrounds, it supports the idea that large and small head size sit on the same axis of brain growth."
         - "Manuscript in preparation."
-      tools: "Whole-genome sequencing, GATK, pVAAST, Slivar, Ensembl VEP, gnomAD, GTEx, HumanBase, ToppGene, Python, Linux/HPC"
 
     - title: "Risk Genes for Language and Reading Impairment"
       status: "Aim 3"
@@ -55,7 +53,6 @@
       results:
         - "Identified 34 candidate genes for language impairment and 13 for reading impairment."
         - "Narrowed these to 10 top candidates for language and 6 for reading, including genes not previously linked to neurodevelopmental disorders."
-      tools: "Linkage analysis (KELVIN), SNP arrays, Whole-genome sequencing, pVAAST, CNV and structural variant analysis, Python, R"
 
 - group: "Machine Learning Internship"
   where: "EIMplus"
@@ -71,7 +68,6 @@
         - "Published daily volatility forecasts and results in a Streamlit dashboard."
       results:
         - "Deployed tool used to support daily trading decisions."
-      tools: "Python, Black-Scholes, Greeks, GARCH, Monte Carlo, VaR/CVaR, XGBoost, Streamlit"
 
     - title: "AI for Scientific Literature Review"
       status: "Deployed"
@@ -83,4 +79,3 @@
         - "Deployed with Docker and CI/CD, and tracked experiments with MLflow."
       results:
         - "Cut manual literature review time by 85%."
-      tools: "Python, LLMs, RAG, ChromaDB, Embeddings, Docker, CI/CD, MLflow"
