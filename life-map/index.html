@@ -55,7 +55,9 @@ permalink: /life-map/
     <div class="state-grid" role="list" aria-label="Map of US states, {{ nstates }} visited">
       {% assign padded = " " | append: visited %}
       {% for t in site.data.states %}{% assign probe = " " | append: t.ab | append: " " %}{% if padded contains probe %}{% assign on = true %}{% else %}{% assign on = false %}{% endif %}
-      <span role="listitem" tabindex="0" class="st{% if on %} st-on{% endif %}{% if t.ab == 'DC' %} st-dc{% endif %}" style="grid-row:{{ t.row }};grid-column:{{ t.col }}" data-ab="{{ t.ab | downcase }}" data-name="{{ t.name }}" data-cap="{{ t.capital }}" aria-label="{{ t.name }}, capital {{ t.capital }}{% if on %}, visited{% endif %}">{{ t.ab }}</span>
+      {% assign cities = "" %}{% if on %}{% for p in site.data.travel %}{% if p.country == "us" %}{% if t.ab == "DC" %}{% if p.city contains "D.C." %}{% assign cities = cities | append: p.city | append: "|" %}{% endif %}{% else %}{% assign last = p.city | split: ", " | last | strip %}{% if last == t.ab %}{% assign nm = p.city | split: "," | first %}{% assign cities = cities | append: nm | append: "|" %}{% endif %}{% endif %}{% endif %}{% endfor %}{% endif %}
+      {% assign cities = cities | split: "|" | join: ", " %}
+      <span role="listitem" tabindex="0" class="st{% if on %} st-on{% endif %}{% if t.ab == 'DC' %} st-dc{% endif %}" style="grid-row:{{ t.row }};grid-column:{{ t.col }}" data-ab="{{ t.ab | downcase }}" data-name="{{ t.name }}" data-cities="{{ cities }}" aria-label="{{ t.name }}{% if on %}, visited: {{ cities }}{% endif %}">{{ t.ab }}</span>
       {% endfor %}
     </div>
     <div class="state-card" id="state-card" aria-hidden="true"><img class="state-card-flag" alt="" width="64" height="40"><div><p class="state-card-name"></p><p class="state-card-cap"></p></div></div>
@@ -75,7 +77,7 @@ permalink: /life-map/
       img.style.display = '';
       img.src = 'https://flagcdn.com/us-' + t.getAttribute('data-ab') + '.svg';
       nm.textContent = t.getAttribute('data-name');
-      cap.textContent = 'Capital: ' + t.getAttribute('data-cap');
+      var c = t.getAttribute('data-cities') || ''; cap.textContent = c; cap.style.display = c ? '' : 'none';
       card.classList.add('on');
       var box = card.parentNode.getBoundingClientRect(), r = t.getBoundingClientRect();
       var w = card.offsetWidth, h = card.offsetHeight;
