@@ -3,23 +3,11 @@
 # Optional: link, link_text, figure (/assets/img/...), figure_alt
 # Tip: wrap text in "double quotes" if it contains a colon.
 
-- title: "Identifying Risk Genes Associated with Macrocephaly in 16p11.2 Deletion Syndrome Patients"
-  question: "Despite a shared primary deletion, only a subset of 16pDel patients exhibit macrocephaly. Which additional modifying genetic variants contribute to neural progenitor cell (NPC) hyperproliferation and macrocephaly in these patients?"
-  skills: "Python, SQL, Linux/HPC, Gene burden testing, Permutation testing"
+- title: "Convergent Rare-Variant Analysis Pipeline for Neurodevelopmental Disorders"
+  question: "Can a customizable pipeline that integrates two complementary rare variant tools, pVAAST and Slivar, identify candidate genes for specific neurodevelopmental phenotypes that are obscured within broad diagnoses?"
+  skills: "Python, SQL, Linux/HPC, Gene burden testing, Statistical genetics"
   results:
-    - "Identified 140 candidate genes unique to macrocephaly, converging on the canonical Wnt signaling pathway as an alternative route to progenitor proliferation not previously implicated in 16p11.2 Deletion Syndrome."
-
-- title: "Identifying Risk Genes Associated with Abnormal Cranial Growth in Idiopathic ASD Patients"
-  question: "Do macrocephaly and microcephaly in idiopathic ASD arise from distinct genetic contributions, or do they converge on shared biological pathways perturbed in opposing directions?"
-  skills: "Python, SQL, Linux/HPC, Enrichment analysis, Network analysis"
-  results:
-    - "Identified 52 candidate genes for macrocephaly and 50 for microcephaly; recurrence of the canonical Wnt signaling pathway supports macrocephaly and microcephaly as opposite poles of a shared genetic axis of cranial growth regulation."
-
-- title: "Identifying Risk Genes Associated with Language and Reading Impairment within Linkage-Defined Regions"
-  question: "Which candidate genes within the linkage regions 15q23–26 and 16p12 contribute to language impairment (LI) and reading impairment (RI), and do they indicate a shared etiology of ASD and language impairment?"
-  skills: "Python, SQL, Linux/HPC, Bayesian linkage analysis, Statistical genetics"
-  results:
-    - "Prioritized top candidate genes for LI* and RI* within the linkage regions, indicating a shared etiology of ASD and language impairment at these two loci."
+    - "Applied the pipeline across three distinct genetic contexts (16p11.2 Deletion Syndrome, idiopathic ASD, and language and reading impairment), recovering well-established neurodevelopmental genes that validated the approach and identifying novel high-confidence candidate genes and shared pathways such as Wnt signaling."
 
 - title: "Derivatives Pricing and Market Risk Simulation Engine"
   question: "Which options are underpriced today, and what is the expected profit and tail risk of trading them?"
