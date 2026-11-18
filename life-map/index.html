@@ -47,6 +47,7 @@ permalink: /life-map/
       {% unless visited contains st %}{% assign visited = visited | append: st | append: " " %}{% endunless %}
     {% endif %}
   {% endfor %}
+  {% for st in site.data.extra_states %}{% unless visited contains st %}{% assign visited = visited | append: st | append: " " %}{% endunless %}{% endfor %}
   {% assign nstates = visited | remove: "DC " | split: " " | size %}
 
   <section class="tally" aria-labelledby="h-states">
