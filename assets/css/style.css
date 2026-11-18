@@ -780,3 +780,5 @@ body { border-top: 6px solid var(--link); }
 }
 @keyframes nav-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .nav nav.open { animation: none; } .nav-bars, .nav-bars::before, .nav-bars::after { transition: none; } }
+.proj-q { margin: 0 0 .5rem; }
+.proj-q-label { display: block; font-size: .8rem; font-weight: 700; color: var(--muted); letter-spacing: .02em; margin-bottom: .15rem; }

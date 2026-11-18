@@ -11,12 +11,11 @@ description: "Dissertation research in statistical genetics and machine learning
   {% assign pid = p.title | slugify %}
   <article class="proj" id="{{ pid }}">
     <h2 class="proj-title">{{ p.title }}</h2>
-    <p class="proj-summary">{{ p.summary }}</p>
+    {% if p.question %}<p class="proj-q"><span class="proj-q-label">Key Question</span>{{ p.question }}</p>{% endif %}
     <details class="proj-more">
       <summary><span class="proj-open">Read more</span><span class="proj-close">Show less</span></summary>
       <div class="proj-body">
         {% if p.figure %}<img class="proj-fig" src="{{ p.figure | relative_url }}" alt="{{ p.figure_alt }}" loading="lazy">{% endif %}
-        {% if p.question %}<h3>Key question</h3><p>{{ p.question }}</p>{% endif %}
         {% if p.skills %}<h3>Skills</h3><ul class="proj-tools">{% assign sk = p.skills | split: ", " %}{% for s in sk %}<li>{{ s }}</li>{% endfor %}</ul>{% endif %}
         {% if p.results %}<h3>Results</h3><ul>{% for r in p.results %}<li>{{ r }}</li>{% endfor %}</ul>{% endif %}
         {% if p.link %}<p class="proj-link"><a href="{{ p.link }}">{{ p.link_text | default: "Learn more" }}</a></p>{% endif %}
