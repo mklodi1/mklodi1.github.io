@@ -4,7 +4,7 @@
 # Tip: wrap text in "double quotes" if it contains a colon.
 
 - title: "Convergent Rare-Variant Analysis Pipeline for Neurodevelopmental Disorders"
-  objective: "Build a customizable pipeline that integrates two complementary rare variant tools, pVAAST and Slivar, to identify candidate genes for specific neurodevelopmental phenotypes, such as abnormal head size and language impairment, that are obscured within broad diagnoses."
+  objective: "Build a customizable pipeline that integrates two complementary statistical genetics tools, pVAAST and Slivar, to identify candidate genes for specific neurodevelopmental phenotypes, such as abnormal head size and language impairment, that are obscured within broad diagnoses."
   skills: "Linux, Python, R, SQL, Gene burden testing, Permutation testing"
 
 - title: "Derivatives Pricing and Market Risk Simulation Engine"
