@@ -5,12 +5,12 @@ permalink: /personal/
 ---
 {% comment %}
   Galleries fill themselves: upload images (.jpg, .jpeg, .png, .webp) into
-  assets/img/sports/, assets/img/photography/ or assets/img/drawing/ and they appear here, sorted by file name.
+  assets/img/sports/ or assets/img/photography/ and they appear here, sorted by file name.
 {% endcomment %}
 <article class="wrap personal">
   <h1 class="sr-only">Interests</h1>
 
-  {% assign sections = "poetry|Poetry,photography|Photography,drawing|Drawing,sports|Sports" | split: "," %}
+  {% assign sections = "poetry|Poetry,photography|Photography,sports|Sports" | split: "," %}
   {% for sec in sections %}
   {% assign parts = sec | split: "|" %}
   {% assign folder = parts[0] %}
