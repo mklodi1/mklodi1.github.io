@@ -26,10 +26,3 @@
   place: "Virginia Commonwealth University, Richmond, VA"
   detail: "Virginia Scholarship, UROP Fellowship"
   logo: /assets/img/logos/vcu.png
-
-- when: "Jun 2017"
-  title: "Advanced Studies Diploma"
-  type: education
-  place: "Manassas Park High School"
-  detail: "Salutatorian"
-  logo: /assets/img/logos/manassas-park-hs.png
