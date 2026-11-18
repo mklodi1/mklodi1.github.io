@@ -1,13 +1,10 @@
-# "Timeline" section on the home page, most recent first.
+# "Timeline" section on the home page, ordered by completion date, most recent first.
 # Fields: when, title, type (education, research or paper), place (optional), detail (optional),
 # logo (optional): an image in assets/img/logos/, shown when the plane reaches the card.
-- when: "Jan 2026"
-  title: "First-author paper published in Genes"
-  type: paper
-
-- when: "Jul 2022"
-  title: "Co-author paper published in Frontiers in Genetics"
-  type: paper
+- when: "Aug 2021 – Oct 2026"
+  title: "Graduate Research Assistant, Xing Lab of Genomics"
+  type: research
+  place: "Rutgers University"
 
 - when: "Aug 2021 – Sep 2026"
   title: "Ph.D. in Quantitative Biomedicine"
@@ -16,13 +13,12 @@
   detail: "Presidential Fellowship"
   logo: /assets/img/logos/rutgers.png
 
-- when: "Aug 2021 – Oct 2026"
-  title: "Graduate Research Assistant, Xing Lab of Genomics"
-  type: research
-  place: "Rutgers University"
+- when: "Jan 2026"
+  title: "First-author paper published in Genes"
+  type: paper
 
-- when: "Apr 2021"
-  title: "Co-author paper published in Proteomes"
+- when: "Jul 2022"
+  title: "Co-author paper published in Frontiers in Genetics"
   type: paper
 
 - when: "Aug 2020 – Aug 2021"
@@ -35,14 +31,18 @@
   type: research
   place: "Virginia Commonwealth University Center for the Study of Biological Complexity"
 
-- when: "May 2018 – Apr 2019"
-  title: "Undergraduate Research Assistant, Guruli Lab"
-  type: research
-  place: "Massey Cancer Center"
-
 - when: "Aug 2017 – May 2021"
   title: "B.S. in Bioinformatics"
   type: education
   place: "Virginia Commonwealth University, Richmond, VA"
   detail: "Virginia Scholarship, UROP Fellowship"
   logo: /assets/img/logos/vcu.png
+
+- when: "Apr 2021"
+  title: "Co-author paper published in Proteomes"
+  type: paper
+
+- when: "May 2018 – Apr 2019"
+  title: "Undergraduate Research Assistant, Guruli Lab"
+  type: research
+  place: "Massey Cancer Center"
