@@ -636,3 +636,8 @@ body { border-top: 6px solid var(--link); }
 .journey-research .journey-dot { top: .8rem; }
 .journey-paper .journey-dot { top: .5rem; transform: rotate(45deg); }
 .journey-paper:hover .journey-dot { transform: rotate(45deg) scale(1.2); }
+
+/* smaller square and diamond markers */
+.journey-research .journey-dot, .journey-paper .journey-dot { width: 8px; height: 8px; left: 5px !important; border-width: 1.5px; border-radius: 1px; }
+.journey-research .journey-dot { top: .85rem; }
+.journey-paper .journey-dot { top: .55rem; }
