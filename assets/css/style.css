@@ -706,14 +706,13 @@ body { border-top: 6px solid var(--link); }
 .state-card {
   position: absolute; left: 0; top: 0; z-index: 20; display: flex; align-items: center; gap: .75rem;
   background: #fff; border: 1px solid var(--rule); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,.10);
-  padding: .65rem .85rem; min-width: 13rem; pointer-events: none; opacity: 0; transform: translateY(4px);
+  padding: .65rem .85rem; pointer-events: none; opacity: 0; transform: translateY(4px);
   transition: opacity .12s ease, transform .12s ease;
 }
 .state-card.on { opacity: 1; transform: none; }
 .state-card-flag { width: 64px; height: auto; border-radius: 3px; box-shadow: 0 0 0 1px rgba(0,0,0,.08); flex: none; }
 .state-card p { margin: 0; }
 .state-card-name { font-weight: 600; line-height: 1.25; }
-.state-card-cap { color: var(--muted); font-size: .88rem; }
 @media (max-width: 560px) {
   .state-grid { gap: 3px; }
   .st { font-size: .58rem; border-radius: 4px; }
